@@ -31,10 +31,12 @@
 ![Gianting (Tim) Yeh][tim]
 
 	
+	
 **Lead Architect: Mike Murawsky**
 	As the Lead Architect I shall determine and propose to the team what core functionality needs to be fulfilled and what supporting components need to built off that framework.  I will help insure that the core and supporting elements will be broken down into their most elemental state as to ensure out software is completely modular with out losing sight of goal of the requirements.
 	
 ![Michael Murawsky][mike]
+
 
 
 **Configuration Manager: Johnathan Gilday**
@@ -43,7 +45,7 @@
 ![Johnathan Gilday][john]
 	
 	
-[logo]: team-logo.png "It's always the Butler.."
+[logo]: team-logo-small.png "It's always the Butler.."
 [tim]: tim-bio-pic.jpg  "Gianting (Tim) Yeh"
-[mike]: mike-bio-pic.png "Michael Murawsky"
+[mike]: mike-bio-pic.jpg "Michael Murawsky"
 [john]: john-bio-pic.jpg "Johnathan Gilday"
