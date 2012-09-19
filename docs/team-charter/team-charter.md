@@ -26,12 +26,15 @@
 
 **Project Manager: Gianting (Tim) Yeh**
 	As project manager, I will make sure that our project is on time and ready to go. 
-	I will work with both partners to edit and combine our individual works to create a single deliverable. *Tim, I'd argue this is a very configuration management task but feel free to lighten my load ;)*
+	I will work with both partners to edit and combine our individual works to create a single deliverable. 
 
 ![Gianting (Tim) Yeh][tim]
+
 	
 **Lead Architect: Mike Murawsky**
-*Mike insert your spiel here and get us a picture of your handsome mug*
+	As the Lead Architect I shall determine and propose to the team what core functionality needs to be fulfilled and what supporting components need to built off that framework.  I will help insure that the core and supporting elements will be broken down into their most elemental state as to ensure out software is completely modular with out losing sight of goal of the requirements.
+	
+![Michael Murawsky][mike]
 
 
 **Configuration Manager: Johnathan Gilday**
@@ -42,4 +45,5 @@
 	
 [logo]: team-logo.png "It's always the Butler.."
 [tim]: tim-bio-pic.jpg  "Gianting (Tim) Yeh"
+[mike]: mike-bio-pic.png "Michael Murawsky"
 [john]: john-bio-pic.jpg "Johnathan Gilday"
