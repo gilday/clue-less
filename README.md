@@ -1,8 +1,7 @@
-Clue-less
+605.401 Clue-less
 =========
 
-JHU 605.401 group project “Clue-less”. A simplified, multiplayer game like
-Milton Bradley’s Clue.
+JHU 605.401 group project "Clue-less". A simplified, multiplayer game like Milton Bradley's Clue. 
 
 
 Authors
