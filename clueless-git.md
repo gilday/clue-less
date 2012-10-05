@@ -101,7 +101,7 @@ You can keep making changes and commits to your copy until you want to share you
 
 `git push origin development`
 
-Now your change should be visible [here](https://github.com/gilday/clue-less/blob/master/README.md)!
+Now your change should be visible [here](https://github.com/gilday/clue-less/blob/master/clueless-git.md)!
 
 ## Help ##
 
