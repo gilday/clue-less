@@ -1,0 +1,12 @@
+title Player finds new Match
+GameCenterMatchHelper -> GKTurnBasedMatchmakerViewController: findMatch
+note right of GKTurnBasedMatchmakerViewController: Player uses Game Center GUI to \nfind an existing match or create a new one
+alt match found
+    GKTurnBasedMatchmakerViewController -> -GameCenterMatchHelper: didFindMatch
+    GameCenterMatchHelper -> GameCenterMatchHelper: setCurrentMatch
+    GameCenterMatchHelper -> PlayMatchController: startNewMatch
+else canceled
+    GKTurnBasedMatchmakerViewController -> -GameCenterMatchHelper: wasCancelled
+    GameCenterMatchHelper -> -GKTurnBasedMatchmakerViewController: dismiss
+end
+
