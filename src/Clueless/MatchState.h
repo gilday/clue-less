@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Player.h"
 
 // MatchState objects hold enough information about a match of Clueless to inform
 // the exact state of the match. These objects are serializable: can be written to
@@ -14,5 +15,12 @@
 // be able to instantiate new MatchState objects from a stream of bytes representing
 // a serialized MatchState object
 @interface MatchState : NSObject
+
+// List of all GKTurnBasedParticipant
+@property(copy,readonly) NSArray* players;
+// Reference to current GKTurnBasedParticipant
+@property(copy,readonly) Player* currentPlayer;
+
+
 
 @end

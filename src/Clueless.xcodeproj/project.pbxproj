@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5A5001681651E1E30063969C /* Player.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A5001671651E1E30063969C /* Player.m */; };
+		5A50016C1651E68C0063969C /* ClueCharacter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5A50016B1651E68C0063969C /* ClueCharacter.m */; };
 		5AE11426163C442500F89A14 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE11425163C442500F89A14 /* UIKit.framework */; };
 		5AE11428163C442500F89A14 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE11427163C442500F89A14 /* Foundation.framework */; };
 		5AE1142A163C442500F89A14 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE11429163C442500F89A14 /* CoreGraphics.framework */; };
@@ -38,6 +40,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5A5001661651E1E30063969C /* Player.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Player.h; sourceTree = "<group>"; };
+		5A5001671651E1E30063969C /* Player.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Player.m; sourceTree = "<group>"; };
+		5A50016A1651E68C0063969C /* ClueCharacter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueCharacter.h; sourceTree = "<group>"; };
+		5A50016B1651E68C0063969C /* ClueCharacter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueCharacter.m; sourceTree = "<group>"; };
 		5AE11421163C442500F89A14 /* Clueless.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Clueless.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5AE11425163C442500F89A14 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		5AE11427163C442500F89A14 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -173,6 +179,10 @@
 			children = (
 				5AF3A0B9165185AF0020A766 /* MatchState.h */,
 				5AF3A0BA165185AF0020A766 /* MatchState.m */,
+				5A5001661651E1E30063969C /* Player.h */,
+				5A5001671651E1E30063969C /* Player.m */,
+				5A50016A1651E68C0063969C /* ClueCharacter.h */,
+				5A50016B1651E68C0063969C /* ClueCharacter.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -291,6 +301,8 @@
 				5AE11436163C442500F89A14 /* AppDelegate.m in Sources */,
 				5AE11442163C442500F89A14 /* TitleViewController.m in Sources */,
 				5AF3A0BB165185AF0020A766 /* MatchState.m in Sources */,
+				5A5001681651E1E30063969C /* Player.m in Sources */,
+				5A50016C1651E68C0063969C /* ClueCharacter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
