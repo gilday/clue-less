@@ -22,6 +22,6 @@ FOUNDATION_EXPORT NSString *const ProfPlum;
 @property NSString* name;
 @property UIColor* color;
 
--(ClueCharacter*) init: (NSString*) name;
+-(ClueCharacter*) initWithNameAndColor: (NSString*) name AndColor: (UIColor*) color;
 
 @end

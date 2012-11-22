@@ -21,14 +21,15 @@ static ClueCharacter *MsScarlet;
 +(ClueCharacter*) msScarlet
 {
     if(!MsScarlet)
-        MsScarlet = [[ClueCharacter alloc] init: MsScarletID];
+        MsScarlet = [[ClueCharacter alloc] initWithNameAndColor:MsScarletID AndColor:[UIColor redColor]];
     
     return MsScarlet;
 }
 
--(ClueCharacter*) init:(NSString *)name
+-(ClueCharacter*) initWithNameAndColor:(NSString *)name AndColor: (UIColor*)color
 {
     self.name = name;
+    self.color = color;
     
     return self;
 }
