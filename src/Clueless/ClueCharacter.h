@@ -17,8 +17,6 @@ FOUNDATION_EXPORT NSString *const MrGreenID;
 FOUNDATION_EXPORT NSString *const MrsPeacock;
 FOUNDATION_EXPORT NSString *const ProfPlum;
     
-+(ClueCharacter*) msScarlet;
-
 @property NSString* name;
 @property UIColor* color;
 

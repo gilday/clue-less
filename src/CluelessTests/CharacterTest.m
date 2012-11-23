@@ -7,6 +7,7 @@
 //
 
 #import "CharacterTest.h"
+#import "ClueCharacterFactory.h"
 
 @implementation CharacterTest
 
@@ -16,7 +17,7 @@
  */
 - (void) testSingletonInit
 {
-    msScarlet = [ClueCharacter msScarlet];
+    msScarlet = [ClueCharacterFactory msScarlet];
     STAssertNotNil(msScarlet, @"ClueCharacter MsScarlet should have been created in testSetup");
     STAssertEquals([msScarlet color], [UIColor redColor], @"MsScarlet is red");
     STAssertTrue([[msScarlet name] isEqualToString:@"MsScarlet"], @"Wrong name");

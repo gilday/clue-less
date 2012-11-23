@@ -17,10 +17,8 @@
 @interface MatchState : NSObject
 
 // List of all GKTurnBasedParticipant
-@property(copy,readonly) NSArray* players;
+@property NSArray* players;
 // Reference to current GKTurnBasedParticipant
-@property(copy,readonly) Player* currentPlayer;
-
-
+@property Player* currentPlayer;
 
 @end

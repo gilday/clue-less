@@ -17,15 +17,6 @@ NSString *const MrGreenID = @"MrGreen";
 NSString *const MrsPeacock = @"MrsPeacock";
 NSString *const ProfPlum = @"ProfPlum";
 
-static ClueCharacter *MsScarlet;
-+(ClueCharacter*) msScarlet
-{
-    if(!MsScarlet)
-        MsScarlet = [[ClueCharacter alloc] initWithNameAndColor:MsScarletID AndColor:[UIColor redColor]];
-    
-    return MsScarlet;
-}
-
 -(ClueCharacter*) initWithNameAndColor:(NSString *)name AndColor: (UIColor*)color
 {
     self.name = name;

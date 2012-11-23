@@ -26,7 +26,14 @@
 		5AE11454163C442600F89A14 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 5AE11452163C442600F89A14 /* InfoPlist.strings */; };
 		5AE11461163C447C00F89A14 /* GameKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5AE11460163C447C00F89A14 /* GameKit.framework */; };
 		5AF3A0BB165185AF0020A766 /* MatchState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3A0BA165185AF0020A766 /* MatchState.m */; };
+		FB2021A4165FEC14001180BD /* HallwaySpace.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2021A3165FEC14001180BD /* HallwaySpace.m */; };
+		FB2021AB166008C2001180BD /* GameBoardSpaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2021AA166008C2001180BD /* GameBoardSpaceTests.m */; };
 		FBAE2367165DBD7B00AA2B34 /* CharacterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2366165DBD7B00AA2B34 /* CharacterTest.m */; };
+		FBAE236E165F1B8F00AA2B34 /* ClueCharacterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE236D165F1B8F00AA2B34 /* ClueCharacterFactory.m */; };
+		FBAE2371165FD42000AA2B34 /* Clue.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2370165FD42000AA2B34 /* Clue.m */; };
+		FBAE2377165FDDFA00AA2B34 /* GameBoardSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2376165FDDF900AA2B34 /* GameBoardSpace.m */; };
+		FBAE237A165FE45F00AA2B34 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2379165FE45F00AA2B34 /* GameBoard.m */; };
+		FBAE237D165FEAF300AA2B34 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE237C165FEAF300AA2B34 /* Room.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -67,8 +74,22 @@
 		5AE11460163C447C00F89A14 /* GameKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = GameKit.framework; path = System/Library/Frameworks/GameKit.framework; sourceTree = SDKROOT; };
 		5AF3A0B9165185AF0020A766 /* MatchState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MatchState.h; sourceTree = "<group>"; };
 		5AF3A0BA165185AF0020A766 /* MatchState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MatchState.m; sourceTree = "<group>"; };
+		FB2021A2165FEC14001180BD /* HallwaySpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HallwaySpace.h; sourceTree = "<group>"; };
+		FB2021A3165FEC14001180BD /* HallwaySpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallwaySpace.m; sourceTree = "<group>"; };
+		FB2021A9166008C2001180BD /* GameBoardSpaceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoardSpaceTests.h; sourceTree = "<group>"; };
+		FB2021AA166008C2001180BD /* GameBoardSpaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardSpaceTests.m; sourceTree = "<group>"; };
 		FBAE2365165DBD7B00AA2B34 /* CharacterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterTest.h; sourceTree = "<group>"; };
 		FBAE2366165DBD7B00AA2B34 /* CharacterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterTest.m; sourceTree = "<group>"; };
+		FBAE236C165F1B8F00AA2B34 /* ClueCharacterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueCharacterFactory.h; sourceTree = "<group>"; };
+		FBAE236D165F1B8F00AA2B34 /* ClueCharacterFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClueCharacterFactory.m; sourceTree = "<group>"; };
+		FBAE236F165FD42000AA2B34 /* Clue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Clue.h; sourceTree = "<group>"; };
+		FBAE2370165FD42000AA2B34 /* Clue.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Clue.m; sourceTree = "<group>"; };
+		FBAE2375165FDDF900AA2B34 /* GameBoardSpace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoardSpace.h; sourceTree = "<group>"; };
+		FBAE2376165FDDF900AA2B34 /* GameBoardSpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardSpace.m; sourceTree = "<group>"; };
+		FBAE2378165FE45F00AA2B34 /* GameBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoard.h; sourceTree = "<group>"; };
+		FBAE2379165FE45F00AA2B34 /* GameBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
+		FBAE237B165FEAF300AA2B34 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
+		FBAE237C165FEAF300AA2B34 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -161,6 +182,8 @@
 				5AE11450163C442600F89A14 /* Supporting Files */,
 				FBAE2365165DBD7B00AA2B34 /* CharacterTest.h */,
 				FBAE2366165DBD7B00AA2B34 /* CharacterTest.m */,
+				FB2021A9166008C2001180BD /* GameBoardSpaceTests.h */,
+				FB2021AA166008C2001180BD /* GameBoardSpaceTests.m */,
 			);
 			path = CluelessTests;
 			sourceTree = "<group>";
@@ -183,6 +206,18 @@
 				5A5001671651E1E30063969C /* Player.m */,
 				5A50016A1651E68C0063969C /* ClueCharacter.h */,
 				5A50016B1651E68C0063969C /* ClueCharacter.m */,
+				FBAE236C165F1B8F00AA2B34 /* ClueCharacterFactory.h */,
+				FBAE236D165F1B8F00AA2B34 /* ClueCharacterFactory.m */,
+				FBAE236F165FD42000AA2B34 /* Clue.h */,
+				FBAE2370165FD42000AA2B34 /* Clue.m */,
+				FBAE2375165FDDF900AA2B34 /* GameBoardSpace.h */,
+				FBAE2376165FDDF900AA2B34 /* GameBoardSpace.m */,
+				FBAE2378165FE45F00AA2B34 /* GameBoard.h */,
+				FBAE2379165FE45F00AA2B34 /* GameBoard.m */,
+				FBAE237B165FEAF300AA2B34 /* Room.h */,
+				FBAE237C165FEAF300AA2B34 /* Room.m */,
+				FB2021A2165FEC14001180BD /* HallwaySpace.h */,
+				FB2021A3165FEC14001180BD /* HallwaySpace.m */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -303,6 +338,12 @@
 				5AF3A0BB165185AF0020A766 /* MatchState.m in Sources */,
 				5A5001681651E1E30063969C /* Player.m in Sources */,
 				5A50016C1651E68C0063969C /* ClueCharacter.m in Sources */,
+				FBAE236E165F1B8F00AA2B34 /* ClueCharacterFactory.m in Sources */,
+				FBAE2371165FD42000AA2B34 /* Clue.m in Sources */,
+				FBAE2377165FDDFA00AA2B34 /* GameBoardSpace.m in Sources */,
+				FBAE237A165FE45F00AA2B34 /* GameBoard.m in Sources */,
+				FBAE237D165FEAF300AA2B34 /* Room.m in Sources */,
+				FB2021A4165FEC14001180BD /* HallwaySpace.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +352,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				FBAE2367165DBD7B00AA2B34 /* CharacterTest.m in Sources */,
+				FB2021AB166008C2001180BD /* GameBoardSpaceTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
