@@ -19,7 +19,13 @@
     Room *hall = [[Room alloc] initWithId: Hall];
     HallwaySpace *hallwayStudyHall = [[HallwaySpace alloc] initWithRoomsToConnect:study ConnectsTo:hall];
     
-    [[hallwayStudyHall spaceId] isEqualToString:@"Study-Hall"];
+    BOOL isHallwayNamedCorrectly = [[hallwayStudyHall spaceId] isEqualToString:@"Study-Hall"];
+    STAssertTrue(isHallwayNamedCorrectly, @"Hallway does not have correct name");
+    
+    STAssertTrue([[hallwayStudyHall navigationTargets] containsObject:study], @"Hallway doesn't contain study");
+    STAssertTrue([[hallwayStudyHall navigationTargets] containsObject:hall], @"Hallway doesn't contain study");
+    STAssertTrue([[study navigationTargets] containsObject:hallwayStudyHall], @"Study doesn't contain hallway");
+    STAssertTrue([[hall navigationTargets] containsObject:hallwayStudyHall], @"Hall doesn't contain hallway");
 }
 
 @end

@@ -14,6 +14,6 @@
 
 // A list of other GameBoardSpaces to which a player can navigate
 // from this space
--(NSArray*) navigationTargets;
+@property NSMutableArray* navigationTargets;
 
 @end

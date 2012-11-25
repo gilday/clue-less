@@ -11,10 +11,14 @@
 @implementation GameBoardSpace
     
 @synthesize spaceId;
+@synthesize navigationTargets;
 
-- (NSArray*) navigationTargets
+-(GameBoardSpace*) init
 {
-    @throw [NSException exceptionWithName:@"NotImplementedException" reason:@"" userInfo:nil];
+    self = [super init];
+    self.navigationTargets = [[NSMutableArray alloc] init];
+    
+    return self;
 }
 
 @end
