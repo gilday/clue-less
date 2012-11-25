@@ -21,10 +21,8 @@
     self.spaceId = idFromRooms;
     
     // Set up navigation links
-    [[room1 navigationTargets] addObject:self];
-    [[room2 navigationTargets] addObject:self];
-    [self.navigationTargets addObject:room1];
-    [self.navigationTargets addObject:room2];
+    [self connectSpace:room1];
+    [self connectSpace:room2];
     
     return self;
 }

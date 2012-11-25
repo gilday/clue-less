@@ -21,4 +21,10 @@
     return self;
 }
 
+-(void) connectSpace:(GameBoardSpace *)otherSpace
+{
+    [self.navigationTargets addObject:otherSpace];
+    [otherSpace.navigationTargets addObject:self];
+}
+
 @end
