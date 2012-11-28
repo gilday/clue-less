@@ -32,6 +32,7 @@
 
 -(void) connectSpace:(GameBoardSpace *)otherSpace
 {
+    NSLog(@"%@ <--> %@", self.spaceId, otherSpace.spaceId);
     [self.navigationTargets addObject:otherSpace];
     [otherSpace.navigationTargets addObject:self];
 }

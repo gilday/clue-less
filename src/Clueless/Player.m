@@ -10,4 +10,8 @@
 
 @implementation Player
 
+@synthesize participant;
+@synthesize location;
+@synthesize character;
+
 @end

@@ -34,6 +34,7 @@
 		FBAE2377165FDDFA00AA2B34 /* GameBoardSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2376165FDDF900AA2B34 /* GameBoardSpace.m */; };
 		FBAE237A165FE45F00AA2B34 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2379165FE45F00AA2B34 /* GameBoard.m */; };
 		FBAE237D165FEAF300AA2B34 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE237C165FEAF300AA2B34 /* Room.m */; };
+		FBDC555C1665B9DD0008DA3A /* GameBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDC555B1665B9DD0008DA3A /* GameBoardTests.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -90,6 +91,8 @@
 		FBAE2379165FE45F00AA2B34 /* GameBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
 		FBAE237B165FEAF300AA2B34 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
 		FBAE237C165FEAF300AA2B34 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		FBDC555A1665B9DD0008DA3A /* GameBoardTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoardTests.h; sourceTree = "<group>"; };
+		FBDC555B1665B9DD0008DA3A /* GameBoardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -184,6 +187,8 @@
 				FBAE2366165DBD7B00AA2B34 /* CharacterTest.m */,
 				FB2021A9166008C2001180BD /* GameBoardSpaceTests.h */,
 				FB2021AA166008C2001180BD /* GameBoardSpaceTests.m */,
+				FBDC555A1665B9DD0008DA3A /* GameBoardTests.h */,
+				FBDC555B1665B9DD0008DA3A /* GameBoardTests.m */,
 			);
 			path = CluelessTests;
 			sourceTree = "<group>";
@@ -353,6 +358,7 @@
 			files = (
 				FBAE2367165DBD7B00AA2B34 /* CharacterTest.m in Sources */,
 				FB2021AB166008C2001180BD /* GameBoardSpaceTests.m in Sources */,
+				FBDC555C1665B9DD0008DA3A /* GameBoardTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

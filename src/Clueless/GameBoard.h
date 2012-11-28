@@ -8,11 +8,15 @@
 
 #import <Foundation/Foundation.h>
 #import "GameBoardSpace.h"
+#import "Player.h"
 
 @interface GameBoard : NSObject
 
 @property NSMutableDictionary *spaces;
+@property NSArray *players;
 
-//- (GameBoardSpace*) getSpaceWithId: (NSString*) spaceId;
+-(GameBoard*) initWithPlayers: (NSArray*) pplayers;
+
+-(NSArray*) getPossibleMoves: (Player*) player;
 
 @end

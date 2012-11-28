@@ -15,14 +15,40 @@
 @implementation GameBoard
 
 @synthesize spaces;
+@synthesize players;
 
--(id) init
+-(id) initWithPlayers: (NSArray*) pplayers
 {
     self = [super init];
     
     [self createSpaces];
+    self.players = pplayers;
     
     return self;
+}
+
+-(NSArray*) getPossibleMoves:(Player *)player
+{
+    GameBoardSpace *currentSpace = [spaces objectForKey:[player location]];
+    NSMutableArray *possibleSpaces = [[NSMutableArray alloc] init];
+    for(GameBoardSpace *space in currentSpace.navigationTargets)
+    {
+        if([space isMemberOfClass:[HallwaySpace class]])
+        {
+            BOOL hallwaySpaceIsOccupied = NO;
+            for (Player *otherPlayer in players)
+            {
+                GameBoardSpace *otherPlayerPosition = [spaces objectForKey:[otherPlayer location]];
+                hallwaySpaceIsOccupied = [otherPlayerPosition.spaceId isEqualToString:space.spaceId];
+                if(hallwaySpaceIsOccupied) break;
+            }
+            if(!hallwaySpaceIsOccupied) [possibleSpaces addObject:space];
+        } else
+        {
+            [possibleSpaces addObject:space];
+        }
+    }
+    return possibleSpaces;
 }
 
 -(void) createSpaces
