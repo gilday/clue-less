@@ -10,6 +10,7 @@
 #import "GameBoardSpace.h"
 #import "Room.h"
 #import "HallwaySpace.h"
+#import "ClueCharacter.h"
 
 @implementation GameBoard
 
@@ -82,6 +83,31 @@
     // Create secret passages
     [kitchen connectSpace:study];
     [conservatory connectSpace:lounge];
+    
+    // Create start spots
+    GameBoardSpace *msScarlet = [[GameBoardSpace alloc] initWithId:MsScarletID];
+    [[msScarlet navigationTargets] addObject:[spaces valueForKey:@"Hall-Lounge"]];
+    [self addGameBoardSpace:msScarlet];
+    
+    GameBoardSpace *colMustard = [[GameBoardSpace alloc] initWithId:ColMustardID];
+    [[colMustard navigationTargets] addObject:[spaces valueForKey:@"Lounge-DiningRoom"]];
+    [self addGameBoardSpace:colMustard];
+    
+    GameBoardSpace *mrsWhite = [[GameBoardSpace alloc] initWithId:MrsWhiteID];
+    [[mrsWhite navigationTargets] addObject:[spaces valueForKey:@"BallRoom-Kitchen"]];
+    [self addGameBoardSpace:mrsWhite];
+    
+    GameBoardSpace *mrGreen = [[GameBoardSpace alloc] initWithId:MrGreenID];
+    [[mrGreen navigationTargets] addObject:[spaces valueForKey:@"Conservatory-BallRoom"]];
+    [self addGameBoardSpace:mrGreen];
+    
+    GameBoardSpace *mrsPeacock = [[GameBoardSpace alloc] initWithId:MrsPeacock];
+    [[mrsPeacock navigationTargets] addObject:[spaces valueForKey:@"Library-Conservatory"]];
+    [self addGameBoardSpace:mrsPeacock];
+    
+    GameBoardSpace *profPlum = [[GameBoardSpace alloc] initWithId:ProfPlum];
+    [[profPlum navigationTargets] addObject:[spaces valueForKey:@"Library-Study"]];
+    [self addGameBoardSpace:profPlum];
 }
 
 -(void) addGameBoardSpace: (GameBoardSpace*) space

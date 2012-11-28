@@ -20,6 +20,4 @@ FOUNDATION_EXPORT NSString *const BallRoom;
 FOUNDATION_EXPORT NSString *const Conservatory;
 FOUNDATION_EXPORT NSString *const Library;
 
-- (Room*) initWithId: (NSString*) roomId;
-
 @end

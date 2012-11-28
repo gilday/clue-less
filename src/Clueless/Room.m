@@ -20,13 +20,4 @@ NSString *const BallRoom = @"BallRoom";
 NSString *const Conservatory = @"Conservatory";
 NSString *const Library = @"Library";
 
-- (Room*) initWithId:(NSString *)roomId
-{
-    self = [super init];
-    
-    self.spaceId = roomId;
-    
-    return self;
-}
-
 @end

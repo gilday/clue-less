@@ -21,6 +21,15 @@
     return self;
 }
 
+-(GameBoardSpace*) initWithId:(NSString *)pspaceId
+{
+    self = [super init];
+    self.navigationTargets = [[NSMutableArray alloc] init];
+    self.spaceId = pspaceId;
+    
+    return self;
+}
+
 -(void) connectSpace:(GameBoardSpace *)otherSpace
 {
     [self.navigationTargets addObject:otherSpace];

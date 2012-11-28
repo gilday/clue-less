@@ -16,6 +16,8 @@
 // from this space
 @property NSMutableArray* navigationTargets;
 
+- (GameBoardSpace*) initWithId: (NSString*) spaceId;
+
 -(void) connectSpace: (GameBoardSpace*) otherSpace;
 
 @end
