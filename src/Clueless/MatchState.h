@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "GameBoard.h"
 #import "Player.h"
 
 // MatchState objects hold enough information about a match of Clueless to inform
@@ -20,5 +21,10 @@
 @property NSArray* players;
 // Reference to current GKTurnBasedParticipant
 @property Player* currentPlayer;
+// A reference to a gameboard for this match. This should not need to be serialized since it
+// doesn't persist match specific data
+@property GameBoard* gameBoard;
+
+-(void) endTurn;
 
 @end

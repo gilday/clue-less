@@ -28,12 +28,14 @@
 		5AF3A0BB165185AF0020A766 /* MatchState.m in Sources */ = {isa = PBXBuildFile; fileRef = 5AF3A0BA165185AF0020A766 /* MatchState.m */; };
 		FB2021A4165FEC14001180BD /* HallwaySpace.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2021A3165FEC14001180BD /* HallwaySpace.m */; };
 		FB2021AB166008C2001180BD /* GameBoardSpaceTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FB2021AA166008C2001180BD /* GameBoardSpaceTests.m */; };
+		FB6CE36C16682A59007E40E7 /* TestNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FB6CE36B16682A59007E40E7 /* TestNavigationViewController.m */; };
 		FBAE2367165DBD7B00AA2B34 /* CharacterTest.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2366165DBD7B00AA2B34 /* CharacterTest.m */; };
 		FBAE236E165F1B8F00AA2B34 /* ClueCharacterFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE236D165F1B8F00AA2B34 /* ClueCharacterFactory.m */; };
 		FBAE2371165FD42000AA2B34 /* Clue.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2370165FD42000AA2B34 /* Clue.m */; };
 		FBAE2377165FDDFA00AA2B34 /* GameBoardSpace.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2376165FDDF900AA2B34 /* GameBoardSpace.m */; };
 		FBAE237A165FE45F00AA2B34 /* GameBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE2379165FE45F00AA2B34 /* GameBoard.m */; };
 		FBAE237D165FEAF300AA2B34 /* Room.m in Sources */ = {isa = PBXBuildFile; fileRef = FBAE237C165FEAF300AA2B34 /* Room.m */; };
+		FBB53A461667203B001314A8 /* GameCenterMatchHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = FBB53A451667203B001314A8 /* GameCenterMatchHelper.m */; };
 		FBDC555C1665B9DD0008DA3A /* GameBoardTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FBDC555B1665B9DD0008DA3A /* GameBoardTests.m */; };
 /* End PBXBuildFile section */
 
@@ -79,6 +81,8 @@
 		FB2021A3165FEC14001180BD /* HallwaySpace.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HallwaySpace.m; sourceTree = "<group>"; };
 		FB2021A9166008C2001180BD /* GameBoardSpaceTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoardSpaceTests.h; sourceTree = "<group>"; };
 		FB2021AA166008C2001180BD /* GameBoardSpaceTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardSpaceTests.m; sourceTree = "<group>"; };
+		FB6CE36A16682A59007E40E7 /* TestNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestNavigationViewController.h; sourceTree = "<group>"; };
+		FB6CE36B16682A59007E40E7 /* TestNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestNavigationViewController.m; sourceTree = "<group>"; };
 		FBAE2365165DBD7B00AA2B34 /* CharacterTest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CharacterTest.h; sourceTree = "<group>"; };
 		FBAE2366165DBD7B00AA2B34 /* CharacterTest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CharacterTest.m; sourceTree = "<group>"; };
 		FBAE236C165F1B8F00AA2B34 /* ClueCharacterFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClueCharacterFactory.h; sourceTree = "<group>"; };
@@ -91,6 +95,8 @@
 		FBAE2379165FE45F00AA2B34 /* GameBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoard.m; sourceTree = "<group>"; };
 		FBAE237B165FEAF300AA2B34 /* Room.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Room.h; sourceTree = "<group>"; };
 		FBAE237C165FEAF300AA2B34 /* Room.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Room.m; sourceTree = "<group>"; };
+		FBB53A441667203B001314A8 /* GameCenterMatchHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameCenterMatchHelper.h; sourceTree = "<group>"; };
+		FBB53A451667203B001314A8 /* GameCenterMatchHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameCenterMatchHelper.m; sourceTree = "<group>"; };
 		FBDC555A1665B9DD0008DA3A /* GameBoardTests.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GameBoardTests.h; sourceTree = "<group>"; };
 		FBDC555B1665B9DD0008DA3A /* GameBoardTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GameBoardTests.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -154,12 +160,15 @@
 		5AE1142B163C442500F89A14 /* Clueless */ = {
 			isa = PBXGroup;
 			children = (
+				FBB53A4216671FCC001314A8 /* GameCenter */,
 				5AF3A0B8165185970020A766 /* Model */,
 				5AE11434163C442500F89A14 /* AppDelegate.h */,
 				5AE11435163C442500F89A14 /* AppDelegate.m */,
 				5AE1143D163C442500F89A14 /* MainStoryboard.storyboard */,
 				5AE11440163C442500F89A14 /* TitleViewController.h */,
 				5AE11441163C442500F89A14 /* TitleViewController.m */,
+				FB6CE36A16682A59007E40E7 /* TestNavigationViewController.h */,
+				FB6CE36B16682A59007E40E7 /* TestNavigationViewController.m */,
 				5AE1142C163C442500F89A14 /* Supporting Files */,
 			);
 			path = Clueless;
@@ -225,6 +234,15 @@
 				FB2021A3165FEC14001180BD /* HallwaySpace.m */,
 			);
 			name = Model;
+			sourceTree = "<group>";
+		};
+		FBB53A4216671FCC001314A8 /* GameCenter */ = {
+			isa = PBXGroup;
+			children = (
+				FBB53A441667203B001314A8 /* GameCenterMatchHelper.h */,
+				FBB53A451667203B001314A8 /* GameCenterMatchHelper.m */,
+			);
+			name = GameCenter;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -349,6 +367,8 @@
 				FBAE237A165FE45F00AA2B34 /* GameBoard.m in Sources */,
 				FBAE237D165FEAF300AA2B34 /* Room.m in Sources */,
 				FB2021A4165FEC14001180BD /* HallwaySpace.m in Sources */,
+				FBB53A461667203B001314A8 /* GameCenterMatchHelper.m in Sources */,
+				FB6CE36C16682A59007E40E7 /* TestNavigationViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

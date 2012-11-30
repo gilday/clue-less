@@ -51,6 +51,18 @@
     return possibleSpaces;
 }
 
+-(BOOL) isPlayerAbleToMove:(Player *)player toSpace: (NSString *) spaceId
+{
+    NSArray* possibleSpaces = [self getPossibleMoves:player];
+    
+    for(GameBoardSpace *space in possibleSpaces)
+    {
+        NSLog(@"Can player at %@ move to %@?", player.location, space.spaceId);
+        if([space.spaceId isEqualToString:spaceId]) return YES;
+    }
+    return NO;
+}
+
 -(void) createSpaces
 {
     spaces = [[NSMutableDictionary alloc] init];
@@ -127,11 +139,11 @@
     [[mrGreen navigationTargets] addObject:[spaces valueForKey:@"Conservatory-BallRoom"]];
     [self addGameBoardSpace:mrGreen];
     
-    GameBoardSpace *mrsPeacock = [[GameBoardSpace alloc] initWithId:MrsPeacock];
+    GameBoardSpace *mrsPeacock = [[GameBoardSpace alloc] initWithId:MrsPeacockID];
     [[mrsPeacock navigationTargets] addObject:[spaces valueForKey:@"Library-Conservatory"]];
     [self addGameBoardSpace:mrsPeacock];
     
-    GameBoardSpace *profPlum = [[GameBoardSpace alloc] initWithId:ProfPlum];
+    GameBoardSpace *profPlum = [[GameBoardSpace alloc] initWithId:ProfPlumID];
     [[profPlum navigationTargets] addObject:[spaces valueForKey:@"Library-Study"]];
     [self addGameBoardSpace:profPlum];
 }

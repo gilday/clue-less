@@ -12,5 +12,6 @@
 @interface ClueCharacterFactory : NSObject
 
 +(ClueCharacter*) msScarlet;
++(ClueCharacter*) profPlum;
 
 @end

@@ -20,4 +20,13 @@ static ClueCharacter *MsScarlet;
     return MsScarlet;
 }
 
+static ClueCharacter *ProfPlum;
++(ClueCharacter*) profPlum
+{
+    if(!ProfPlum)
+        ProfPlum = [[ClueCharacter alloc] initWithNameAndColor:ProfPlumID AndColor:[UIColor purpleColor]];
+    
+    return ProfPlum;
+}
+
 @end

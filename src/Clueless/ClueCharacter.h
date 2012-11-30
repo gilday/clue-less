@@ -14,8 +14,8 @@ FOUNDATION_EXPORT NSString *const MsScarletID;
 FOUNDATION_EXPORT NSString *const ColMustardID;
 FOUNDATION_EXPORT NSString *const MrsWhiteID;
 FOUNDATION_EXPORT NSString *const MrGreenID;
-FOUNDATION_EXPORT NSString *const MrsPeacock;
-FOUNDATION_EXPORT NSString *const ProfPlum;
+FOUNDATION_EXPORT NSString *const MrsPeacockID;
+FOUNDATION_EXPORT NSString *const ProfPlumID;
     
 @property NSString* name;
 @property UIColor* color;

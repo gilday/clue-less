@@ -19,4 +19,6 @@
 
 -(NSArray*) getPossibleMoves: (Player*) player;
 
+-(BOOL) isPlayerAbleToMove: (Player*) player toSpace: (NSString*) spaceId;
+
 @end

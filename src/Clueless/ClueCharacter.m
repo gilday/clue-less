@@ -14,8 +14,8 @@ NSString *const MsScarletID = @"MsScarlet";
 NSString *const ColMustardID = @"ColMustard";
 NSString *const MrsWhiteID = @"MrsWhite";
 NSString *const MrGreenID = @"MrGreen";
-NSString *const MrsPeacock = @"MrsPeacock";
-NSString *const ProfPlum = @"ProfPlum";
+NSString *const MrsPeacockID = @"MrsPeacock";
+NSString *const ProfPlumID = @"ProfPlum";
 
 -(ClueCharacter*) initWithNameAndColor:(NSString *)name AndColor: (UIColor*)color
 {

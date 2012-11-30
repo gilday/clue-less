@@ -10,4 +10,19 @@
 
 @implementation MatchState
 
+@synthesize players;
+@synthesize currentPlayer;
+@synthesize gameBoard;
+
+-(void) endTurn
+{
+    int currentIndex = [players indexOfObject:currentPlayer];
+    if(currentIndex == (players.count - 1))
+        currentIndex = 0;
+    else
+        currentIndex++;
+    
+    currentPlayer = [players objectAtIndex:currentIndex];
+}
+
 @end
