@@ -14,6 +14,17 @@
 @synthesize currentPlayer;
 @synthesize gameBoard;
 
+// TODO: Encode this object to NSCoder
+-(void) encodeWithCoder:(NSCoder *)aCoder
+{
+}
+
+// TODO: initialize a new MatchState from a Decoder
+-(id) initWithCoder:(NSCoder *)aDecoder
+{
+    return nil;
+}
+
 -(void) endTurn
 {
     int currentIndex = [players indexOfObject:currentPlayer];

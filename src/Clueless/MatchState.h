@@ -15,7 +15,7 @@
 // a string of bytes to be sent to Game Center. It follows that this class needs to
 // be able to instantiate new MatchState objects from a stream of bytes representing
 // a serialized MatchState object
-@interface MatchState : NSObject
+@interface MatchState : NSObject <NSCoding>
 
 // List of all GKTurnBasedParticipant
 @property NSArray* players;
