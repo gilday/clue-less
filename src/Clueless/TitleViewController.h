@@ -14,5 +14,6 @@
 @interface TitleViewController : UIViewController
 - (IBAction)openGameCenterClick:(id)sender;
 @property (weak, nonatomic) IBOutlet UIButton *gameCenterButton;
+- (IBAction)endTurn:(id)sender;
 
 @end

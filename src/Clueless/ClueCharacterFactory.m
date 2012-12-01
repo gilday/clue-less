@@ -29,4 +29,22 @@ static ClueCharacter *ProfPlum;
     return ProfPlum;
 }
 
+static ClueCharacter *ColMustard;
++(ClueCharacter*) colMustard
+{
+    if(!ColMustard)
+        ColMustard = [[ClueCharacter alloc] initWithNameAndColor:ColMustardID AndColor:[UIColor yellowColor]];
+    
+    return ColMustard;
+}
+
+static ClueCharacter *MrsWhite;
++(ClueCharacter*) mrsWhite
+{
+    if(!MrsWhite)
+        MrsWhite = [[ClueCharacter alloc] initWithNameAndColor:MrsWhiteID AndColor:[UIColor whiteColor]];
+    
+    return MrsWhite;
+}
+
 @end

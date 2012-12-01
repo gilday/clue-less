@@ -18,7 +18,7 @@
     // GIVEN,
     // a GameBoard with Professor Plum on his start spot
     Player *joe = [[Player alloc] init];
-    joe.location = ProfPlum;
+    joe.location = ProfPlumID;
     
     GameBoard *gameBoard = [[GameBoard alloc] initWithPlayers:[[NSArray alloc] initWithObjects:joe, nil]];
     
@@ -37,7 +37,7 @@
     // GIVEN,
     // a GameBoard with Professor Plum on his start spot and some other player, jack, in the adjacent hallway
     Player *joe = [[Player alloc] init];
-    joe.location = ProfPlum;
+    joe.location = ProfPlumID;
     
     Player *jack = [[Player alloc] init];
     jack.location = @"Library-Study";

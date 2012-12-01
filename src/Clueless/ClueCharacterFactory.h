@@ -13,5 +13,7 @@
 
 +(ClueCharacter*) msScarlet;
 +(ClueCharacter*) profPlum;
++(ClueCharacter*) colMustard;
++(ClueCharacter*) mrsWhite;
 
 @end

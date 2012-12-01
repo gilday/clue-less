@@ -13,13 +13,31 @@
 #import "Player.h"
 #import "ClueCharacterFactory.h"
 
-@interface GameCenterMatchHelper : NSObject 
+@protocol GameCenterMatchHelperDelegate
+
+// When game center is starting a brand new match
+-(void) beginMatch: (GKTurnBasedMatch*) match;
+// When game center has new match data to display, but it is another player's turn
+-(void) displayMatch: (GKTurnBasedMatch*) match;
+// When game center needs this player to participate
+-(void) takeTurn: (GKTurnBasedMatch*) match;
+// When the game is over
+-(void) endMatch: (GKTurnBasedMatch*) match;
+// When something happens to a match that this player is currently a part of but
+// is not currently looking at. Probably the least important
+-(void) sendNotice: (NSString*) notice forMatch: (GKTurnBasedMatch*) match;
+
+@end
+
+@interface GameCenterMatchHelper : NSObject <GKTurnBasedMatchmakerViewControllerDelegate, GKTurnBasedEventHandlerDelegate>
 
 @property BOOL isAuthenticated;
+@property GKTurnBasedMatch *currentMatch;
+@property id<GameCenterMatchHelperDelegate> delegate;
 
 +(GameCenterMatchHelper*) singleton;
 
--(MatchState*) findTestMatch;
+-(MatchState*) findNewTestMatch;
 
 -(void) authenticateLocalUser: (UIViewController*) titleViewController;
 

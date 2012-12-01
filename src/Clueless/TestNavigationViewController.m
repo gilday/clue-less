@@ -7,7 +7,6 @@
 //
 
 #import "TestNavigationViewController.h"
-#import "GameCenterMatchHelper.h"
 #import "GameBoard.h"
 
 @interface TestNavigationViewController ()
@@ -25,9 +24,8 @@ GameBoard *gameBoard;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"View loaded");
     
-    state = [[GameCenterMatchHelper singleton] findTestMatch];
+    state = [[GameCenterMatchHelper singleton] findNewTestMatch];
     gameBoard = [[GameBoard alloc] initWithPlayers:state.players];
     
     [self updatePlayerLocationText];

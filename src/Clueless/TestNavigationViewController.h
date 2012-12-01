@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "GameCenterMatchHelper.h"
 
 @interface TestNavigationViewController : UIViewController
 

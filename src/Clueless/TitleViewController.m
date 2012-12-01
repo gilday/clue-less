@@ -35,7 +35,15 @@ GameCenterMatchHelper *gcHelper;
 }
 
 - (IBAction)openGameCenterClick:(id)sender {
-    [gcHelper findMatchWithMinPlayers:3 maxPlayers:6 viewController:self];
+    [gcHelper findMatchWithMinPlayers:2 maxPlayers:6 viewController:self];
 }
 
+- (IBAction)endTurn:(id)sender {
+    GKTurnBasedMatch *match = [gcHelper currentMatch];
+    int currentPlayerIndex = [match.participants indexOfObject:match.currentParticipant];
+    int nextPlayerIndex = (currentPlayerIndex + 1) % match.participants.count;
+    GKTurnBasedParticipant *nextPlayer = [match.participants objectAtIndex:nextPlayerIndex];
+    [match endTurnWithNextParticipants:[[NSArray alloc] initWithObjects:nextPlayer, nil] turnTimeout:3600 matchData: [@"Hello World" dataUsingEncoding:NSUTF8StringEncoding] completionHandler:nil];
+    NSLog(@"Sent turn to next player");
+}
 @end
