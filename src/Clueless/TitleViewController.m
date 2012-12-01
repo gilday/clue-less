@@ -17,13 +17,15 @@
 
 @synthesize gameCenterButton;
 
+GameCenterMatchHelper *gcHelper;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    gcHelper = [GameCenterMatchHelper singleton];
 	
-    if(![GameCenterMatchHelper singleton].isAuthenticated) {
-        gameCenterButton.titleLabel.text = @"Find Game";
-    }
+    [gcHelper authenticateLocalUser:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -33,25 +35,7 @@
 }
 
 - (IBAction)openGameCenterClick:(id)sender {
-    GameCenterMatchHelper *gcHelper = [GameCenterMatchHelper singleton];
-    if(gcHelper.isAuthenticated) {
-        // TODO Find match
-    } else {
-        [self authenticateLocalUser];
-    }
+    [gcHelper findMatchWithMinPlayers:3 maxPlayers:6 viewController:self];
 }
 
-- (void) authenticateLocalUser {
-    NSLog(@"Authenticating local user...");
-    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
-    if (localPlayer.authenticated == NO) {
-        localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error){
-            if(viewController != nil) {
-                [self presentViewController:viewController animated:YES completion:nil];
-            }
-        };
-    } else {
-        NSLog(@"Already authenticated!");
-    }
-}
 @end

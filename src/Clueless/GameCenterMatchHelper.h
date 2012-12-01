@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <GameKit/GameKit.h>
+#import <UIKit/UIKit.h>
 #import "MatchState.h"
 #import "Player.h"
 #import "ClueCharacterFactory.h"
@@ -19,5 +20,11 @@
 +(GameCenterMatchHelper*) singleton;
 
 -(MatchState*) findTestMatch;
+
+-(void) authenticateLocalUser: (UIViewController*) titleViewController;
+
+- (void)findMatchWithMinPlayers:(int)minPlayers
+                     maxPlayers:(int)maxPlayers
+                 viewController:(UIViewController *)viewController;
 
 @end

@@ -62,6 +62,36 @@ static GameCenterMatchHelper *instance = nil;
     
 }
 
+- (void) authenticateLocalUser: (UIViewController*) titleViewController {
+    NSLog(@"Authenticating local user...");
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    if (localPlayer.authenticated == NO) {
+        localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error){
+            if(viewController != nil) {
+                [titleViewController presentViewController:viewController animated:YES completion:nil];
+            }
+        };
+    } else {
+        NSLog(@"Already authenticated!");
+    }
+}
+
+- (void)findMatchWithMinPlayers:(int)minPlayers
+                     maxPlayers:(int)maxPlayers
+                 viewController:(UIViewController *)viewController {
+    
+    GKMatchRequest *request = [[GKMatchRequest alloc] init];
+    request.minPlayers = minPlayers;
+    request.maxPlayers = maxPlayers;
+    
+    GKTurnBasedMatchmakerViewController *mmvc =
+    [[GKTurnBasedMatchmakerViewController alloc] initWithMatchRequest:request];
+    mmvc.turnBasedMatchmakerDelegate = self;
+    mmvc.showExistingMatches = YES;
+    
+    [viewController presentViewController:mmvc animated:YES completion:nil];
+}
+
 -(MatchState*) findTestMatch
 {
     Player *scarlet = [[Player alloc] init];
