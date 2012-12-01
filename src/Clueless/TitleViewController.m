@@ -7,6 +7,7 @@
 //
 
 #import "TitleViewController.h"
+#import "GameCenterMatchHelper.h"
 
 @interface TitleViewController ()
 
@@ -14,10 +15,17 @@
 
 @implementation TitleViewController
 
+@synthesize gameCenterButton;
+
+GameCenterMatchHelper *gcHelper;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    
+    gcHelper = [GameCenterMatchHelper singleton];
+	
+    [gcHelper authenticateLocalUser:self];
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,4 +34,16 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)openGameCenterClick:(id)sender {
+    [gcHelper findMatchWithMinPlayers:2 maxPlayers:6 viewController:self];
+}
+
+- (IBAction)endTurn:(id)sender {
+    GKTurnBasedMatch *match = [gcHelper currentMatch];
+    int currentPlayerIndex = [match.participants indexOfObject:match.currentParticipant];
+    int nextPlayerIndex = (currentPlayerIndex + 1) % match.participants.count;
+    GKTurnBasedParticipant *nextPlayer = [match.participants objectAtIndex:nextPlayerIndex];
+    [match endTurnWithNextParticipants:[[NSArray alloc] initWithObjects:nextPlayer, nil] turnTimeout:3600 matchData: [@"Hello World" dataUsingEncoding:NSUTF8StringEncoding] completionHandler:nil];
+    NSLog(@"Sent turn to next player");
+}
 @end
