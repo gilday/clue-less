@@ -7,6 +7,7 @@
 //
 
 #import "TitleViewController.h"
+#import "GameCenterMatchHelper.h"
 
 @interface TitleViewController ()
 
@@ -14,10 +15,15 @@
 
 @implementation TitleViewController
 
+@synthesize gameCenterButton;
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+	
+    if(![GameCenterMatchHelper singleton].isAuthenticated) {
+        gameCenterButton.titleLabel.text = @"Find Game";
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -26,4 +32,26 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (IBAction)openGameCenterClick:(id)sender {
+    GameCenterMatchHelper *gcHelper = [GameCenterMatchHelper singleton];
+    if(gcHelper.isAuthenticated) {
+        // TODO Find match
+    } else {
+        [self authenticateLocalUser];
+    }
+}
+
+- (void) authenticateLocalUser {
+    NSLog(@"Authenticating local user...");
+    GKLocalPlayer *localPlayer = [GKLocalPlayer localPlayer];
+    if (localPlayer.authenticated == NO) {
+        localPlayer.authenticateHandler = ^(UIViewController *viewController, NSError *error){
+            if(viewController != nil) {
+                [self presentViewController:viewController animated:YES completion:nil];
+            }
+        };
+    } else {
+        NSLog(@"Already authenticated!");
+    }
+}
 @end

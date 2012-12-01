@@ -23,7 +23,7 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8oH-JD-b2X">
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="117" id="85G-dp-d4Y"/>
+                                    <constraint firstAttribute="width" constant="145" id="zKA-tn-qyf"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
                                 <state key="normal" title="Start test game">
@@ -37,19 +37,40 @@
                                     <segue destination="PSa-FB-QxY" kind="push" id="P1o-0R-wLn"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UDO-Ar-Jah">
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="145" id="rDj-1M-Lak"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                <state key="normal" title="Game Center">
+                                    <color key="titleColor" red="0.19607843459999999" green="0.30980393290000002" blue="0.52156865600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <state key="highlighted">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="openGameCenterClick:" destination="2" eventType="touchUpInside" id="JHh-Hm-EUH"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="UDO-Ar-Jah" secondAttribute="trailing" constant="335" id="1TT-Af-Z2X"/>
+                            <constraint firstItem="8oH-JD-b2X" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="359" id="421-vv-x0j"/>
                             <constraint firstItem="d8r-aR-btm" firstAttribute="leading" secondItem="5" secondAttribute="leading" constant="20" symbolic="YES" type="default" id="Jha-6R-NNO"/>
-                            <constraint firstItem="8oH-JD-b2X" firstAttribute="centerX" secondItem="d8r-aR-btm" secondAttribute="centerX" type="default" id="OSb-xd-hQQ"/>
+                            <constraint firstItem="UDO-Ar-Jah" firstAttribute="baseline" secondItem="8oH-JD-b2X" secondAttribute="baseline" type="default" id="LHB-Mj-I7b"/>
                             <constraint firstAttribute="trailing" secondItem="d8r-aR-btm" secondAttribute="trailing" constant="20" symbolic="YES" type="default" id="U8K-dl-Shy"/>
+                            <constraint firstAttribute="bottom" secondItem="8oH-JD-b2X" secondAttribute="bottom" constant="248" id="aEr-9W-hQd"/>
                             <constraint firstItem="d8r-aR-btm" firstAttribute="top" secondItem="5" secondAttribute="top" constant="69" id="vZk-Lu-lyo"/>
-                            <constraint firstAttribute="bottom" secondItem="8oH-JD-b2X" secondAttribute="bottom" constant="196" id="y7B-D6-efE"/>
                         </constraints>
                         <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
                     </view>
                     <navigationItem key="navigationItem" id="1AD-ub-ONB"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <outlet property="gameCenterButton" destination="UDO-Ar-Jah" id="1J1-e8-91C"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3" sceneMemberID="firstResponder"/>
             </objects>
@@ -162,22 +183,6 @@
             <point key="canvasLocation" x="-408" y="-118"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="NSLayoutConstraint" superclassName="NSObject">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/NSLayoutConstraint.h"/>
-        </class>
-        <class className="TestNavigationViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TestNavigationViewController.h"/>
-            <relationships>
-                <relationship kind="action" name="navigationButton:" candidateClass="UIButton"/>
-                <relationship kind="outlet" name="navigationField" candidateClass="UITextField"/>
-                <relationship kind="outlet" name="playerLocationText" candidateClass="UITextView"/>
-            </relationships>
-        </class>
-        <class className="TitleViewController" superclassName="UIViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/TitleViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar" statusBarStyle="blackTranslucent"/>
         <simulatedOrientationMetrics key="orientation"/>

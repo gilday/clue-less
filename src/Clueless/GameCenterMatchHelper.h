@@ -12,7 +12,9 @@
 #import "Player.h"
 #import "ClueCharacterFactory.h"
 
-@interface GameCenterMatchHelper : NSObject
+@interface GameCenterMatchHelper : NSObject 
+
+@property BOOL isAuthenticated;
 
 +(GameCenterMatchHelper*) singleton;
 

@@ -26,12 +26,40 @@
 
 @implementation GameCenterMatchHelper
 
+@synthesize isAuthenticated;
+
 static GameCenterMatchHelper *instance = nil;
 + (GameCenterMatchHelper *) singleton {
     if (!instance) {
         instance = [[GameCenterMatchHelper alloc] init];
     }
     return instance;
+}
+
+- (id)init {
+    if ((self = [super init])) {
+        NSNotificationCenter *nc =
+        [NSNotificationCenter defaultCenter];
+        [nc addObserver:self
+               selector:@selector(authenticationChanged)
+                   name:GKPlayerAuthenticationDidChangeNotificationName
+                 object:nil];
+    }
+    return self;
+}
+
+- (void)authenticationChanged {
+    
+    if ([GKLocalPlayer localPlayer].isAuthenticated &&
+        !isAuthenticated) {
+        NSLog(@"Authentication changed: player authenticated.");
+        isAuthenticated = TRUE;
+    } else if (![GKLocalPlayer localPlayer].isAuthenticated &&
+               isAuthenticated) {
+        NSLog(@"Authentication changed: player not authenticated");
+        isAuthenticated = FALSE;
+    }
+    
 }
 
 -(MatchState*) findTestMatch

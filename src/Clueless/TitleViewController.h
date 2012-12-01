@@ -12,5 +12,7 @@
 // It contains the title and provides access to Game Center for
 // matchmaking
 @interface TitleViewController : UIViewController
+- (IBAction)openGameCenterClick:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *gameCenterButton;
 
 @end
