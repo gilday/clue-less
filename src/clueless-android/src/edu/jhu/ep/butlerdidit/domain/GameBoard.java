@@ -1,8 +1,9 @@
 package edu.jhu.ep.butlerdidit.domain;
 
-import org.apache.http.impl.io.ContentLengthInputStream;
-
-import java.util.*;
+import java.util.Dictionary;
+import java.util.Hashtable;
+import java.util.List;
+import java.util.Vector;
 
 public class GameBoard {
 
@@ -112,11 +113,13 @@ public class GameBoard {
         addSpaceToBoard(colMustard);
 
         GameBoardSpace mrsWhite = new GameBoardSpace(ClueCharacter.MrsWhiteID);
-        mrsWhite.connectSpace(spaces.get("Ball Room-Kitchen"));
+        // TODO Make the other start spaces create the hallway ID with the static properties 
+        // like this one
+        mrsWhite.connectSpace(spaces.get(Room.KITCHEN + "-" + Room.BALLROOM));
         addSpaceToBoard(mrsWhite);
 
         GameBoardSpace mrGreen = new GameBoardSpace(ClueCharacter.MrGreenID);
-        mrGreen.connectSpace(spaces.get("Conservatory-Ball Room"));
+        mrGreen.connectSpace(spaces.get("Ball Room-Conservatory"));
         addSpaceToBoard(mrGreen);
 
         GameBoardSpace mrsPeacock = new GameBoardSpace(ClueCharacter.MrsPeacockID);
