@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Rename resource &apos;LoginActivity/res/color/button_text.xml&apos; to &apos;Room_color.xml&apos;" description="Rename resource &apos;button_text.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/color/button_text.xml" name="Room_color.xml" stamp="1354611910427" updateReferences="true"/>&#x0A;<refactoring comment="Rename resource &apos;LoginActivity/res/color/Room_color.xml&apos; to &apos;room_color.xml&apos;" description="Rename resource &apos;Room_color.xml&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="res/color/Room_color.xml" name="room_color.xml" stamp="1354612988789" updateReferences="true"/>
+</session>

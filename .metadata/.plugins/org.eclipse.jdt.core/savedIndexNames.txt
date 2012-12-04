@@ -1,0 +1,5 @@
+INDEX VERSION 1.126+/Users/giantyeh/Development/Projects/clue-less/.metadata/.plugins/org.eclipse.jdt.core
+3341167762.index
+1114605596.index
+2378145679.index
+3849891331.index

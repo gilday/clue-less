@@ -1,0 +1,85 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayGameActivity" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="Lounge"/>
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_marginRight="79dp"
+        android:layout_toLeftOf="@+id/button1"
+        android:text="Hall" />
+
+    <Button
+        android:id="@+id/Button02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignLeft="@+id/Button01"
+        android:text="Billiard_Room" />
+
+    <Button
+        android:id="@+id/Button03"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignLeft="@+id/Button02"
+        android:text="Ballroom" />
+
+    <Button
+        android:id="@+id/Button05"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/button2"
+        android:layout_marginRight="81dp"
+        android:layout_toLeftOf="@+id/Button01"
+        android:text="Study" />
+
+    <Button
+        android:id="@+id/Button06"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/Button02"
+        android:layout_alignBottom="@+id/Button02"
+        android:layout_alignLeft="@+id/Button05"
+        android:text="Library" />
+
+    <Button
+        android:id="@+id/Button04"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/Button03"
+        android:text="Conservatory" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="30dp"
+        android:text="Dining_Room" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="150px"
+        android:layout_height="150px"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="30dp"
+        android:text="Kitchen" />
+
+</RelativeLayout>

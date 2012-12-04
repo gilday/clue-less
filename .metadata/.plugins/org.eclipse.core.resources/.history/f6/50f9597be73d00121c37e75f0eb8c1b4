@@ -1,0 +1,87 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".PlayGameActivity" >
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/Lounge"
+        android:textSize="15sp"/>
+
+    <Button
+        android:id="@+id/Button01"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_above="@+id/button2"
+        android:layout_marginRight="79dp"
+        android:layout_toLeftOf="@+id/button1"
+        android:text="@string/Hall" />
+
+    <Button
+        android:id="@+id/Button02"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_alignBaseline="@+id/button2"
+        android:layout_alignBottom="@+id/button2"
+        android:layout_alignLeft="@+id/Button01"
+        android:text="@string/Billiard_Room" />
+
+    <Button
+        android:id="@+id/Button03"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_alignBaseline="@+id/button3"
+        android:layout_alignBottom="@+id/button3"
+        android:layout_alignLeft="@+id/Button02"
+        android:text="@string/Ballroom" />
+
+    <Button
+        android:id="@+id/Button05"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_above="@+id/button2"
+        android:layout_marginRight="81dp"
+        android:layout_toLeftOf="@+id/Button01"
+        android:text="@string/Study" />
+
+    <Button
+        android:id="@+id/Button06"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_alignBaseline="@+id/Button02"
+        android:layout_alignBottom="@+id/Button02"
+        android:layout_alignLeft="@+id/Button05"
+        android:text="@string/Library" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button1"
+        android:layout_marginTop="30dp"
+        android:text="@string/Dining_Room" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/button2"
+        android:layout_marginTop="30dp"
+        android:text="@string/Kitchen" />
+
+    <Button
+        android:id="@+id/Button04"
+        android:layout_width="@string/Width"
+        android:layout_height="@string/Height"
+        android:layout_alignLeft="@+id/Button06"
+        android:layout_alignTop="@+id/button3"
+        android:text="@string/Conservatory" />
+
+</RelativeLayout>
