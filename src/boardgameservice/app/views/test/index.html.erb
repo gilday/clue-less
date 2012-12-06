@@ -11,12 +11,13 @@
 	</div>
 	<div>
 		<form id="loginForm" action="/session" method="post">
-			<label for="gamertag">Gamertag</label>
-			<input type="text" id="gamertag" name="gamertag" />
+			<label for="email">Email</label>
+			<input type="text" id="email" name="email" />
 			<label for="password">Password</label>
 			<input type="password" id="password" name="password" />
 			<input id="loginButton" type="submit" value="Login" />
 		</form>
+		<a href="#" id="logoutLink">Log out</a>
 	</div>
 	<div>
 		<form>
@@ -43,6 +44,12 @@
 			$.ajax('/session', {
 				type: 'post',
 				data: $('#loginForm').serialize()
+			});
+			return false;
+		})
+		$('#logoutLink').click(function() { 
+			$.ajax('/session', {
+				type: 'delete'
 			});
 			return false;
 		})

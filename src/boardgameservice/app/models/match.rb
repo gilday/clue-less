@@ -5,7 +5,7 @@ class Match < ActiveRecord::Base
   has_many :players, through: :participants
   
   def as_json(options={})
-    options[:include] ||= { :participants => { :include => { :player => {except: :password_digest }} } }
+    options[:include] ||= { participants: { include: { player: {except: :password_digest }} } }
     super(options)
   end
 end

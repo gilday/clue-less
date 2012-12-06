@@ -1,54 +1,58 @@
 package edu.jhu.ep.butlerdidit.activity;
 
-import edu.jhu.ep.butlerdidit.R;
+import java.util.regex.Pattern;
+
+import roboguice.activity.RoboActivity;
+import roboguice.inject.InjectView;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
-import android.app.Activity;
 import android.content.Intent;
-import android.os.AsyncTask;
+import android.content.IntentFilter;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.KeyEvent;
-import android.view.Menu;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import edu.jhu.ep.butlerdidit.R;
+import edu.jhu.ep.butlerdidit.service.AuthenticationBroadcastReceiver;
+import edu.jhu.ep.butlerdidit.service.AuthenticationChangedListener;
+import edu.jhu.ep.butlerdidit.service.GameServerMatchService;
+import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
  * well.
  */
-public class LoginActivity extends Activity {
-	/**
-	 * A dummy authentication store containing known user names and passwords.
-	 * TODO: remove after connecting to a real authentication system.
-	 */
-	private static final String[] DUMMY_CREDENTIALS = new String[] {
-			"foo@example.com:hello", "bar@example.com:world" };
+public class LoginActivity extends RoboActivity implements AuthenticationChangedListener {
 
-	/**
-	 * The default email to populate the email field with.
-	 */
-	public static final String EXTRA_EMAIL = "com.example.android.authenticatordemo.extra.EMAIL";
-
-	/**
-	 * Keep track of the login task to ensure we can cancel it if requested.
-	 */
-	private UserLoginTask mAuthTask = null;
+	private final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
+	          "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
+	          "\\@" +
+	          "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,64}" +
+	          "(" +
+	          "\\." +
+	          "[a-zA-Z0-9][a-zA-Z0-9\\-]{0,25}" +
+	          ")+"
+	      );
 
 	// Values for email and password at the time of the login attempt.
 	private String mEmail;
 	private String mPassword;
 
 	// UI references.
-	private EditText mEmailView;
-	private EditText mPasswordView;
-	private View mLoginFormView;
-	private View mLoginStatusView;
-	private TextView mLoginStatusMessageView;
+	@InjectView(R.id.email)					private EditText mEmailView;
+	@InjectView(R.id.password)				private EditText mPasswordView;
+	@InjectView(R.id.login_form)			private View mLoginFormView;
+	@InjectView(R.id.login_status) 			private View mLoginStatusView;
+	@InjectView(R.id.login_status_message)	private TextView mLoginStatusMessageView;
+	
+	private AuthenticationBroadcastReceiver authBroadcastReceiver;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -56,17 +60,10 @@ public class LoginActivity extends Activity {
 
 		setContentView(R.layout.activity_login);
 
-		// Set up the login form.
-		mEmail = getIntent().getStringExtra(EXTRA_EMAIL);
-		mEmailView = (EditText) findViewById(R.id.email);
-		mEmailView.setText(mEmail);
-
-		mPasswordView = (EditText) findViewById(R.id.password);
 		mPasswordView
 				.setOnEditorActionListener(new TextView.OnEditorActionListener() {
 					@Override
-					public boolean onEditorAction(TextView textView, int id,
-							KeyEvent keyEvent) {
+					public boolean onEditorAction(TextView textView, int id, KeyEvent keyEvent) {
 						if (id == R.id.login || id == EditorInfo.IME_NULL) {
 							attemptLogin();
 							return true;
@@ -74,10 +71,6 @@ public class LoginActivity extends Activity {
 						return false;
 					}
 				});
-
-		mLoginFormView = findViewById(R.id.login_form);
-		mLoginStatusView = findViewById(R.id.login_status);
-		mLoginStatusMessageView = (TextView) findViewById(R.id.login_status_message);
 
 		findViewById(R.id.sign_in_button).setOnClickListener(
 				new View.OnClickListener() {
@@ -98,12 +91,25 @@ public class LoginActivity extends Activity {
 					}
 				});
 	}
-
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		super.onCreateOptionsMenu(menu);
-		getMenuInflater().inflate(R.menu.activity_login, menu);
-		return true;
+	public void onResume() {
+		super.onResume();
+		// Register authentication listener
+		authBroadcastReceiver = new AuthenticationBroadcastReceiver(this);
+		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(getApplicationContext());
+		lbm.registerReceiver(authBroadcastReceiver, new IntentFilter(GameServerConstants.BROADCAST_AUTHENTICATION_SUCCESS));
+		lbm.registerReceiver(authBroadcastReceiver, new IntentFilter(GameServerConstants.BROADCAST_AUTHENTICATION_FAILED));
+	}
+	
+	@Override
+	public void onPause() {
+		super.onPause();
+		// Unregister authentication listener
+		authBroadcastReceiver.unRegisterListener(this);
+		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(getApplicationContext());
+		lbm.unregisterReceiver(authBroadcastReceiver);
+		authBroadcastReceiver = null;
 	}
 
 	/**
@@ -112,10 +118,6 @@ public class LoginActivity extends Activity {
 	 * errors are presented and no actual login attempt is made.
 	 */
 	public void attemptLogin() {
-		if (mAuthTask != null) {
-			return;
-		}
-
 		// Reset errors.
 		mEmailView.setError(null);
 		mPasswordView.setError(null);
@@ -143,7 +145,7 @@ public class LoginActivity extends Activity {
 			mEmailView.setError(getString(R.string.error_field_required));
 			focusView = mEmailView;
 			cancel = true;
-		} else if (!mEmail.contains("@")) {
+		} else if (!validateEmailString(mEmail)) {
 			mEmailView.setError(getString(R.string.error_invalid_email));
 			focusView = mEmailView;
 			cancel = true;
@@ -158,8 +160,12 @@ public class LoginActivity extends Activity {
 			// perform the user login attempt.
 			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
 			showProgress(true);
-			mAuthTask = new UserLoginTask();
-			mAuthTask.execute((Void) null);
+			// Start login
+			Intent loginIntent = new Intent(this, GameServerMatchService.class);
+			loginIntent.setAction(GameServerConstants.ACTION_LOGIN);
+			loginIntent.putExtra(GameServerConstants.PARM_EMAIL, mEmail);
+			loginIntent.putExtra(GameServerConstants.PARM_PASSWORD, mPassword);
+			startService(loginIntent);
 		}
 	}
 
@@ -203,53 +209,26 @@ public class LoginActivity extends Activity {
 			mLoginFormView.setVisibility(show ? View.GONE : View.VISIBLE);
 		}
 	}
+	
+	private boolean validateEmailString(String email) {
+		return EMAIL_ADDRESS_PATTERN.matcher(email).matches();
+	}
 
-	/**
-	 * Represents an asynchronous login/registration task used to authenticate
-	 * the user.
-	 */
-	public class UserLoginTask extends AsyncTask<Void, Void, Boolean> {
-		@Override
-		protected Boolean doInBackground(Void... params) {
-			// TODO: attempt authentication against a network service.
+	@Override
+	public void onUserAuthenticated(String email) {
+		showProgress(false);
+		Log.v(LoginActivity.class.getName(), String.format("%s logged in to game server", email));
+	}
 
-			try {
-				// Simulate network access.
-				Thread.sleep(2000);
-			} catch (InterruptedException e) {
-				return false;
-			}
+	@Override
+	public void onUserLoggedOff() {
+		// Not interested
+	}
 
-			for (String credential : DUMMY_CREDENTIALS) {
-				String[] pieces = credential.split(":");
-				if (pieces[0].equals(mEmail)) {
-					// Account exists, return true if the password matches.
-					return pieces[1].equals(mPassword);
-				}
-			}
-
-			// TODO: register the new account here.
-			return true;
-		}
-
-		@Override
-		protected void onPostExecute(final Boolean success) {
-			mAuthTask = null;
-			showProgress(false);
-
-			if (success) {
-				finish();
-			} else {
-				mPasswordView
-						.setError(getString(R.string.error_incorrect_password));
-				mPasswordView.requestFocus();
-			}
-		}
-
-		@Override
-		protected void onCancelled() {
-			mAuthTask = null;
-			showProgress(false);
-		}
+	@Override
+	public void onAuthenticationError(String errorMessage) {
+		showProgress(false);
+		mPasswordView.setError(errorMessage);
+		mPasswordView.requestFocus();
 	}
 }
