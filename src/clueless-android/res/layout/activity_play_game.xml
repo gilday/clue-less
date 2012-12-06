@@ -11,8 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Button05"
-        android:background="@drawable/hall2"
-    />
+        android:background="@drawable/hall2" />
 
     <Button
         android:id="@+id/Button03"
@@ -21,8 +20,7 @@
         android:layout_alignBaseline="@+id/button3"
         android:layout_alignBottom="@+id/button3"
         android:layout_alignLeft="@+id/Button01"
-        android:background="@drawable/ballroom2"
-    />
+        android:background="@drawable/ballroom2" />
 
     <Button
         android:id="@+id/Button02"
@@ -31,8 +29,7 @@
         android:layout_alignLeft="@+id/Button01"
         android:layout_below="@+id/Button01"
         android:layout_marginTop="30dp"
-        android:background="@drawable/billiard_room2"
-    />
+        android:background="@drawable/billiard_room2" />
 
     <Button
         android:id="@+id/button1"
@@ -41,8 +38,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Button01"
-        android:background="@drawable/lounge2"
-     />
+        android:background="@drawable/lounge2" />
 
     <Button
         android:id="@+id/button3"
@@ -51,8 +47,7 @@
         android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button2"
         android:layout_marginTop="30dp"
-        android:background="@drawable/kitchen2"
-	/>
+        android:background="@drawable/kitchen2" />
 
     <Button
         android:id="@+id/Button04"
@@ -61,9 +56,8 @@
         android:layout_alignBaseline="@+id/Button03"
         android:layout_alignBottom="@+id/Button03"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="483dp"
-        android:background="@drawable/conservatory2"
-    />
+        android:layout_marginLeft="520dp"
+        android:background="@drawable/conservatory2" />
 
     <Button
         android:id="@+id/Button06"
@@ -72,8 +66,7 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_alignLeft="@+id/Button04"
-        android:background="@drawable/library2"
-     />
+        android:background="@drawable/library2" />
 
     <Button
         android:id="@+id/Button05"
@@ -81,8 +74,7 @@
         android:layout_height="125dp"
         android:layout_alignLeft="@+id/Button06"
         android:layout_alignParentTop="true"
-        android:background="@drawable/study2"
-     />
+        android:background="@drawable/study2" />
 
     <Button
         android:id="@+id/button2"
@@ -91,8 +83,7 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_alignLeft="@+id/button1"
-        android:background="@drawable/dining_room2"
-     />
+        android:background="@drawable/dining_room2" />
 
     <Button
         android:id="@+id/DiningToBilliard"
@@ -217,29 +208,21 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentTop="true"
-        android:layout_toLeftOf="@+id/Button05"
-        android:text="@string/Clue"
-        android:textSize="20sp"
-        android:textStyle="bold" 
-        android:textColor="@color/white"
+        android:layout_alignRight="@+id/radioGroup1"
+        android:background="@color/blue"
         android:gravity="center"
-        android:background="@color/blue"/>
-    
-    <Button
-        android:id="@+id/Make_An_Accusation"
-        android:layout_width="125dp"
-        android:layout_height="75dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/mr_green"
-        android:layout_marginRight="15dp"
-        android:text="@string/Make_An_Accusation" />
+        android:text="@string/suspects"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
 
     <RadioGroup
-        android:layout_width="480dp"
+        android:id="@+id/radioGroup1"
+        android:layout_width="483dp"
         android:layout_height="80dp"
-        android:orientation="horizontal"
         android:layout_alignParentLeft="true"
-        android:layout_below="@+id/clue_text" >
+        android:layout_below="@+id/clue_text"
+        android:orientation="horizontal" >
 
         <RadioButton
             android:id="@+id/miss_scarlett"
@@ -278,21 +261,283 @@
             android:background="@drawable/mrs_white" />
     </RadioGroup>
 
+    <TextView
+        android:id="@+id/weapons_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/radioGroup1"
+        android:layout_below="@+id/radioGroup1"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/weapon"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+    
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="483dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/weapons_text"
+        android:orientation="horizontal" >
+        
+        <RadioButton
+            android:id="@+id/rope"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/rope" />
+
+        <RadioButton
+            android:id="@+id/revolover"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/revolver" />
+
+        <RadioButton
+            android:id="@+id/wrench"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/wrench" />
+
+        <RadioButton
+            android:id="@+id/candlestick"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/candlestick" />
+
+        <RadioButton
+            android:id="@+id/knife"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/knife" />
+
+        <RadioButton
+            android:id="@+id/lead_pipe"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/lead_pipe" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/rooms_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/radioGroup2"
+        android:layout_below="@+id/radioGroup2"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/rooms"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="483dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rooms_text"
+        android:orientation="horizontal" >
+        
+        <RadioButton
+            android:id="@+id/study_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/study_small" />
+
+        <RadioButton
+            android:id="@+id/hall_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/hall_small" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:text="@string/rooms"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/lounge_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/lounge_small" />
+
+        <RadioButton
+            android:id="@+id/library_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/library_small" />
+
+        <RadioButton
+            android:id="@+id/billiard_room_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/billiard_room_small" />
+
+        <RadioButton
+            android:id="@+id/dining_room_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/dining_room_small" />
+        
+        <RadioButton
+            android:id="@+id/conservatory_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/conservatory_small" />
+
+        <RadioButton
+            android:id="@+id/ballroom_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ballroom_small" />
+
+        <RadioButton
+            android:id="@+id/kitchen_small"
+            android:layout_width="56dp"
+            android:layout_height="30dp"
+            android:background="@drawable/kitchen_small" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/bottom_left_diag"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LibraryToConservatory"
+        android:layout_toLeftOf="@+id/BallroomToConservatory"
+        android:background="@drawable/bottom_left2" />
+
+    <Button
+        android:id="@+id/top_right_diag"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/button1"
+        android:layout_toLeftOf="@+id/LoungeToDining"
+        android:background="@drawable/top_right2" />
+
+    <Button
+        android:id="@+id/bottom_right_diag"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/button3"
+        android:layout_alignTop="@+id/button3"
+        android:background="@drawable/bottom_right2" />
+
+    <Button
+        android:id="@+id/top_left_diag"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/Button05"
+        android:layout_alignRight="@+id/Button05"
+        android:background="@drawable/top_left2" />
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignRight="@+id/radioGroup3"
+        android:layout_below="@+id/radioGroup3"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/hand"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
     <Button
         android:id="@+id/Make_A_Suggestion"
-        android:layout_width="125dp"
-        android:layout_height="75dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginLeft="44dp"
-        android:layout_toRightOf="@+id/Make_An_Accusation"
+        android:layout_marginLeft="686dp"
         android:text="@string/Make_A_Suggestion" />
 
     <Button
         android:id="@+id/End_Turn"
-        android:layout_width="125dp"
-        android:layout_height="75dp"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="843dp"
         android:layout_alignParentBottom="true"
-        android:layout_alignRight="@+id/clue_text"
         android:text="@string/End_Turn" />
+
+    <Button
+        android:id="@+id/Make_An_Accusation"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_marginLeft="530dp"
+        android:layout_alignParentBottom="true"
+        android:text="@string/Make_An_Accusation" />
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/LibraryToConservatory"
+        android:layout_marginLeft="18dp"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/card1"
+        android:layout_toRightOf="@+id/card1"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LibraryToConservatory"
+        android:layout_toRightOf="@+id/card2"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LibraryToConservatory"
+        android:layout_toRightOf="@+id/card3"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LibraryToConservatory"
+        android:layout_toRightOf="@+id/card4"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LibraryToConservatory"
+        android:layout_toRightOf="@+id/card5"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/LibraryToConservatory"
+        android:layout_toRightOf="@+id/card6"
+        android:src="@drawable/empty" />
 
 </RelativeLayout>

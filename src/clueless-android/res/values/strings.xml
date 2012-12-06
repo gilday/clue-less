@@ -18,9 +18,12 @@
     <string name="Width">125dp</string>
     <string name="Height">125dp</string>
     <string name="font_size">12sp</string>
-    <string name="Make_A_Suggestion">Make A Suggestion</string>
-    <string name="Make_An_Accusation">Make An Accusation</string>
-    <string name="End_Turn">End Turn</string>
-    <string name="Clue">Clues</string>
+    <string name="Make_A_Suggestion">Suggest!</string>
+    <string name="Make_An_Accusation">Accuse!</string>
+    <string name="End_Turn">End!</string>
+    <string name="suspects">WHO DID IT?</string>
+    <string name="weapon">WITH WHAT WEAPON?</string>
+    <string name="rooms">IN WHICH ROOM?</string>
+    <string name="hand">YOUR HAND</string>
 
 </resources>
