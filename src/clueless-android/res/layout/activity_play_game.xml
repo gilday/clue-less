@@ -1,7 +1,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
     tools:context=".PlayGameActivity" >
 
     <Button
@@ -11,10 +11,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Button05"
-        android:background="@color/room_color"
-        android:text="@string/Hall"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
+        android:background="@drawable/hall2"
+    />
 
     <Button
         android:id="@+id/Button03"
@@ -23,10 +21,8 @@
         android:layout_alignBaseline="@+id/button3"
         android:layout_alignBottom="@+id/button3"
         android:layout_alignLeft="@+id/Button01"
-        android:background="@color/room_color"
-        android:text="@string/Ballroom"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
+        android:background="@drawable/ballroom2"
+    />
 
     <Button
         android:id="@+id/Button02"
@@ -35,10 +31,8 @@
         android:layout_alignLeft="@+id/Button01"
         android:layout_below="@+id/Button01"
         android:layout_marginTop="30dp"
-        android:background="@color/room_color"
-        android:text="@string/Billiard_Room"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
+        android:background="@drawable/billiard_room2"
+    />
 
     <Button
         android:id="@+id/button1"
@@ -47,10 +41,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Button01"
-        android:background="@color/room_color"
-        android:text="@string/Lounge"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
+        android:background="@drawable/lounge2"
+     />
 
     <Button
         android:id="@+id/button3"
@@ -59,10 +51,8 @@
         android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button2"
         android:layout_marginTop="30dp"
-        android:background="@color/room_color"
-        android:text="@string/Kitchen"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
+        android:background="@drawable/kitchen2"
+	/>
 
     <Button
         android:id="@+id/Button04"
@@ -71,11 +61,9 @@
         android:layout_alignBaseline="@+id/Button03"
         android:layout_alignBottom="@+id/Button03"
         android:layout_alignParentLeft="true"
-        android:layout_marginLeft="300dp"
-        android:background="@color/room_color"
-        android:text="@string/Conservatory"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
+        android:layout_marginLeft="483dp"
+        android:background="@drawable/conservatory2"
+    />
 
     <Button
         android:id="@+id/Button06"
@@ -84,10 +72,8 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_alignLeft="@+id/Button04"
-        android:background="@color/room_color"
-        android:text="@string/Library"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
+        android:background="@drawable/library2"
+     />
 
     <Button
         android:id="@+id/Button05"
@@ -95,10 +81,8 @@
         android:layout_height="125dp"
         android:layout_alignLeft="@+id/Button06"
         android:layout_alignParentTop="true"
-        android:background="@color/room_color"
-        android:text="@string/Study"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
+        android:background="@drawable/study2"
+     />
 
     <Button
         android:id="@+id/button2"
@@ -107,19 +91,8 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_alignLeft="@+id/button1"
-        android:background="@color/room_color"
-        android:text="@string/Dining_Room"
-        android:textSize="12sp" 
-        android:textColor="@color/white"/>
-
-    <Button
-        android:id="@+id/LoungeToHall"
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="30dp"
-        android:layout_height="30dp"
-        android:layout_alignBaseline="@+id/Button01"
-        android:layout_toRightOf="@+id/Button01"
-        android:background="@color/hallway_color" />
+        android:background="@drawable/dining_room2"
+     />
 
     <Button
         android:id="@+id/DiningToBilliard"
@@ -227,5 +200,99 @@
         android:layout_alignLeft="@+id/StudyToLibrary"
         android:layout_below="@+id/Button06"
         android:background="@color/hallway_color" />
+
+    <Button
+        android:id="@+id/LoungeToHall"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBaseline="@+id/Button01"
+        android:layout_alignBottom="@+id/Button01"
+        android:layout_toRightOf="@+id/Button01"
+        android:background="@color/hallway_color" />
+
+    <TextView
+        android:id="@+id/clue_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/Button05"
+        android:text="@string/Clue"
+        android:textSize="20sp"
+        android:textStyle="bold" 
+        android:textColor="@color/white"
+        android:gravity="center"
+        android:background="@color/blue"/>
+    
+    <Button
+        android:id="@+id/Make_An_Accusation"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/mr_green"
+        android:layout_marginRight="15dp"
+        android:text="@string/Make_An_Accusation" />
+
+    <RadioGroup
+        android:layout_width="480dp"
+        android:layout_height="80dp"
+        android:orientation="horizontal"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/clue_text" >
+
+        <RadioButton
+            android:id="@+id/miss_scarlett"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/miss_scarlett" />
+
+        <RadioButton
+            android:id="@+id/prof_plum"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/prof_plum" />
+
+        <RadioButton
+            android:id="@+id/mrs_peacock"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/mrs_peacock" />
+
+        <RadioButton
+            android:id="@+id/mr_green"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/mr_green" />
+
+        <RadioButton
+            android:id="@+id/col_mustard"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/col_mustard" />
+
+        <RadioButton
+            android:id="@+id/mrs_white"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/mrs_white" />
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/Make_A_Suggestion"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="44dp"
+        android:layout_toRightOf="@+id/Make_An_Accusation"
+        android:text="@string/Make_A_Suggestion" />
+
+    <Button
+        android:id="@+id/End_Turn"
+        android:layout_width="125dp"
+        android:layout_height="75dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/clue_text"
+        android:text="@string/End_Turn" />
 
 </RelativeLayout>
