@@ -2,6 +2,7 @@ package edu.jhu.ep.butlerdidit.service;
 
 import java.io.BufferedOutputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.CookieHandler;
@@ -13,7 +14,6 @@ import java.util.HashMap;
 import org.json.JSONObject;
 
 import roboguice.inject.ContextSingleton;
-import android.util.Log;
 
 /**
  * Group all the HTTP Calls in here so they're easier to unit test
@@ -31,6 +31,12 @@ public class GameServerHttpClient {
 	// 10.0.2.2 is a special address for the host development machine
 	private final String gameServerEndpoint = "http://10.0.2.2:3000";
 	
+	private boolean loggedIn = false;
+	
+	public boolean isLoggedIn() {
+		return loggedIn;
+	}
+	
 	public RestResponse login(String email, String password) throws IOException {
 		URL loginUrl = new URL(gameServerEndpoint + "/session");
 		
@@ -43,19 +49,56 @@ public class GameServerHttpClient {
 		keyVals.put("password", password);
 		JSONObject json = new JSONObject(keyVals);
 		
-		Log.d("JSON",json.toString());
-
 		OutputStream out = new BufferedOutputStream(connection.getOutputStream());
 		PrintWriter writer = new PrintWriter(out);
 		writer.write(json.toString());
 		writer.close();
 
 		int status = connection.getResponseCode();
+		if(status == HttpURLConnection.HTTP_CREATED) 
+			loggedIn = true;
+		
 		return new RestResponse(status);
 	}
 	
-//	private String convertStreamToString(InputStream is) {
-//	    java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
-//	    return s.hasNext() ? s.next() : "";
-//	}
+	public RestResponse logout() throws IOException {
+		URL logoutUrl = new URL(gameServerEndpoint + "/session");
+		
+		HttpURLConnection connection = (HttpURLConnection) logoutUrl.openConnection();
+		connection.setRequestMethod("DELETE");
+		
+		int status = connection.getResponseCode();
+		if(status == HttpURLConnection.HTTP_OK)
+			loggedIn = false;
+		return new RestResponse(status);
+	}
+
+	public RestResponse getMatchById(int matchId) throws IOException {
+		URL getMatchUrl = new URL(String.format("%s/matches/%d.json", gameServerEndpoint, matchId));
+		
+		return getJson(getMatchUrl);
+	}
+	
+	public RestResponse getMatches() throws IOException {
+		URL getMatchesUrl = new URL(String.format("%s/matches", gameServerEndpoint));
+		
+		return getJson(getMatchesUrl);
+	}
+	
+	private String convertStreamToString(InputStream is) {
+	    java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
+	    return s.hasNext() ? s.next() : "";
+	}
+	
+	private RestResponse getJson(URL url) throws IOException {
+		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+		connection.setRequestMethod("GET");
+		connection.setRequestProperty("Accept", "application/json");
+		
+		int status = connection.getResponseCode();
+		InputStream is = connection.getInputStream();
+		
+		String json = convertStreamToString(is);
+		return new RestResponse(status, json);
+	}
 }

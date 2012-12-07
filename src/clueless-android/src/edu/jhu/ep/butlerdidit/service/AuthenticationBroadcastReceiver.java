@@ -1,28 +1,12 @@
 package edu.jhu.ep.butlerdidit.service;
 
-import java.util.LinkedList;
-
-import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
-
-import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.util.Log;
+import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
 
-public class AuthenticationBroadcastReceiver extends BroadcastReceiver {
+public class AuthenticationBroadcastReceiver extends GameServerBroadcastReceiver<AuthenticationChangedListener> {
 
-	private LinkedList<AuthenticationChangedListener> listeners;
-	
-	public AuthenticationBroadcastReceiver(AuthenticationChangedListener... listeners) {
-		this.listeners = new LinkedList<AuthenticationChangedListener>();
-		for(AuthenticationChangedListener l : listeners)
-			this.listeners.add(l);
-	}
-	
-	public void unRegisterListener(AuthenticationChangedListener listener) {
-		listeners.remove(listener);
-	}
-	
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();

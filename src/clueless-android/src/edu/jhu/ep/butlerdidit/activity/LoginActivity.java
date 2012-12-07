@@ -96,7 +96,8 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 	public void onResume() {
 		super.onResume();
 		// Register authentication listener
-		authBroadcastReceiver = new AuthenticationBroadcastReceiver(this);
+		authBroadcastReceiver = new AuthenticationBroadcastReceiver();
+		authBroadcastReceiver.registerListener(this);
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(getApplicationContext());
 		lbm.registerReceiver(authBroadcastReceiver, new IntentFilter(GameServerConstants.BROADCAST_AUTHENTICATION_SUCCESS));
 		lbm.registerReceiver(authBroadcastReceiver, new IntentFilter(GameServerConstants.BROADCAST_AUTHENTICATION_FAILED));
@@ -106,7 +107,7 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 	public void onPause() {
 		super.onPause();
 		// Unregister authentication listener
-		authBroadcastReceiver.unRegisterListener(this);
+		authBroadcastReceiver.unregisterListener(this);
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(getApplicationContext());
 		lbm.unregisterReceiver(authBroadcastReceiver);
 		authBroadcastReceiver = null;

@@ -30,7 +30,7 @@
             android:label="@string/title_activity_play_game" 
             android:screenOrientation="landscape">
         </activity>
-        <service android:name=".service.GameServerMatchService"></service>
+        <service android:name="edu.jhu.ep.butlerdidit.service.GameServerMatchService"></service>
     </application>
 
 </manifest>
