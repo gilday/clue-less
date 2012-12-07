@@ -11,7 +11,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Button05"
-        android:background="@drawable/hall2" />
+        android:background="@drawable/hall2" 
+        android:onClick="hall_button"/>
 
     <Button
         android:id="@+id/Button03"
@@ -20,7 +21,8 @@
         android:layout_alignBaseline="@+id/button3"
         android:layout_alignBottom="@+id/button3"
         android:layout_alignLeft="@+id/Button01"
-        android:background="@drawable/ballroom2" />
+        android:background="@drawable/ballroom2"
+        android:onClick="ballroom_button" />
 
     <Button
         android:id="@+id/Button02"
@@ -29,7 +31,8 @@
         android:layout_alignLeft="@+id/Button01"
         android:layout_below="@+id/Button01"
         android:layout_marginTop="30dp"
-        android:background="@drawable/billiard_room2" />
+        android:background="@drawable/billiard_room2"
+        android:onClick="billiard_button" />
 
     <Button
         android:id="@+id/button1"
@@ -38,7 +41,8 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Button01"
-        android:background="@drawable/lounge2" />
+        android:background="@drawable/lounge2"
+        android:onClick="lounge_button" />
 
     <Button
         android:id="@+id/button3"
@@ -47,7 +51,8 @@
         android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button2"
         android:layout_marginTop="30dp"
-        android:background="@drawable/kitchen2" />
+        android:background="@drawable/kitchen2"
+        android:onClick="kitchen_button" />
 
     <Button
         android:id="@+id/Button04"
@@ -57,7 +62,8 @@
         android:layout_alignBottom="@+id/Button03"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="520dp"
-        android:background="@drawable/conservatory2" />
+        android:background="@drawable/conservatory2"
+        android:onClick="conservatory_button" />
 
     <Button
         android:id="@+id/Button06"
@@ -66,7 +72,8 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_alignLeft="@+id/Button04"
-        android:background="@drawable/library2" />
+        android:background="@drawable/library2"
+        android:onClick="library_button" />
 
     <Button
         android:id="@+id/Button05"
@@ -74,7 +81,8 @@
         android:layout_height="125dp"
         android:layout_alignLeft="@+id/Button06"
         android:layout_alignParentTop="true"
-        android:background="@drawable/study2" />
+        android:background="@drawable/study2"
+        android:onClick="study_button" />
 
     <Button
         android:id="@+id/button2"
@@ -83,7 +91,8 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_alignLeft="@+id/button1"
-        android:background="@drawable/dining_room2" />
+        android:background="@drawable/dining_room2"
+        android:onClick="dining_button" />
 
     <Button
         android:id="@+id/DiningToBilliard"
