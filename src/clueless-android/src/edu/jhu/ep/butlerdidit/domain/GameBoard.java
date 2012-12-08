@@ -7,27 +7,27 @@ import java.util.Vector;
 
 public class GameBoard {
 
-    private List<Player> players;
+    private List<CluePlayer> players;
 
     private Dictionary<String, GameBoardSpace> spaces;
     public Dictionary<String, GameBoardSpace> getSpaces() {
         return spaces;
     }
 
-    public GameBoard(List<Player> players) {
+    public GameBoard(List<CluePlayer> players) {
         this.players = players;
 
         createSpaces();
     }
 
-    public List<GameBoardSpace> getPossibleMoves(Player player) {
+    public List<GameBoardSpace> getPossibleMoves(CluePlayer player) {
         GameBoardSpace currentSpace = spaces.get(player.getLocation());
         List<GameBoardSpace> possibleMoves = new Vector<GameBoardSpace>();
 
         for(GameBoardSpace space : currentSpace.getNavigationTargets()) {
             if(space instanceof HallwaySpace) {
                 boolean isOccupied = false;
-                for(Player otherPlayer : players) {
+                for(CluePlayer otherPlayer : players) {
                     if(otherPlayer.getLocation().equals(space.getSpaceId())) {
                         isOccupied = true;
                         break;
@@ -41,7 +41,7 @@ public class GameBoard {
         return possibleMoves;
     }
 
-    public boolean isPlayerAbleToMoveToSpace(Player player, GameBoardSpace space) {
+    public boolean isPlayerAbleToMoveToSpace(CluePlayer player, GameBoardSpace space) {
         List<GameBoardSpace> possibleMoves = getPossibleMoves(player);
 
         for(GameBoardSpace target : possibleMoves) {

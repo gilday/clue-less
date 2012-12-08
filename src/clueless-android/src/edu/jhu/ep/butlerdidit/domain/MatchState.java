@@ -4,6 +4,6 @@ import java.util.List;
 
 public class MatchState {
 
-    private List<Player> players;
-    private Player currentPlayer;
+    private List<CluePlayer> players;
+    private CluePlayer currentPlayer;
 }

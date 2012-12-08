@@ -8,7 +8,7 @@ import edu.jhu.ep.butlerdidit.domain.ClueCharacter;
 import edu.jhu.ep.butlerdidit.domain.GameBoard;
 import edu.jhu.ep.butlerdidit.domain.GameBoardSpace;
 import edu.jhu.ep.butlerdidit.domain.HallwaySpace;
-import edu.jhu.ep.butlerdidit.domain.Player;
+import edu.jhu.ep.butlerdidit.domain.CluePlayer;
 import edu.jhu.ep.butlerdidit.domain.Room;
 
 public class GameBoardTests extends TestCase {
@@ -37,11 +37,11 @@ public class GameBoardTests extends TestCase {
 	public void testProfPlumMayMoveFromStartToHallway() {
 		// GIVEN
 		// a game board with Professor Plum at his start spot
-		Player profPlum = new Player();
+		CluePlayer profPlum = new CluePlayer();
 		profPlum.setClueCharacter(ClueCharacter.ProfPlum);
 		profPlum.setLocation(profPlum.getClueCharacter().getName());
 		
-		List<Player> players = new Vector<Player>();
+		List<CluePlayer> players = new Vector<CluePlayer>();
 		GameBoard gameBoard = new GameBoard(players);
 		
 		// WHEN
@@ -58,15 +58,15 @@ public class GameBoardTests extends TestCase {
 		// GIVEN
 		// a GameBoard with Professor Plum on his start spot
 		// and some other player is on the hallway he must move to
-		Player profPlum = new Player();
+		CluePlayer profPlum = new CluePlayer();
 		profPlum.setClueCharacter(ClueCharacter.ProfPlum);
 		profPlum.setLocation(profPlum.getClueCharacter().getName());
 		
-		Player msScarlet = new Player();
+		CluePlayer msScarlet = new CluePlayer();
 		msScarlet.setClueCharacter(ClueCharacter.MsScarlet);
 		msScarlet.setLocation("Library-Study");
 		
-		List<Player> players = new Vector<Player>();
+		List<CluePlayer> players = new Vector<CluePlayer>();
 		players.add(profPlum);
 		players.add(msScarlet);
 		
@@ -84,11 +84,11 @@ public class GameBoardTests extends TestCase {
 	public void testPlayerMayUseSecretPassage() {
 		// GIVEN
 		// a GameBoard where professor plum is in the study
-		Player profPlum = new Player();
+		CluePlayer profPlum = new CluePlayer();
 		profPlum.setClueCharacter(ClueCharacter.ProfPlum);
 		profPlum.setLocation(Room.STUDY);
 		
-		List<Player> players = new Vector<Player>();
+		List<CluePlayer> players = new Vector<CluePlayer>();
 		players.add(profPlum);
 		GameBoard gameBoard = new GameBoard(players);
 		

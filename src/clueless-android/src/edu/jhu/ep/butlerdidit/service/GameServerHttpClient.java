@@ -85,6 +85,12 @@ public class GameServerHttpClient {
 		return getJson(getMatchesUrl);
 	}
 	
+	public RestResponse getPlayerByEmail(String email) throws IOException {
+		URL getPlayerUrl = new URL(String.format("%s/players/%s.json", gameServerEndpoint, email));
+		
+		return getJson(getPlayerUrl);
+	}
+	
 	private String convertStreamToString(InputStream is) {
 	    java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
 	    return s.hasNext() ? s.next() : "";

@@ -6,7 +6,11 @@ public interface GameServerMatchHelper {
 	
 	void setGameServerMatchListener(GameServerMatchListener listener);
 	
-	void watchMatch(int withId);
+	Match getCurrentMatch();
+	
+	void setCurrentMatchById(int matchId);
+	
+	void startWatchingMatch();
 	
 	void stopWatchingMatch();
 	

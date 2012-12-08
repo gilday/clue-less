@@ -1,10 +1,14 @@
 package edu.jhu.ep.butlerdidit.domain;
 
+import java.util.Collection;
 import java.util.Date;
 
 import com.google.gson.annotations.SerializedName;
 
 public class Match {
+	
+	private int id;
+	
 	@SerializedName("min_players")
 	private int minPlayers;
 	
@@ -20,6 +24,11 @@ public class Match {
 	
 	@SerializedName("updated_at")
 	private Date updatedAt;
+	
+	private Collection<GameParticipant> participants;
+	
+	@SerializedName("player_id")
+	private String currentPlayer;
 
 	public int getMinPlayers() {
 		return minPlayers;
@@ -53,6 +62,14 @@ public class Match {
 		this.maxPlayers = maxPlayers;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
@@ -67,5 +84,21 @@ public class Match {
 
 	public void setUpdatedAt(Date updatedAt) {
 		this.updatedAt = updatedAt;
+	}
+
+	public Collection<GameParticipant> getParticipants() {
+		return participants;
+	}
+
+	public String getCurrentPlayer() {
+		return currentPlayer;
+	}
+
+	public void setParticipants(Collection<GameParticipant> players) {
+		this.participants = players;
+	}
+
+	public void setCurrentPlayer(String currentPlayer) {
+		this.currentPlayer = currentPlayer;
 	}
 }

@@ -1,5 +1,5 @@
 class Match < ActiveRecord::Base
-  attr_accessible :match_data, :max_players, :message, :min_players, :status
+  attr_accessible :match_data, :max_players, :message, :min_players, :status, :current_player
   
   has_many :participants
   has_many :players, through: :participants

@@ -12,5 +12,5 @@ public interface GameServerMatchListener {
 	
 	void receiveEndGame(Match match);
 	
-	void sendNotice(String notice, Match match);
+	//void sendNotice(String notice, Match match);
 }

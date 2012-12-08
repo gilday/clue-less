@@ -2,6 +2,7 @@ package edu.jhu.ep.butlerdidit.test;
 
 import android.content.Intent;
 import android.test.mock.MockContext;
+import edu.jhu.ep.butlerdidit.domain.GameParticipant;
 import edu.jhu.ep.butlerdidit.domain.Match;
 import edu.jhu.ep.butlerdidit.service.MatchDataBroadcastReceiver;
 import edu.jhu.ep.butlerdidit.service.MatchDataListener;
@@ -27,20 +28,24 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 		String action = GameServerConstants.ACTION_MATCH_RECEIVED;
 		String json = 
 			"{ " +
-				"created_at:\"2012-12-05T23:41:01Z\"," +
-				"id:1," +
-				"min_players:2," +
-				"max_players:6," +
-				"status:\"this is a status\"," +
-				"message:\"this is a message\"," +
-				"match_data:\"[1,2,3,4,5]\"," +
-				"player: {" +
-					"created_at: \"2012-12-05T23:41:01Z\"," +
-					"updated_at: \"2012-12-05T23:41:01Z\"," +
-					"id:1," +
-					"email:\"testPlayer@example.com\"" +
-				"}" +
+				"\"id\":1," +
+				"\"updated_at\": \"2012-12-05T23:41:01Z\"," +
+				"\"min_players\":2," +
+				"\"max_players\":6," +
+				"\"status\":\"this is a status\"," +
+				"\"message\":\"this is a message\"," +
+				"\"match_data\":\"[1,2,3,4,5]\"," +
+				"\"participants\": [{" +
+					"\"id\": 1, \"match_id\": 1, \"player_id\": 1, " +
+						"\"player\": {" +
+							"\"created_at\": \"2012-12-05T23:41:01Z\"," +
+							"\"updated_at\": \"2012-12-05T23:41:01Z\"," +
+							"\"id\":1," +
+							"\"email\":\"testPlayer@example.com\"" +
+						"}" +
+				"}]" +
 			"}";
+		System.out.println(json);
 		Intent intent = new Intent(action);
 		intent.putExtra(GameServerConstants.PARM_JSON, json);
 		
@@ -58,8 +63,12 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 			assertNotNull(match.getMessage());
 			assertNotNull(match.getStatus());
 			assertNotNull(match.getRawMatchData());
+			//assertNotNull(match.getUpdatedAt());
 			assertTrue(match.getMinPlayers() > 1);
 			assertTrue(match.getMaxPlayers() > 1);
+			assertNotNull(match.getParticipants());
+			GameParticipant participant = (GameParticipant) match.getParticipants().toArray()[0];
+			assertEquals("testPlayer@example.com", participant.getGamePlayer().getEmail());
 		}
 	}
 }

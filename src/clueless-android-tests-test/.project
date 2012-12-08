@@ -3,7 +3,7 @@
 	<name>clueless-android-tests</name>
 	<comment></comment>
 	<projects>
-		<project>LoginActivity</project>
+		<project>clueless-android</project>
 	</projects>
 	<buildSpec>
 		<buildCommand>
