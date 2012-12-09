@@ -11,8 +11,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Button05"
-        android:background="@drawable/hall2" 
-        android:onClick="hall_button"/>
+        android:background="@drawable/hall2" />
 
     <Button
         android:id="@+id/Button03"
@@ -21,8 +20,7 @@
         android:layout_alignBaseline="@+id/button3"
         android:layout_alignBottom="@+id/button3"
         android:layout_alignLeft="@+id/Button01"
-        android:background="@drawable/ballroom2"
-        android:onClick="ballroom_button" />
+        android:background="@drawable/ballroom2" />
 
     <Button
         android:id="@+id/Button02"
@@ -31,8 +29,7 @@
         android:layout_alignLeft="@+id/Button01"
         android:layout_below="@+id/Button01"
         android:layout_marginTop="30dp"
-        android:background="@drawable/billiard_room2"
-        android:onClick="billiard_button" />
+        android:background="@drawable/billiard_room2" />
 
     <Button
         android:id="@+id/button1"
@@ -41,8 +38,7 @@
         android:layout_alignParentTop="true"
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/Button01"
-        android:background="@drawable/lounge2"
-        android:onClick="lounge_button" />
+        android:background="@drawable/lounge2" />
 
     <Button
         android:id="@+id/button3"
@@ -51,8 +47,7 @@
         android:layout_alignLeft="@+id/button2"
         android:layout_below="@+id/button2"
         android:layout_marginTop="30dp"
-        android:background="@drawable/kitchen2"
-        android:onClick="kitchen_button" />
+        android:background="@drawable/kitchen2" />
 
     <Button
         android:id="@+id/Button04"
@@ -62,8 +57,7 @@
         android:layout_alignBottom="@+id/Button03"
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="520dp"
-        android:background="@drawable/conservatory2"
-        android:onClick="conservatory_button" />
+        android:background="@drawable/conservatory2" />
 
     <Button
         android:id="@+id/Button06"
@@ -72,8 +66,7 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_alignLeft="@+id/Button04"
-        android:background="@drawable/library2"
-        android:onClick="library_button" />
+        android:background="@drawable/library2" />
 
     <Button
         android:id="@+id/Button05"
@@ -81,8 +74,7 @@
         android:layout_height="125dp"
         android:layout_alignLeft="@+id/Button06"
         android:layout_alignParentTop="true"
-        android:background="@drawable/study2"
-        android:onClick="study_button" />
+        android:background="@drawable/study2" />
 
     <Button
         android:id="@+id/button2"
@@ -91,8 +83,7 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_alignLeft="@+id/button1"
-        android:background="@drawable/dining_room2"
-        android:onClick="dining_button" />
+        android:background="@drawable/dining_room2" />
 
     <Button
         android:id="@+id/DiningToBilliard"
@@ -102,8 +93,7 @@
         android:layout_alignBaseline="@+id/button2"
         android:layout_alignBottom="@+id/button2"
         android:layout_toLeftOf="@+id/button2"
-        android:background="@color/hallway_color" 
-        android:onClick="DiningToBilliard"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/KitchenToBallroom"
@@ -113,8 +103,7 @@
         android:layout_alignBaseline="@+id/button3"
         android:layout_alignBottom="@+id/button3"
         android:layout_toLeftOf="@+id/button3"
-        android:background="@color/hallway_color" 
-        android:onClick="KitchenToBallroom"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/HallToStudy"
@@ -124,8 +113,7 @@
         android:layout_alignBaseline="@+id/Button01"
         android:layout_alignBottom="@+id/Button01"
         android:layout_toRightOf="@+id/Button05"
-        android:background="@color/hallway_color" 
-        android:onClick="HallToStudy"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/BilliardToLibrary"
@@ -135,8 +123,7 @@
         android:layout_alignBaseline="@+id/Button02"
         android:layout_alignBottom="@+id/Button02"
         android:layout_toLeftOf="@+id/Button02"
-        android:background="@color/hallway_color" 
-        android:onClick="BilliardToLibrary"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/BallroomToConservatory"
@@ -146,8 +133,7 @@
         android:layout_alignBaseline="@+id/Button03"
         android:layout_alignBottom="@+id/Button03"
         android:layout_toLeftOf="@+id/Button03"
-        android:background="@color/hallway_color" 
-        android:onClick="BallroomToConservatory"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/StudyToLibrary"
@@ -157,8 +143,7 @@
         android:layout_above="@+id/Button06"
         android:layout_alignRight="@+id/Button06"
         android:layout_marginRight="46dp"
-        android:background="@color/hallway_color"
-        android:onClick="StudyToLibrary" />
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/BilliardToBallroom"
@@ -168,8 +153,7 @@
         android:layout_alignRight="@+id/Button02"
         android:layout_below="@+id/Button02"
         android:layout_marginRight="45dp"
-        android:background="@color/hallway_color" 
-        android:onClick="BilliardToBallroom"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/DiningToKitchen"
@@ -179,8 +163,7 @@
         android:layout_alignRight="@+id/button2"
         android:layout_below="@+id/button2"
         android:layout_marginRight="44dp"
-        android:background="@color/hallway_color" 
-        android:onClick="DiningToKitchen"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/LoungeToDining"
@@ -189,8 +172,7 @@
         android:layout_height="30dp"
         android:layout_above="@+id/button2"
         android:layout_alignLeft="@+id/DiningToKitchen"
-        android:background="@color/hallway_color" 
-        android:onClick="LoungeToDining"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/HallToBilliard"
@@ -199,8 +181,7 @@
         android:layout_height="30dp"
         android:layout_alignLeft="@+id/BilliardToBallroom"
         android:layout_below="@+id/Button01"
-        android:background="@color/hallway_color" 
-        android:onClick="HallToBilliard"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/LibraryToConservatory"
@@ -209,8 +190,7 @@
         android:layout_height="30dp"
         android:layout_alignLeft="@+id/StudyToLibrary"
         android:layout_below="@+id/Button06"
-        android:background="@color/hallway_color" 
-        android:onClick="LibraryToConservatory"/>
+        android:background="@color/hallway_color" />
 
     <Button
         android:id="@+id/LoungeToHall"
@@ -220,8 +200,7 @@
         android:layout_alignBaseline="@+id/Button01"
         android:layout_alignBottom="@+id/Button01"
         android:layout_toRightOf="@+id/Button01"
-        android:background="@color/hallway_color" 
-        android:onClick="LoungeToHall"/>
+        android:background="@color/hallway_color" />
 
     <TextView
         android:id="@+id/clue_text"
@@ -696,7 +675,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Button05"
         android:layout_alignParentTop="true"
-        android:src="@drawable/scarlett_pawn" />
+        android:src="@drawable/scarlett_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/plum_study"
@@ -705,7 +685,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/scarlett_study"
-        android:src="@drawable/plum_pawn" />
+        android:src="@drawable/plum_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/mustard_study"
@@ -714,7 +695,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/top_left_diag"
         android:layout_alignParentTop="true"
-        android:src="@drawable/mustard_pawn" />
+        android:src="@drawable/mustard_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/white_study"
@@ -723,7 +705,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/mustard_study"
-        android:src="@drawable/mrs_white_pawn" />
+        android:src="@drawable/mrs_white_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/green_study"
@@ -732,7 +715,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_alignRight="@+id/StudyToLibrary"
-        android:src="@drawable/mr_green_pawn" />
+        android:src="@drawable/mr_green_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/rope_study"
@@ -740,7 +724,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Button05"
         android:layout_below="@+id/scarlett_study"
-        android:src="@drawable/rope_space" />
+        android:src="@drawable/rope_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/revolver_study"
@@ -748,7 +733,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/rope_study"
         android:layout_toRightOf="@+id/rope_study"
-        android:src="@drawable/revolver_space" />
+        android:src="@drawable/revolver_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/wrench_study"
@@ -756,7 +742,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/peacock_study"
         android:layout_toRightOf="@+id/Library_To_Study"
-        android:src="@drawable/wrench_space" />
+        android:src="@drawable/wrench_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/candlestick_study"
@@ -764,7 +751,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/mustard_study"
         android:layout_toRightOf="@+id/wrench_study"
-        android:src="@drawable/candlestick_space" />
+        android:src="@drawable/candlestick_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/knife_study"
@@ -772,7 +760,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/candlestick_study"
         android:layout_toRightOf="@+id/mustard_study"
-        android:src="@drawable/knife_space" />
+        android:src="@drawable/knife_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/leadpipe_study"
@@ -780,7 +769,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Button05"
         android:layout_below="@+id/rope_study"
-        android:src="@drawable/leadpipe_space" />
+        android:src="@drawable/leadpipe_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/scarlett_hall"
@@ -789,7 +779,8 @@
         android:layout_alignLeft="@+id/Button01"
         android:layout_alignParentTop="true"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/scarlett_pawn" />
+        android:src="@drawable/scarlett_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/plum_hall"
@@ -798,7 +789,8 @@
         android:layout_above="@+id/knife_study"
         android:layout_toRightOf="@+id/scarlett_hall"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/plum_pawn" />
+        android:src="@drawable/plum_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/peacock_hall"
@@ -807,7 +799,8 @@
         android:layout_above="@+id/knife_study"
         android:layout_toRightOf="@+id/plum_hall"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_peacock_pawn" />
+        android:src="@drawable/mrs_peacock_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/green_hall"
@@ -816,7 +809,8 @@
         android:layout_above="@+id/knife_study"
         android:layout_toRightOf="@+id/peacock_hall"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mr_green_pawn" />
+        android:src="@drawable/mr_green_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/mustard_hall"
@@ -825,7 +819,8 @@
         android:layout_above="@+id/knife_study"
         android:layout_toRightOf="@+id/green_hall"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mustard_pawn" />
+        android:src="@drawable/mustard_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/white_hall"
@@ -834,7 +829,8 @@
         android:layout_above="@+id/knife_study"
         android:layout_toRightOf="@+id/mustard_hall"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_white_pawn" />
+        android:src="@drawable/mrs_white_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/rope_hall"
@@ -842,7 +838,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Button01"
         android:layout_below="@+id/scarlett_hall"
-        android:src="@drawable/rope_space" />
+        android:src="@drawable/rope_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/revolver_hall"
@@ -850,7 +847,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/plum_hall"
         android:layout_toRightOf="@+id/rope_hall"
-        android:src="@drawable/revolver_space" />
+        android:src="@drawable/revolver_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/wrench_hall"
@@ -858,7 +856,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/HallToBilliard"
         android:layout_below="@+id/peacock_hall"
-        android:src="@drawable/wrench_space" />
+        android:src="@drawable/wrench_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/candlestick_hall"
@@ -866,7 +865,8 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/mustard_hall"
         android:layout_below="@+id/green_hall"
-        android:src="@drawable/candlestick_space" />
+        android:src="@drawable/candlestick_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/knife_hall"
@@ -874,7 +874,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/leadpipe_study"
         android:layout_toRightOf="@+id/candlestick_hall"
-        android:src="@drawable/knife_space" />
+        android:src="@drawable/knife_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/leadpipe_hall"
@@ -882,7 +883,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rope_hall"
         android:layout_toLeftOf="@+id/revolver_hall"
-        android:src="@drawable/leadpipe_space" />
+        android:src="@drawable/leadpipe_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/scarlett_lounge"
@@ -891,7 +893,8 @@
         android:layout_above="@+id/knife_hall"
         android:layout_toRightOf="@+id/Hall_To_Lounge"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/scarlett_pawn" />
+        android:src="@drawable/scarlett_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/plum_lounge"
@@ -900,7 +903,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/scarlett_lounge"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/plum_pawn" />
+        android:src="@drawable/plum_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/peacock_study"
@@ -909,7 +913,8 @@
         android:layout_above="@+id/revolver_study"
         android:layout_toRightOf="@+id/plum_study"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_peacock_pawn" />
+        android:src="@drawable/mrs_peacock_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/peacock_lounge"
@@ -918,7 +923,8 @@
         android:layout_above="@+id/knife_hall"
         android:layout_toRightOf="@+id/plum_lounge"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_peacock_pawn" />
+        android:src="@drawable/mrs_peacock_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/green_lounge"
@@ -927,7 +933,8 @@
         android:layout_above="@+id/knife_hall"
         android:layout_toRightOf="@+id/peacock_lounge"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mr_green_pawn" />
+        android:src="@drawable/mr_green_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/mustard_lounge"
@@ -936,7 +943,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/green_lounge"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mustard_pawn" />
+        android:src="@drawable/mustard_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/white_lounge"
@@ -945,7 +953,8 @@
         android:layout_alignParentTop="true"
         android:layout_toRightOf="@+id/mustard_lounge"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_white_pawn" />
+        android:src="@drawable/mrs_white_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/rope_lounge"
@@ -953,7 +962,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/scarlett_lounge"
         android:layout_toRightOf="@+id/Hall_To_Lounge"
-        android:src="@drawable/rope_space" />
+        android:src="@drawable/rope_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/revolver_lounge"
@@ -961,7 +971,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/rope_lounge"
         android:layout_toRightOf="@+id/rope_lounge"
-        android:src="@drawable/revolver_space" />
+        android:src="@drawable/revolver_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/wrench_lounge"
@@ -969,7 +980,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/peacock_lounge"
         android:layout_toRightOf="@+id/revolver_lounge"
-        android:src="@drawable/wrench_space" />
+        android:src="@drawable/wrench_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/candlestick_lounge"
@@ -977,7 +989,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/green_lounge"
         android:layout_toRightOf="@+id/wrench_lounge"
-        android:src="@drawable/candlestick_space" />
+        android:src="@drawable/candlestick_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/knife_lounge"
@@ -985,7 +998,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/candlestick_lounge"
         android:layout_toRightOf="@+id/mustard_lounge"
-        android:src="@drawable/knife_space" />
+        android:src="@drawable/knife_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/leadpipe_lounge"
@@ -993,7 +1007,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rope_lounge"
         android:layout_toRightOf="@+id/LoungeToHall"
-        android:src="@drawable/leadpipe_space" />
+        android:src="@drawable/leadpipe_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/scarlett_library"
@@ -1002,7 +1017,8 @@
         android:layout_alignLeft="@+id/Button06"
         android:layout_alignTop="@+id/Button06"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/scarlett_pawn" />
+        android:src="@drawable/scarlett_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/plum_library"
@@ -1011,7 +1027,8 @@
         android:layout_alignTop="@+id/Button06"
         android:layout_toLeftOf="@+id/peacock_study"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/plum_pawn" />
+        android:src="@drawable/plum_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/peacock_library"
@@ -1020,7 +1037,8 @@
         android:layout_below="@+id/StudyToLibrary"
         android:layout_toRightOf="@+id/plum_library"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_peacock_pawn" />
+        android:src="@drawable/mrs_peacock_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/green_library"
@@ -1029,7 +1047,8 @@
         android:layout_alignRight="@+id/StudyToLibrary"
         android:layout_alignTop="@+id/Button06"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mr_green_pawn" />
+        android:src="@drawable/mr_green_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/mustard_library"
@@ -1038,7 +1057,8 @@
         android:layout_alignLeft="@+id/top_left_diag"
         android:layout_alignTop="@+id/Button06"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mustard_pawn" />
+        android:src="@drawable/mustard_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/white_library"
@@ -1047,7 +1067,8 @@
         android:layout_alignTop="@+id/Button06"
         android:layout_toRightOf="@+id/mustard_library"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_white_pawn" />
+        android:src="@drawable/mrs_white_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/rope_library"
@@ -1055,7 +1076,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Button06"
         android:layout_below="@+id/scarlett_library"
-        android:src="@drawable/rope_space" />
+        android:src="@drawable/rope_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/revolver_library"
@@ -1063,7 +1085,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/plum_library"
         android:layout_below="@+id/plum_library"
-        android:src="@drawable/revolver_space" />
+        android:src="@drawable/revolver_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/wrench_library"
@@ -1071,7 +1094,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/peacock_library"
         android:layout_toRightOf="@+id/revolver_library"
-        android:src="@drawable/wrench_space" />
+        android:src="@drawable/wrench_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/candlestick_library"
@@ -1079,7 +1103,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/green_library"
         android:layout_toRightOf="@+id/wrench_library"
-        android:src="@drawable/candlestick_space" />
+        android:src="@drawable/candlestick_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/knife_library"
@@ -1087,7 +1112,8 @@
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/candlestick_library"
         android:layout_toRightOf="@+id/candlestick_library"
-        android:src="@drawable/knife_space" />
+        android:src="@drawable/knife_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/leadpipe_library"
@@ -1095,7 +1121,8 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/Button06"
         android:layout_below="@+id/rope_library"
-        android:src="@drawable/leadpipe_space" />
+        android:src="@drawable/leadpipe_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/scarlett_billiard"
@@ -1104,7 +1131,8 @@
         android:layout_below="@+id/Billiardroom_To_Library"
         android:layout_toLeftOf="@+id/plum_hall"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/scarlett_pawn" />
+        android:src="@drawable/scarlett_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/plum_billiard"
@@ -1113,7 +1141,8 @@
         android:layout_alignTop="@+id/scarlett_billiard"
         android:layout_toRightOf="@+id/scarlett_billiard"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/plum_pawn" />
+        android:src="@drawable/plum_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/peacock_billiard"
@@ -1122,7 +1151,8 @@
         android:layout_alignTop="@+id/plum_billiard"
         android:layout_toRightOf="@+id/plum_billiard"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_peacock_pawn" />
+        android:src="@drawable/mrs_peacock_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/green_billiard"
@@ -1131,7 +1161,8 @@
         android:layout_alignRight="@+id/BilliardToBallroom"
         android:layout_alignTop="@+id/peacock_billiard"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mr_green_pawn" />
+        android:src="@drawable/mr_green_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/mustard_billiard"
@@ -1140,7 +1171,8 @@
         android:layout_alignTop="@+id/green_billiard"
         android:layout_toRightOf="@+id/green_hall"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mustard_pawn" />
+        android:src="@drawable/mustard_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/white_billiard"
@@ -1149,7 +1181,8 @@
         android:layout_alignTop="@+id/mustard_billiard"
         android:layout_toRightOf="@+id/mustard_billiard"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_white_pawn" />
+        android:src="@drawable/mrs_white_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/rope_billiard"
@@ -1157,7 +1190,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/scarlett_billiard"
         android:layout_toLeftOf="@+id/Billiardroom_To_Ballroom"
-        android:src="@drawable/rope_space" />
+        android:src="@drawable/rope_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/revolver_billiard"
@@ -1165,7 +1199,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rooms_text"
         android:layout_toRightOf="@+id/rope_billiard"
-        android:src="@drawable/revolver_space" />
+        android:src="@drawable/revolver_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/wrench_billiard"
@@ -1173,7 +1208,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rooms_text"
         android:layout_toRightOf="@+id/revolver_billiard"
-        android:src="@drawable/wrench_space" />
+        android:src="@drawable/wrench_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/candlestick_billiard"
@@ -1181,7 +1217,8 @@
         android:layout_height="wrap_content"
         android:layout_alignRight="@+id/mustard_billiard"
         android:layout_below="@+id/rooms_text"
-        android:src="@drawable/candlestick_space" />
+        android:src="@drawable/candlestick_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/knife_billiard"
@@ -1189,7 +1226,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/rooms_text"
         android:layout_toRightOf="@+id/candlestick_billiard"
-        android:src="@drawable/knife_space" />
+        android:src="@drawable/knife_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/leadpipe_billiard"
@@ -1197,7 +1235,8 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/radioGroup2"
         android:layout_toRightOf="@+id/BilliardToLibrary"
-        android:src="@drawable/leadpipe_space" />
+        android:src="@drawable/leadpipe_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/plum_dining"
@@ -1206,7 +1245,8 @@
         android:layout_alignTop="@+id/scarlett_dining"
         android:layout_toRightOf="@+id/scarlett_dining"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/plum_pawn" />
+        android:src="@drawable/plum_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/peacock_dining"
@@ -1215,7 +1255,8 @@
         android:layout_alignTop="@+id/plum_dining"
         android:layout_toRightOf="@+id/plum_dining"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_peacock_pawn" />
+        android:src="@drawable/mrs_peacock_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/scarlett_dining"
@@ -1224,7 +1265,8 @@
         android:layout_above="@+id/knife_library"
         android:layout_toRightOf="@+id/DiningToBilliard"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/scarlett_pawn" />
+        android:src="@drawable/scarlett_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/green_dining"
@@ -1233,7 +1275,8 @@
         android:layout_alignLeft="@+id/green_lounge"
         android:layout_alignTop="@+id/button2"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mr_green_pawn" />
+        android:src="@drawable/mr_green_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/mustard_dining"
@@ -1242,7 +1285,8 @@
         android:layout_alignLeft="@+id/mustard_lounge"
         android:layout_alignTop="@+id/button2"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mustard_pawn" />
+        android:src="@drawable/mustard_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/white_dining"
@@ -1251,7 +1295,8 @@
         android:layout_above="@+id/knife_library"
         android:layout_alignLeft="@+id/knife_lounge"
         android:contentDescription="@string/Cards"
-        android:src="@drawable/mrs_white_pawn" />
+        android:src="@drawable/mrs_white_pawn" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/revolver_dining"
@@ -1259,7 +1304,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/leadpipe_library"
         android:layout_toRightOf="@+id/rope_dining"
-        android:src="@drawable/revolver_space" />
+        android:src="@drawable/revolver_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/rope_dining"
@@ -1267,7 +1313,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/leadpipe_library"
         android:layout_alignLeft="@+id/button2"
-        android:src="@drawable/rope_space" />
+        android:src="@drawable/rope_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/wrench_dining"
@@ -1275,7 +1322,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/leadpipe_library"
         android:layout_toRightOf="@+id/bottom_right_diag"
-        android:src="@drawable/wrench_space" />
+        android:src="@drawable/wrench_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/candlestick_dining"
@@ -1283,7 +1331,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/leadpipe_library"
         android:layout_toRightOf="@+id/wrench_dining"
-        android:src="@drawable/candlestick_space" />
+        android:src="@drawable/candlestick_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/knife_dining"
@@ -1291,7 +1340,8 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/leadpipe_library"
         android:layout_toRightOf="@+id/candlestick_dining"
-        android:src="@drawable/knife_space" />
+        android:src="@drawable/knife_space" 
+        android:visibility="invisible"/>
 
     <ImageView
         android:id="@+id/leadpipe_dining"
@@ -1299,6 +1349,7 @@
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/button2"
         android:layout_alignTop="@+id/leadpipe_library"
-        android:src="@drawable/leadpipe_space" />
+        android:src="@drawable/leadpipe_space" 
+        android:visibility="invisible"/>
     
 </RelativeLayout>
