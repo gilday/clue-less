@@ -1,0 +1,409 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/murderRBGroup"
+        android:layout_alignLeft="@+id/murderRBGroup"
+        android:layout_toLeftOf="@+id/weaponRBGroup"
+        android:text="@string/suspectlist"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textView1"
+        android:layout_alignBottom="@+id/textView1"
+        android:layout_toRightOf="@+id/murderRBGroup"
+        android:text="@string/weaponlist"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <RadioGroup
+        android:id="@+id/weaponRBGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="184dp"
+        android:layout_marginTop="98dp" >
+
+        <RadioButton
+            android:id="@+id/ropeRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rope" />
+
+        <RadioButton
+            android:id="@+id/revolverRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/revolver" />
+
+        <RadioButton
+            android:id="@+id/wrenchRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wrench" />
+
+        <RadioButton
+            android:id="@+id/candlestickRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/candlestick" />
+
+        <RadioButton
+            android:id="@+id/knifeRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/knife" />
+
+        <RadioButton
+            android:id="@+id/lead_pipeRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lead_pipe" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/murderRBGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/weaponRBGroup"
+        android:layout_marginRight="15dp"
+        android:layout_toLeftOf="@+id/weaponRBGroup" >
+
+        <RadioButton
+            android:id="@+id/scarlettRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            android:text="@string/scarlett" />
+
+        <RadioButton
+            android:id="@+id/plumRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plum" />
+
+        <RadioButton
+            android:id="@+id/peacockRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/peacock" />
+
+        <RadioButton
+            android:id="@+id/greenRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/green" />
+
+        <RadioButton
+            android:id="@+id/mustardRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mustard" />
+
+        <RadioButton
+            android:id="@+id/whiteRB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/white" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/clue_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/suspects"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup1"
+        android:layout_width="483dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/clue_text"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/miss_scarlett"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/miss_scarlett" />
+
+        <RadioButton
+            android:id="@+id/prof_plum"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/prof_plum" />
+
+        <RadioButton
+            android:id="@+id/mrs_peacock"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/mrs_peacock" />
+
+        <RadioButton
+            android:id="@+id/mr_green"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/mr_green" />
+
+        <RadioButton
+            android:id="@+id/col_mustard"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/col_mustard" />
+
+        <RadioButton
+            android:id="@+id/mrs_white"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/mrs_white" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/weapons_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/radioGroup1"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/weapon"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup2"
+        android:layout_width="483dp"
+        android:layout_height="80dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/weapons_text"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/rope"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/rope" />
+
+        <RadioButton
+            android:id="@+id/revolover"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/revolver" />
+
+        <RadioButton
+            android:id="@+id/wrench"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/wrench" />
+
+        <RadioButton
+            android:id="@+id/candlestick"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/candlestick" />
+
+        <RadioButton
+            android:id="@+id/knife"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/knife" />
+
+        <RadioButton
+            android:id="@+id/lead_pipe"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:background="@drawable/lead_pipe" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/rooms_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/radioGroup2"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/rooms"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <RadioGroup
+        android:id="@+id/radioGroup3"
+        android:layout_width="483dp"
+        android:layout_height="30dp"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/rooms_text"
+        android:orientation="horizontal" >
+
+        <RadioButton
+            android:id="@+id/study_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/study_small" />
+
+        <RadioButton
+            android:id="@+id/hall_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/hall_small" />
+
+        <TextView
+            android:id="@+id/TextView01"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/blue"
+            android:gravity="center"
+            android:text="@string/rooms"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <RadioButton
+            android:id="@+id/lounge_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/lounge_small" />
+
+        <RadioButton
+            android:id="@+id/library_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/library_small" />
+
+        <RadioButton
+            android:id="@+id/billiard_room_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/billiard_room_small" />
+
+        <RadioButton
+            android:id="@+id/dining_room_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/dining_room_small" />
+
+        <RadioButton
+            android:id="@+id/conservatory_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/conservatory_small" />
+
+        <RadioButton
+            android:id="@+id/ballroom_small"
+            android:layout_width="54dp"
+            android:layout_height="30dp"
+            android:background="@drawable/ballroom_small" />
+
+        <RadioButton
+            android:id="@+id/kitchen_small"
+            android:layout_width="56dp"
+            android:layout_height="30dp"
+            android:background="@drawable/kitchen_small" />
+    </RadioGroup>
+
+    <TextView
+        android:id="@+id/TextView02"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/radioGroup3"
+        android:background="@color/blue"
+        android:gravity="center"
+        android:text="@string/hand"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <ImageView
+        android:id="@+id/card1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_toLeftOf="@+id/card2"
+        android:contentDescription="@string/Cards"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/rooms_text"
+        android:layout_alignTop="@+id/card1"
+        android:contentDescription="@string/Cards"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/card2"
+        android:layout_toRightOf="@+id/card2"
+        android:contentDescription="@string/Cards"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/card3"
+        android:layout_toRightOf="@+id/card3"
+        android:contentDescription="@string/Cards"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/card4"
+        android:contentDescription="@string/Cards"
+        android:src="@drawable/empty" />
+
+    <ImageView
+        android:id="@+id/card6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView3"
+        android:layout_toRightOf="@+id/card5"
+        android:contentDescription="@string/Cards"
+        android:src="@drawable/empty" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/murderRBGroup"
+        android:layout_alignRight="@+id/weaponRBGroup"
+        android:layout_below="@+id/weaponRBGroup"
+        android:text="PlaceHolder-ROOM-"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignRight="@+id/textView2"
+        android:layout_alignTop="@+id/card6"
+        android:layout_marginRight="37dp"
+        android:layout_marginTop="26dp"
+        android:text="@string/Make_A_Suggestion" />
+
+</RelativeLayout>

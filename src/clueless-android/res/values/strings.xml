@@ -6,6 +6,8 @@
     <string name="hello_world">Hello world!</string>
     <string name="menu_settings">Settings</string>
     <string name="title_activity_play_game">PlayGameActivity</string>
+    
+    <!-- ***** ROOMS ***** -->
     <string name="Lounge"><b>LOUNGE</b></string>
     <string name="Dining_Room"><b>DINING ROOM</b></string>
     <string name="Kitchen"><b>KITCHEN</b></string>
@@ -15,6 +17,7 @@
     <string name="Study"><b>STUDY</b></string>
     <string name="Library"><b>LIBRARY</b></string>
     <string name="Conservatory"><b>CONSERVATORY</b></string>
+    
     <string name="Width">125dp</string>
     <string name="Height">125dp</string>
     <string name="font_size">12sp</string>
@@ -28,5 +31,23 @@
     <string name="Cards">card</string>
     <string name="title_activity_watch_match_test">WatchMatchTestActivity</string>
     <string name="findmatch">Find Match</string>
+    <string name="suspectlist">Suspect</string>
+    <string name="weaponlist">Weapon</string>
+    
+    <!-- ***** WEAPONS ***** -->
+    <string name="candlestick">Candlestick</string>
+    <string name="knife">Knife</string>
+    <string name="lead_pipe">Lead Pipe</string>
+    <string name="revolver">Revolver</string>
+    <string name="rope">Rope</string>
+    <string name="wrench">Wrench</string>
+    
+    <!-- ***** SUSPECTS ***** -->
+    <string name="green">Mr. Green</string>
+    <string name="mustard">Col. Mustard</string>
+    <string name="peacock">Mrs. Peacock</string>
+    <string name="plum">Prof. Plum</string>
+    <string name="scarlett">Ms. Scarlett</string>
+    <string name="white">Mrs. White</string>
 
 </resources>
