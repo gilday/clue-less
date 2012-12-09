@@ -15,6 +15,7 @@ import edu.jhu.ep.butlerdidit.domain.GameBoardSpace;
 
 public class PlayGameActivity extends Activity 
 {
+	;
 
 	//Button Lounge_Button = (Button) findViewById(R.id.button1);
 	GameBoard game;

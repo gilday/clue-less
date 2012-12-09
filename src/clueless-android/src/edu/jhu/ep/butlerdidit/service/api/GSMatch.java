@@ -7,7 +7,7 @@ import com.google.gson.annotations.SerializedName;
 
 
 
-public class Match {
+public class GSMatch {
 	
 	private int id;
 	
@@ -27,7 +27,7 @@ public class Match {
 	@SerializedName("updated_at")
 	private Date updatedAt;
 	
-	private Collection<GameParticipant> participants;
+	private Collection<GSParticipant> participants;
 	
 	@SerializedName("player_id")
 	private String currentPlayer;
@@ -88,7 +88,7 @@ public class Match {
 		this.updatedAt = updatedAt;
 	}
 
-	public Collection<GameParticipant> getParticipants() {
+	public Collection<GSParticipant> getParticipants() {
 		return participants;
 	}
 
@@ -96,7 +96,7 @@ public class Match {
 		return currentPlayer;
 	}
 
-	public void setParticipants(Collection<GameParticipant> players) {
+	public void setParticipants(Collection<GSParticipant> players) {
 		this.participants = players;
 	}
 

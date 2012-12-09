@@ -5,15 +5,15 @@ import java.util.Calendar;
 import junit.framework.TestCase;
 import android.test.mock.MockContext;
 import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
-import edu.jhu.ep.butlerdidit.service.GameServerMatchHelperImpl;
-import edu.jhu.ep.butlerdidit.service.api.GameServerMatchListener;
-import edu.jhu.ep.butlerdidit.service.api.Match;
+import edu.jhu.ep.butlerdidit.service.GSMatchHelperImpl;
+import edu.jhu.ep.butlerdidit.service.api.GSMatchListener;
+import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 
 public class GameServerMatchHelperTests extends TestCase {
 
-	private GameServerMatchHelperImpl gsHelper;
+	private GSMatchHelperImpl gsHelper;
 	private GameServerAssertions assertions;
-	private Match match;
+	private GSMatch match;
 	
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -21,12 +21,12 @@ public class GameServerMatchHelperTests extends TestCase {
         LocalPlayerHolder lpHolder = new LocalPlayerHolder();
         lpHolder.setLocalPlayerEmail("player@test.com");
         
-        gsHelper = new GameServerMatchHelperImpl(new MockContext());
+        gsHelper = new GSMatchHelperImpl(new MockContext());
         gsHelper.setCurrentMatchById(1);
         gsHelper.setLocalPlayerHolder(lpHolder);
         resetAssertions();
         
-        match = new Match();
+        match = new GSMatch();
         match.setId(1);
 	}
 	
@@ -44,7 +44,7 @@ public class GameServerMatchHelperTests extends TestCase {
         match.setRawMatchData("DATA-DATA-DATA");
         match.setUpdatedAt(cal.getTime());
         
-		Match newMatch = new Match();
+		GSMatch newMatch = new GSMatch();
 		newMatch.setId(1);
 		newMatch.setRawMatchData("DATA-DATA-DATA");
 		newMatch.setCurrentPlayer("player2@test.com");
@@ -92,7 +92,7 @@ public class GameServerMatchHelperTests extends TestCase {
 		
 		gsHelper.matchReceived(match);
 		
-		Match newMatch = new Match();
+		GSMatch newMatch = new GSMatch();
 		newMatch.setId(1);
 		newMatch.setRawMatchData("DATA-DATA-DATA");
 		newMatch.setCurrentPlayer("player@test.com");
@@ -120,7 +120,7 @@ public class GameServerMatchHelperTests extends TestCase {
 		
 		gsHelper.matchReceived(match);
 		
-		Match newMatch = new Match();
+		GSMatch newMatch = new GSMatch();
 		newMatch.setId(1);
 		newMatch.setCurrentPlayer("player2@test.com");
 		newMatch.setRawMatchData("DATA-DATA-DATA");
@@ -165,7 +165,7 @@ public class GameServerMatchHelperTests extends TestCase {
 	 * TODO I bet Java has a mock library that can do this for me without 
 	 * making a new inner class for it
 	 */
-	class GameServerAssertions implements GameServerMatchListener {
+	class GameServerAssertions implements GSMatchListener {
 
 		boolean enterGameCalled = false;
 		boolean layoutMatchCalled = false;
@@ -173,22 +173,22 @@ public class GameServerMatchHelperTests extends TestCase {
 		boolean receiveEndGameCalled = false;
 		
 		@Override
-		public void enterNewGame(Match match) {
+		public void enterNewGame(GSMatch match) {
 			enterGameCalled = true;
 		}
 
 		@Override
-		public void layoutMatch(Match match) {
+		public void layoutMatch(GSMatch match) {
 			layoutMatchCalled = true;
 		}
 
 		@Override
-		public void takeTurn(Match match) {
+		public void takeTurn(GSMatch match) {
 			takeTurnCalled = true;
 		}
 
 		@Override
-		public void receiveEndGame(Match match) {
+		public void receiveEndGame(GSMatch match) {
 			receiveEndGameCalled = true;
 		}
 		

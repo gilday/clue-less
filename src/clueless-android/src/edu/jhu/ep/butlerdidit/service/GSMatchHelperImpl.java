@@ -3,7 +3,6 @@ package edu.jhu.ep.butlerdidit.service;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import roboguice.inject.ContextSingleton;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
@@ -11,44 +10,45 @@ import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
 import com.google.inject.Inject;
+import com.google.inject.Singleton;
 
 import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
-import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
-import edu.jhu.ep.butlerdidit.service.api.GameServerMatchHelper;
-import edu.jhu.ep.butlerdidit.service.api.GameServerMatchListener;
-import edu.jhu.ep.butlerdidit.service.api.Match;
-import edu.jhu.ep.butlerdidit.service.api.MatchDataListener;
+import edu.jhu.ep.butlerdidit.service.api.GSConstants;
+import edu.jhu.ep.butlerdidit.service.api.GSMatch;
+import edu.jhu.ep.butlerdidit.service.api.GSMatchDataListener;
+import edu.jhu.ep.butlerdidit.service.api.GSMatchHelper;
+import edu.jhu.ep.butlerdidit.service.api.GSMatchListener;
 
-@ContextSingleton
-public class GameServerMatchHelperImpl implements GameServerMatchHelper, MatchDataListener {
+@Singleton
+public class GSMatchHelperImpl implements GSMatchHelper, GSMatchDataListener {
 	
-	private static final int INTERVAL = 1000;
+	private static final int INTERVAL = 3000;
 
-	@Inject
 	private Context context;
 	
 	@Inject
 	private LocalPlayerHolder lpHolder;
 	
-	private Match currentMatch;
+	private GSMatch currentMatch;
 	private int currentMatchId;
-	private GameServerMatchListener listener;
+	private GSMatchListener listener;
 	private Timer timer;
 	private MatchDataBroadcastReceiver matchDataReceiver;
 	
-	public GameServerMatchHelperImpl(Context context) {
+	@Inject
+	public GSMatchHelperImpl(Context context) {
 		this.context = context;
 		matchDataReceiver = new MatchDataBroadcastReceiver();
 		matchDataReceiver.registerListener(this);
 	}
 	
 	@Override
-	public void setGameServerMatchListener(GameServerMatchListener listener) {
+	public void setGameServerMatchListener(GSMatchListener listener) {
 		this.listener = listener;
 	}
 	
 	@Override
-	public Match getCurrentMatch() { return currentMatch; }
+	public GSMatch getCurrentMatch() { return currentMatch; }
 	
 	@Override
 	public void setCurrentMatchById(int matchId) {
@@ -63,7 +63,7 @@ public class GameServerMatchHelperImpl implements GameServerMatchHelper, MatchDa
 	@Override
 	public void startWatchingMatch() {
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(context);
-		lbm.registerReceiver(matchDataReceiver, new IntentFilter(GameServerConstants.BROADCAST_MATCHRECEIVED_SUCCESS));	
+		lbm.registerReceiver(matchDataReceiver, new IntentFilter(GSConstants.BROADCAST_MATCHRECEIVED_SUCCESS));	
 		
 		// Start timer
     	timer = new Timer();
@@ -81,12 +81,12 @@ public class GameServerMatchHelperImpl implements GameServerMatchHelper, MatchDa
 	}
 
 	@Override
-	public void updateMatch(Match match) {
+	public void updateMatch(GSMatch match) {
 		UpdateMatchModel model = new UpdateMatchModel(match);
 		
-		Intent updateIntent = new Intent(context, GameServerMatchService.class);
-		updateIntent.setAction(GameServerConstants.ACTION_MATCH_UPDATE);
-		updateIntent.putExtra(GameServerConstants.PARM_UPDATEMATCH, model);
+		Intent updateIntent = new Intent(context, GSMatchService.class);
+		updateIntent.setAction(GSConstants.ACTION_MATCH_UPDATE);
+		updateIntent.putExtra(GSConstants.PARM_UPDATEMATCH, model);
 		context.startService(updateIntent);
 	}
 	
@@ -99,9 +99,9 @@ public class GameServerMatchHelperImpl implements GameServerMatchHelper, MatchDa
 	}
 	
 	private void requestMatchById(int matchId) {
-		Intent pollMatch = new Intent(context, GameServerMatchService.class);
-		pollMatch.setAction(GameServerConstants.ACTION_GET_MATCH);
-		pollMatch.putExtra(GameServerConstants.PARM_ID, matchId);
+		Intent pollMatch = new Intent(context, GSMatchService.class);
+		pollMatch.setAction(GSConstants.ACTION_GET_MATCH);
+		pollMatch.putExtra(GSConstants.PARM_ID, matchId);
 		context.startService(pollMatch);
 	}
 	
@@ -118,12 +118,12 @@ public class GameServerMatchHelperImpl implements GameServerMatchHelper, MatchDa
 	 * TODO this is ugly. don't like the branching
 	 */
 	@Override
-	public void matchReceived(Match newMatch) {
+	public void matchReceived(GSMatch newMatch) {
 		if(currentMatchId != newMatch.getId()) {
-			Log.e(GameServerMatchHelper.class.getName(), "Can only receive match entities of one ID for now");
+			Log.e(GSMatchHelper.class.getName(), "Can only receive match entities of one ID for now");
 			return;
 		}
-		Match oldMatch = currentMatch;
+		GSMatch oldMatch = currentMatch;
 		currentMatch = newMatch;
 		// The logic for determining if any events should be raised like "it's your turn"
 

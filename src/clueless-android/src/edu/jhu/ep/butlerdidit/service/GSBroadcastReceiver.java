@@ -6,7 +6,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
-abstract class GameServerBroadcastReceiver<T> extends BroadcastReceiver {
+abstract class GSBroadcastReceiver<T> extends BroadcastReceiver {
 	
 	protected LinkedList<T> listeners = new LinkedList<T>();
 	

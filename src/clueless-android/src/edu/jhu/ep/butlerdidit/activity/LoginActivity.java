@@ -2,6 +2,8 @@ package edu.jhu.ep.butlerdidit.activity;
 
 import java.util.regex.Pattern;
 
+import com.google.inject.Inject;
+
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.animation.Animator;
@@ -19,11 +21,12 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.R;
 import edu.jhu.ep.butlerdidit.service.AuthenticationBroadcastReceiver;
 import edu.jhu.ep.butlerdidit.service.AuthenticationChangedListener;
-import edu.jhu.ep.butlerdidit.service.GameServerMatchService;
-import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
+import edu.jhu.ep.butlerdidit.service.GSMatchService;
+import edu.jhu.ep.butlerdidit.service.api.GSConstants;
 
 /**
  * Activity which displays a login screen to the user, offering registration as
@@ -51,6 +54,9 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 	@InjectView(R.id.login_form)			private View mLoginFormView;
 	@InjectView(R.id.login_status) 			private View mLoginStatusView;
 	@InjectView(R.id.login_status_message)	private TextView mLoginStatusMessageView;
+	
+	@Inject
+	private LocalPlayerHolder localPlayerHolder;
 	
 	private AuthenticationBroadcastReceiver authBroadcastReceiver;
 
@@ -96,11 +102,11 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 	public void onResume() {
 		super.onResume();
 		// Register authentication listener
-		authBroadcastReceiver = new AuthenticationBroadcastReceiver();
+		authBroadcastReceiver = new AuthenticationBroadcastReceiver(localPlayerHolder);
 		authBroadcastReceiver.registerListener(this);
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(getApplicationContext());
-		lbm.registerReceiver(authBroadcastReceiver, new IntentFilter(GameServerConstants.BROADCAST_AUTHENTICATION_SUCCESS));
-		lbm.registerReceiver(authBroadcastReceiver, new IntentFilter(GameServerConstants.BROADCAST_AUTHENTICATION_FAILED));
+		lbm.registerReceiver(authBroadcastReceiver, new IntentFilter(GSConstants.BROADCAST_AUTHENTICATION_SUCCESS));
+		lbm.registerReceiver(authBroadcastReceiver, new IntentFilter(GSConstants.BROADCAST_AUTHENTICATION_FAILED));
 	}
 	
 	@Override
@@ -162,10 +168,10 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
 			showProgress(true);
 			// Start login
-			Intent loginIntent = new Intent(this, GameServerMatchService.class);
-			loginIntent.setAction(GameServerConstants.ACTION_LOGIN);
-			loginIntent.putExtra(GameServerConstants.PARM_EMAIL, mEmail);
-			loginIntent.putExtra(GameServerConstants.PARM_PASSWORD, mPassword);
+			Intent loginIntent = new Intent(this, GSMatchService.class);
+			loginIntent.setAction(GSConstants.ACTION_LOGIN);
+			loginIntent.putExtra(GSConstants.PARM_EMAIL, mEmail);
+			loginIntent.putExtra(GSConstants.PARM_PASSWORD, mPassword);
 			startService(loginIntent);
 		}
 	}
@@ -219,6 +225,10 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 	public void onUserAuthenticated(String email) {
 		showProgress(false);
 		Log.v(LoginActivity.class.getName(), String.format("%s logged in to game server", email));
+		
+		Intent watchIntent = new Intent(getApplicationContext(), WatchMatchTestActivity.class);
+		watchIntent.putExtra(WatchMatchTestActivity.PARM_MATCHID, 1);
+		startActivity(watchIntent);
 	}
 
 	@Override

@@ -3,7 +3,7 @@ package edu.jhu.ep.butlerdidit.test;
 import java.io.IOException;
 
 import junit.framework.TestCase;
-import edu.jhu.ep.butlerdidit.service.GameServerHttpClient;
+import edu.jhu.ep.butlerdidit.service.GSHttpClient;
 import edu.jhu.ep.butlerdidit.service.RestResponse;
 
 /**
@@ -17,12 +17,12 @@ import edu.jhu.ep.butlerdidit.service.RestResponse;
  */
 public class GameServerHttpClientTests extends TestCase {
 
-	private GameServerHttpClient httpClient;
+	private GSHttpClient httpClient;
 	
 	protected void setUp() throws Exception {
 		super.setUp();
 		
-		httpClient = new GameServerHttpClient();
+		httpClient = new GSHttpClient();
 		doLogin();
 	}
 	

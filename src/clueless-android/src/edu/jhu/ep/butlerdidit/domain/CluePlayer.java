@@ -1,6 +1,6 @@
 package edu.jhu.ep.butlerdidit.domain;
 
-import edu.jhu.ep.butlerdidit.service.api.GamePlayer;
+import edu.jhu.ep.butlerdidit.service.api.GSPlayer;
 
 
 /**
@@ -10,12 +10,12 @@ import edu.jhu.ep.butlerdidit.service.api.GamePlayer;
  */
 public class CluePlayer {
 	
-	private GamePlayer gamePlayer;
+	private GSPlayer gamePlayer;
 	
-    public GamePlayer getGamePlayer() {
+    public GSPlayer getGamePlayer() {
 		return gamePlayer;
 	}
-	public void setGamePlayer(GamePlayer gamePlayer) {
+	public void setGamePlayer(GSPlayer gamePlayer) {
 		this.gamePlayer = gamePlayer;
 	}
 

@@ -5,7 +5,7 @@ package edu.jhu.ep.butlerdidit.service.api;
  * being played on Game Server so this player may be playing multiple 
  * matches of Clue or other games. Remember, this is modeled after Game Center
  */
-public class GamePlayer {
+public class GSPlayer {
 
 	private int id;
 	private String email;

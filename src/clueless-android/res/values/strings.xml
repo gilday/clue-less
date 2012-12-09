@@ -26,5 +26,7 @@
     <string name="rooms">IN WHICH ROOM?</string>
     <string name="hand">YOUR HAND</string>
     <string name="Cards">card</string>
+    <string name="title_activity_watch_match_test">WatchMatchTestActivity</string>
+    <string name="findmatch">Find Match</string>
 
 </resources>

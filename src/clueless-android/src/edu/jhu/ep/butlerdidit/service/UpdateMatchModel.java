@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 import com.google.gson.annotations.SerializedName;
 
-import edu.jhu.ep.butlerdidit.service.api.Match;
+import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 
 /**
  * Just used to serialize only the fields we want with GSON
@@ -25,7 +25,7 @@ class UpdateMatchModel implements Parcelable {
 	
 	public UpdateMatchModel() { }
 
-	public UpdateMatchModel(Match entity) {
+	public UpdateMatchModel(GSMatch entity) {
 		id = entity.getId();
 		status = entity.getStatus();
 		message = entity.getMessage();

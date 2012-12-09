@@ -13,9 +13,10 @@ import java.util.HashMap;
 
 import org.json.JSONObject;
 
-import roboguice.inject.ContextSingleton;
+import android.util.Log;
 
 import com.google.gson.Gson;
+import com.google.inject.Singleton;
 
 /**
  * Group all the HTTP Calls in here so they're easier to unit test
@@ -23,17 +24,17 @@ import com.google.gson.Gson;
  * @author jgilday
  *
  */
-@ContextSingleton
-public class GameServerHttpClient {
-	
-	static {
-		CookieHandler.setDefault(new CookieManager());
-	}
+@Singleton
+public class GSHttpClient {
 	
 	// 10.0.2.2 is a special address for the host development machine
 	private final String gameServerEndpoint = "http://10.0.2.2:3000";
 	
 	private boolean loggedIn = false;
+	
+	public GSHttpClient() {
+		CookieHandler.setDefault(new CookieManager());
+	}
 	
 	public boolean isLoggedIn() {
 		return loggedIn;
@@ -114,12 +115,13 @@ public class GameServerHttpClient {
 		return new RestResponse(status);
 	}
 	
-	private String convertStreamToString(InputStream is) {
+	private String convertStreamToString(InputStream is) throws IOException {
 	    java.util.Scanner s = new java.util.Scanner(is).useDelimiter("\\A");
 	    return s.hasNext() ? s.next() : "";
 	}
 	
 	private RestResponse getJson(URL url) throws IOException {
+		Log.v(GSHttpClient.class.getName(), String.format("GET %s", url.toString()));
 		HttpURLConnection connection = (HttpURLConnection) url.openConnection();
 		connection.setRequestMethod("GET");
 		connection.setRequestProperty("Accept", "application/json");

@@ -38,6 +38,7 @@
 
         <LinearLayout
             style="@style/LoginFormContainer"
+            android:layout_height="290dp"
             android:orientation="vertical" >
 
             <EditText
@@ -76,7 +77,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="right"
-                android:text="@string/skiplogin" />
+                android:text="@string/skiplogin" 
+                android:onClick="findMatchButton"/>
 
         </LinearLayout>
     </ScrollView>

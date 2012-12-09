@@ -1,6 +1,6 @@
 package edu.jhu.ep.butlerdidit.service.api;
 
-public class GameServerConstants {
+public class GSConstants {
 
 	public static final String BROADCAST_AUTHENTICATION_FAILED = "edu.jhu.ep.butlerdidit.broadcast.authfailed";
 	public static final String BROADCAST_AUTHENTICATION_SUCCESS = "edu.jhu.ep.butlerdidit.broadcast.authsuccess";

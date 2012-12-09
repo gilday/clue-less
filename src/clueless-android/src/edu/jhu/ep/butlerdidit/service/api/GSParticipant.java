@@ -2,16 +2,16 @@ package edu.jhu.ep.butlerdidit.service.api;
 
 import com.google.gson.annotations.SerializedName;
 
-public class GameParticipant {
+public class GSParticipant {
 	
 	@SerializedName("player")
-	private GamePlayer gamePlayer;
+	private GSPlayer gamePlayer;
 
-	public GamePlayer getGamePlayer() {
+	public GSPlayer getGamePlayer() {
 		return gamePlayer;
 	}
 
-	public void setGamePlayer(GamePlayer gamePlayer) {
+	public void setGamePlayer(GSPlayer gamePlayer) {
 		this.gamePlayer = gamePlayer;
 	}
 }

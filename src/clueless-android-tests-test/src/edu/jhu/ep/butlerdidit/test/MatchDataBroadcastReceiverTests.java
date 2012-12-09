@@ -3,10 +3,10 @@ package edu.jhu.ep.butlerdidit.test;
 import android.content.Intent;
 import android.test.mock.MockContext;
 import edu.jhu.ep.butlerdidit.service.MatchDataBroadcastReceiver;
-import edu.jhu.ep.butlerdidit.service.api.GameParticipant;
-import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
-import edu.jhu.ep.butlerdidit.service.api.Match;
-import edu.jhu.ep.butlerdidit.service.api.MatchDataListener;
+import edu.jhu.ep.butlerdidit.service.api.GSParticipant;
+import edu.jhu.ep.butlerdidit.service.api.GSConstants;
+import edu.jhu.ep.butlerdidit.service.api.GSMatch;
+import edu.jhu.ep.butlerdidit.service.api.GSMatchDataListener;
 import junit.framework.TestCase;
 
 public class MatchDataBroadcastReceiverTests extends TestCase {
@@ -25,7 +25,7 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 		// GIVEN
 		// a match receiver that will ensure the match was created
 		broadcastReceiver.registerListener(new MatchAssertion());
-		String action = GameServerConstants.BROADCAST_MATCHRECEIVED_SUCCESS;
+		String action = GSConstants.BROADCAST_MATCHRECEIVED_SUCCESS;
 		String json = 
 			"{ " +
 				"\"id\":1," +
@@ -47,7 +47,7 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 			"}";
 		System.out.println(json);
 		Intent intent = new Intent(action);
-		intent.putExtra(GameServerConstants.PARM_JSON, json);
+		intent.putExtra(GSConstants.PARM_JSON, json);
 		
 		// WHEN
 		// the broadcast receiver is given intent valid match json
@@ -57,9 +57,9 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 		// MatchAssertion doesn't complain
 	}
 	
-	class MatchAssertion implements MatchDataListener {
+	class MatchAssertion implements GSMatchDataListener {
 		@Override
-		public void matchReceived(Match match) {
+		public void matchReceived(GSMatch match) {
 			assertNotNull(match.getMessage());
 			assertNotNull(match.getStatus());
 			assertNotNull(match.getRawMatchData());
@@ -67,7 +67,7 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 			assertTrue(match.getMinPlayers() > 1);
 			assertTrue(match.getMaxPlayers() > 1);
 			assertNotNull(match.getParticipants());
-			GameParticipant participant = (GameParticipant) match.getParticipants().toArray()[0];
+			GSParticipant participant = (GSParticipant) match.getParticipants().toArray()[0];
 			assertEquals("testPlayer@example.com", participant.getGamePlayer().getEmail());
 		}
 	}
