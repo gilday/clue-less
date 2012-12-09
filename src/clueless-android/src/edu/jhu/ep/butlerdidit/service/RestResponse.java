@@ -1,6 +1,6 @@
 package edu.jhu.ep.butlerdidit.service;
 
-public class RestResponse {
+class RestResponse {
 	
 	private int httpStatusCode;
 	private String jsonString = null;

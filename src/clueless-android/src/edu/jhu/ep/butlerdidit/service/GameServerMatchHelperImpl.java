@@ -13,10 +13,11 @@ import android.util.Log;
 import com.google.inject.Inject;
 
 import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
-import edu.jhu.ep.butlerdidit.domain.Match;
 import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
 import edu.jhu.ep.butlerdidit.service.api.GameServerMatchHelper;
 import edu.jhu.ep.butlerdidit.service.api.GameServerMatchListener;
+import edu.jhu.ep.butlerdidit.service.api.Match;
+import edu.jhu.ep.butlerdidit.service.api.MatchDataListener;
 
 @ContextSingleton
 public class GameServerMatchHelperImpl implements GameServerMatchHelper, MatchDataListener {
@@ -62,7 +63,7 @@ public class GameServerMatchHelperImpl implements GameServerMatchHelper, MatchDa
 	@Override
 	public void startWatchingMatch() {
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(context);
-		lbm.registerReceiver(matchDataReceiver, new IntentFilter(GameServerConstants.ACTION_MATCH_RECEIVED));	
+		lbm.registerReceiver(matchDataReceiver, new IntentFilter(GameServerConstants.BROADCAST_MATCHRECEIVED_SUCCESS));	
 		
 		// Start timer
     	timer = new Timer();
@@ -81,8 +82,12 @@ public class GameServerMatchHelperImpl implements GameServerMatchHelper, MatchDa
 
 	@Override
 	public void updateMatch(Match match) {
-		// TODO Auto-generated method stub
+		UpdateMatchModel model = new UpdateMatchModel(match);
 		
+		Intent updateIntent = new Intent(context, GameServerMatchService.class);
+		updateIntent.setAction(GameServerConstants.ACTION_MATCH_UPDATE);
+		updateIntent.putExtra(GameServerConstants.PARM_UPDATEMATCH, model);
+		context.startService(updateIntent);
 	}
 	
 	public void setLocalPlayerHolder(LocalPlayerHolder lpHolder) { 

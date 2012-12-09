@@ -1,4 +1,4 @@
-package edu.jhu.ep.butlerdidit.domain;
+package edu.jhu.ep.butlerdidit.service.api;
 
 /**
  * GamePlayer is like our user account. GamePlayers are in the scopeo of all games 

@@ -2,11 +2,11 @@ package edu.jhu.ep.butlerdidit.test;
 
 import android.content.Intent;
 import android.test.mock.MockContext;
-import edu.jhu.ep.butlerdidit.domain.GameParticipant;
-import edu.jhu.ep.butlerdidit.domain.Match;
 import edu.jhu.ep.butlerdidit.service.MatchDataBroadcastReceiver;
-import edu.jhu.ep.butlerdidit.service.MatchDataListener;
+import edu.jhu.ep.butlerdidit.service.api.GameParticipant;
 import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
+import edu.jhu.ep.butlerdidit.service.api.Match;
+import edu.jhu.ep.butlerdidit.service.api.MatchDataListener;
 import junit.framework.TestCase;
 
 public class MatchDataBroadcastReceiverTests extends TestCase {
@@ -25,7 +25,7 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 		// GIVEN
 		// a match receiver that will ensure the match was created
 		broadcastReceiver.registerListener(new MatchAssertion());
-		String action = GameServerConstants.ACTION_MATCH_RECEIVED;
+		String action = GameServerConstants.BROADCAST_MATCHRECEIVED_SUCCESS;
 		String json = 
 			"{ " +
 				"\"id\":1," +

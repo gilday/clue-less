@@ -1,9 +1,11 @@
-package edu.jhu.ep.butlerdidit.domain;
+package edu.jhu.ep.butlerdidit.service.api;
 
 import java.util.Collection;
 import java.util.Date;
 
 import com.google.gson.annotations.SerializedName;
+
+
 
 public class Match {
 	

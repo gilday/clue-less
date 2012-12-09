@@ -15,6 +15,8 @@ import org.json.JSONObject;
 
 import roboguice.inject.ContextSingleton;
 
+import com.google.gson.Gson;
+
 /**
  * Group all the HTTP Calls in here so they're easier to unit test
  * Unit testing GameServerMatchService, or any IntentService, is a nightmare
@@ -89,6 +91,27 @@ public class GameServerHttpClient {
 		URL getPlayerUrl = new URL(String.format("%s/players/%s.json", gameServerEndpoint, email));
 		
 		return getJson(getPlayerUrl);
+	}
+	
+	public RestResponse updateMatch(UpdateMatchModel match) throws IOException {
+		URL putMatchUrl = new URL(String.format("%s/matches/%d.json", gameServerEndpoint, match.getId()));
+		
+		Gson gson = new Gson();
+		String json = gson.toJson(match);
+		
+		HttpURLConnection connection = (HttpURLConnection) putMatchUrl.openConnection();
+		connection.setDoOutput(true);
+		connection.setRequestProperty("Content-Type", "application/json");
+		connection.setRequestMethod("PUT");
+		
+		OutputStream out = new BufferedOutputStream(connection.getOutputStream());
+		PrintWriter writer = new PrintWriter(out);
+		writer.write(json);
+		writer.close();
+		
+		int status = connection.getResponseCode();
+		
+		return new RestResponse(status);
 	}
 	
 	private String convertStreamToString(InputStream is) {

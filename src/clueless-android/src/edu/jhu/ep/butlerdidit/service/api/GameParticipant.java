@@ -1,4 +1,4 @@
-package edu.jhu.ep.butlerdidit.domain;
+package edu.jhu.ep.butlerdidit.service.api;
 
 import com.google.gson.annotations.SerializedName;
 

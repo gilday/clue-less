@@ -5,9 +5,9 @@ import java.util.Calendar;
 import junit.framework.TestCase;
 import android.test.mock.MockContext;
 import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
-import edu.jhu.ep.butlerdidit.domain.Match;
 import edu.jhu.ep.butlerdidit.service.GameServerMatchHelperImpl;
 import edu.jhu.ep.butlerdidit.service.api.GameServerMatchListener;
+import edu.jhu.ep.butlerdidit.service.api.Match;
 
 public class GameServerMatchHelperTests extends TestCase {
 

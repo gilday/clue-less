@@ -1,5 +1,7 @@
 package edu.jhu.ep.butlerdidit.domain;
 
+import edu.jhu.ep.butlerdidit.service.api.GamePlayer;
+
 
 /**
  * A CluePlayer is used in the scope of a Clueless match. 

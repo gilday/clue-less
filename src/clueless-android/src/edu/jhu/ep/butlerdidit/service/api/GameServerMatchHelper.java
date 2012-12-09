@@ -1,6 +1,5 @@
 package edu.jhu.ep.butlerdidit.service.api;
 
-import edu.jhu.ep.butlerdidit.domain.Match;
 
 public interface GameServerMatchHelper {
 	

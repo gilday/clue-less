@@ -2,8 +2,9 @@ package edu.jhu.ep.butlerdidit.service;
 
 import com.google.gson.Gson;
 
-import edu.jhu.ep.butlerdidit.domain.Match;
 import edu.jhu.ep.butlerdidit.service.api.GameServerConstants;
+import edu.jhu.ep.butlerdidit.service.api.Match;
+import edu.jhu.ep.butlerdidit.service.api.MatchDataListener;
 import android.content.Context;
 import android.content.Intent;
 
@@ -12,7 +13,7 @@ public class MatchDataBroadcastReceiver extends GameServerBroadcastReceiver<Matc
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		String action = intent.getAction();
-		if(action.equals(GameServerConstants.ACTION_MATCH_RECEIVED)) {
+		if(action.equals(GameServerConstants.BROADCAST_MATCHRECEIVED_SUCCESS)) {
 			singleMatchReceived(intent.getStringExtra(GameServerConstants.PARM_JSON));
 		}
 	}
