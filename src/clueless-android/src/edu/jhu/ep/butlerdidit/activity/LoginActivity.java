@@ -21,10 +21,10 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
-import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.R;
 import edu.jhu.ep.butlerdidit.service.AuthenticationBroadcastReceiver;
 import edu.jhu.ep.butlerdidit.service.AuthenticationChangedListener;
+import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.GSMatchService;
 import edu.jhu.ep.butlerdidit.service.api.GSConstants;
 
@@ -56,7 +56,7 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 	@InjectView(R.id.login_status_message)	private TextView mLoginStatusMessageView;
 	
 	@Inject
-	private LocalPlayerHolder localPlayerHolder;
+	private GSLocalPlayerHolder localPlayerHolder;
 	
 	private AuthenticationBroadcastReceiver authBroadcastReceiver;
 
@@ -226,8 +226,8 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 		showProgress(false);
 		Log.v(LoginActivity.class.getName(), String.format("%s logged in to game server", email));
 		
-		Intent watchIntent = new Intent(getApplicationContext(), WatchMatchTestActivity.class);
-		watchIntent.putExtra(WatchMatchTestActivity.PARM_MATCHID, 1);
+		Intent watchIntent = new Intent(getApplicationContext(), PlayGameActivity.class);
+		watchIntent.putExtra(PlayGameActivity.PARM_MATCHID, 1);
 		startActivity(watchIntent);
 	}
 

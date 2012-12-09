@@ -1,9 +1,9 @@
-package edu.jhu.ep.butlerdidit;
+package edu.jhu.ep.butlerdidit.service;
 
-import roboguice.inject.ContextSingleton;
+import com.google.inject.Singleton;
 
-@ContextSingleton
-public class LocalPlayerHolder {
+@Singleton
+public class GSLocalPlayerHolder {
 	
 	private String localPlayerEmail;
 

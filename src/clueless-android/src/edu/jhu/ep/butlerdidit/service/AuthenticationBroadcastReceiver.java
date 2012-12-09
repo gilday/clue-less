@@ -6,15 +6,14 @@ import android.util.Log;
 
 import com.google.inject.Inject;
 
-import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSConstants;
 
 public class AuthenticationBroadcastReceiver extends GSBroadcastReceiver<AuthenticationChangedListener> {
 
 	@Inject
-	private LocalPlayerHolder lpHolder;
+	private GSLocalPlayerHolder lpHolder;
 	
-	public AuthenticationBroadcastReceiver(LocalPlayerHolder lpHolder) { 
+	public AuthenticationBroadcastReceiver(GSLocalPlayerHolder lpHolder) { 
 		this.lpHolder = lpHolder;
 	}
 	
