@@ -226,8 +226,8 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 		showProgress(false);
 		Log.v(LoginActivity.class.getName(), String.format("%s logged in to game server", email));
 		
-		Intent watchIntent = new Intent(getApplicationContext(), WatchMatchTestActivity.class);
-		watchIntent.putExtra(WatchMatchTestActivity.PARM_MATCHID, 1);
+		Intent watchIntent = new Intent(getApplicationContext(), PlayGameActivity.class);
+		watchIntent.putExtra(PlayGameActivity.PARM_MATCHID, 1);
 		startActivity(watchIntent);
 	}
 

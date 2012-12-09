@@ -170,18 +170,29 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		}
 	}
 
+	/**
+	 * Update the game state and update the UI to reflect new state
+	 * Notify the user whose turn it is (not ours, see takeTurn)
+	 */
 	@Override
 	public void layoutMatch(GSMatch match) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Update the game state and update the UI to reflect new state
+	 * Notify the player that it is their turn
+	 */
 	@Override
 	public void takeTurn(GSMatch match) {
 		// TODO Auto-generated method stub
 		
 	}
 
+	/**
+	 * Game over, someone won
+	 */
 	@Override
 	public void receiveEndGame(GSMatch match) {
 		// TODO Auto-generated method stub

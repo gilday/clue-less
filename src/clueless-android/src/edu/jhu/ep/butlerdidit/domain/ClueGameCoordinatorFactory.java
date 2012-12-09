@@ -38,7 +38,7 @@ public class ClueGameCoordinatorFactory {
 		// therefore, first player must be current
 		coordinator.setCurrentPlayer(coordinator.getPlayers().get(0));
 		// assert this hack
-		if(coordinator.getCurrentPlayer().getGamePlayer().getEmail().equals(coordinator.getPlayers().get(0).getGamePlayer().getEmail()))
+		if(!coordinator.getCurrentPlayer().getGamePlayer().getEmail().equals(coordinator.getPlayers().get(0).getGamePlayer().getEmail()))
 			throw new IllegalStateException("First player in the order must be the current player for a new game");
 		
 		// This is a new game so assign Characters to players
@@ -55,6 +55,7 @@ public class ClueGameCoordinatorFactory {
 		for(GSParticipant participant : participants) {
 			CluePlayer cluePlayer = new CluePlayer();
 			cluePlayer.setGamePlayer(participant.getGamePlayer());
+			cluePlayers.add(cluePlayer);
 		}
 		return cluePlayers;
 	}
