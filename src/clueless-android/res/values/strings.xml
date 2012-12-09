@@ -25,5 +25,6 @@
     <string name="weapon">WITH WHAT WEAPON?</string>
     <string name="rooms">IN WHICH ROOM?</string>
     <string name="hand">YOUR HAND</string>
+    <string name="Cards">card</string>
 
 </resources>

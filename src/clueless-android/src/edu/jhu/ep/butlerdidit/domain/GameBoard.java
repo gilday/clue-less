@@ -10,6 +10,7 @@ public class GameBoard {
     private List<Player> players;
 
     private Dictionary<String, GameBoardSpace> spaces;
+
     public Dictionary<String, GameBoardSpace> getSpaces() {
         return spaces;
     }
