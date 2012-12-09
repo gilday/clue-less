@@ -10,6 +10,7 @@ public class GameBoard {
     private List<CluePlayer> players;
 
     private Dictionary<String, GameBoardSpace> spaces;
+
     public Dictionary<String, GameBoardSpace> getSpaces() {
         return spaces;
     }
@@ -49,6 +50,8 @@ public class GameBoard {
         }
         return false;
     }
+    
+    
 
     private void createSpaces() {
         spaces = new Hashtable<String, GameBoardSpace>();
