@@ -12,12 +12,12 @@ import android.util.Log;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
-import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSConstants;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchDataListener;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchHelper;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchListener;
+import edu.jhu.ep.butlerdidit.service.api.GSUpdateMatchModel;
 
 @Singleton
 public class GSMatchHelperImpl implements GSMatchHelper, GSMatchDataListener {
@@ -27,7 +27,7 @@ public class GSMatchHelperImpl implements GSMatchHelper, GSMatchDataListener {
 	private Context context;
 	
 	@Inject
-	private LocalPlayerHolder lpHolder;
+	private GSLocalPlayerHolder lpHolder;
 	
 	private GSMatch currentMatch;
 	private int currentMatchId;
@@ -81,8 +81,7 @@ public class GSMatchHelperImpl implements GSMatchHelper, GSMatchDataListener {
 	}
 
 	@Override
-	public void updateMatch(GSMatch match) {
-		UpdateMatchModel model = new UpdateMatchModel(match);
+	public void updateMatch(GSUpdateMatchModel model) {
 		
 		Intent updateIntent = new Intent(context, GSMatchService.class);
 		updateIntent.setAction(GSConstants.ACTION_MATCH_UPDATE);
@@ -90,7 +89,7 @@ public class GSMatchHelperImpl implements GSMatchHelper, GSMatchDataListener {
 		context.startService(updateIntent);
 	}
 	
-	public void setLocalPlayerHolder(LocalPlayerHolder lpHolder) { 
+	public void setLocalPlayerHolder(GSLocalPlayerHolder lpHolder) { 
 		this.lpHolder = lpHolder;
 	}
 	

@@ -12,6 +12,6 @@ public interface GSMatchHelper {
 	
 	void stopWatchingMatch();
 	
-	void updateMatch(GSMatch match);
+	void updateMatch(GSUpdateMatchModel model);
 
 }

@@ -18,6 +18,8 @@ import android.util.Log;
 import com.google.gson.Gson;
 import com.google.inject.Singleton;
 
+import edu.jhu.ep.butlerdidit.service.api.GSUpdateMatchModel;
+
 /**
  * Group all the HTTP Calls in here so they're easier to unit test
  * Unit testing GameServerMatchService, or any IntentService, is a nightmare
@@ -94,7 +96,7 @@ public class GSHttpClient {
 		return getJson(getPlayerUrl);
 	}
 	
-	public RestResponse updateMatch(UpdateMatchModel match) throws IOException {
+	public RestResponse updateMatch(GSUpdateMatchModel match) throws IOException {
 		URL putMatchUrl = new URL(String.format("%s/matches/%d.json", gameServerEndpoint, match.getId()));
 		
 		Gson gson = new Gson();

@@ -4,7 +4,7 @@ import java.util.Calendar;
 
 import junit.framework.TestCase;
 import android.test.mock.MockContext;
-import edu.jhu.ep.butlerdidit.LocalPlayerHolder;
+import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.GSMatchHelperImpl;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchListener;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
@@ -18,7 +18,7 @@ public class GameServerMatchHelperTests extends TestCase {
 	protected void setUp() throws Exception {
 		super.setUp();
 		
-        LocalPlayerHolder lpHolder = new LocalPlayerHolder();
+        GSLocalPlayerHolder lpHolder = new GSLocalPlayerHolder();
         lpHolder.setLocalPlayerEmail("player@test.com");
         
         gsHelper = new GSMatchHelperImpl(new MockContext());

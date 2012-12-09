@@ -1,5 +1,8 @@
 package edu.jhu.ep.butlerdidit.domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import android.graphics.Color;
 
 public class ClueCharacter {
@@ -17,6 +20,17 @@ public class ClueCharacter {
     public static final ClueCharacter MrGreen = new ClueCharacter(MrGreenID, Color.GREEN);
     public static final ClueCharacter MrsPeacock = new ClueCharacter(MrsPeacockID, Color.BLUE);
     public static final ClueCharacter ProfPlum = new ClueCharacter(ProfPlumID, Color.MAGENTA);
+    
+    public static final List<ClueCharacter> All = new ArrayList<ClueCharacter>(6);
+    
+    static {
+    	All.add(MsScarlet);
+    	All.add(ColMustard);
+    	All.add(MrsWhite);
+    	All.add(MrGreen);
+    	All.add(MrsPeacock);
+    	All.add(ProfPlum);
+    }
 
     private String name;
     public String getName() {
