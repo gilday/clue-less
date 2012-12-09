@@ -5,29 +5,26 @@ import java.util.Vector;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageView;
 import edu.jhu.ep.butlerdidit.R;
-import edu.jhu.ep.butlerdidit.domain.ClueCharacter;
+import edu.jhu.ep.butlerdidit.domain.CluePlayer;
 import edu.jhu.ep.butlerdidit.domain.GameBoard;
 import edu.jhu.ep.butlerdidit.domain.GameBoardSpace;
-import edu.jhu.ep.butlerdidit.domain.Player;
 
 public class PlayGameActivity extends Activity 
 {
 
 	//Button Lounge_Button = (Button) findViewById(R.id.button1);
 	GameBoard game;
-	Player player;
+	CluePlayer player;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
-		player = new Player();
-		List<Player> players = new Vector<Player>();
+		player = new CluePlayer();
+		List<CluePlayer> players = new Vector<CluePlayer>();
 		players.add(player);
 		game = new GameBoard(players);
 		player.setLocation("Library-Study");
@@ -233,7 +230,7 @@ public class PlayGameActivity extends Activity
 		List<GameBoardSpace> possibleMoves = gameBoard.getPossibleMoves(profPlum);
 	}*/
 	
-	public void UpdatePlayerLocationOnBoard(Player player)
+	public void UpdatePlayerLocationOnBoard(CluePlayer player)
 	{
 		String MsScarletID = "Ms. Scarlet";
 		String ColMustardID = "Col. Mustard";
@@ -242,22 +239,22 @@ public class PlayGameActivity extends Activity
 		String MrsPeacockID = "Mrs. Peacock";
 		String ProfPlumID = "Prof. Plum"; 
 	   
-		if(MsScarletID.equals(player.getPlayerId()))
+		if(MsScarletID.equals(player.getClueCharacter().getName()))
 		{
 		}
-		else if(ColMustardID.equals(player.getPlayerId()))
+		else if(ColMustardID.equals(player.getClueCharacter().getName()))
 		{
 		}
-		else if(MrsWhiteID.equals(player.getPlayerId()))
+		else if(MrsWhiteID.equals(player.getClueCharacter().getName()))
 		{
 		}
-		else if(MrGreenID.equals(player.getPlayerId()))
+		else if(MrGreenID.equals(player.getClueCharacter().getName()))
 		{
 		}
-		else if(MrsPeacockID.equals(player.getPlayerId()))
+		else if(MrsPeacockID.equals(player.getClueCharacter().getName()))
 		{
 		}
-		else if(ProfPlumID.equals(player.getPlayerId()))
+		else if(ProfPlumID.equals(player.getClueCharacter().getName()))
 		{
 		}
 	}

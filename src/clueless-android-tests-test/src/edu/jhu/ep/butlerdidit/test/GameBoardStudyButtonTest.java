@@ -3,24 +3,24 @@ package edu.jhu.ep.butlerdidit.test;
 import java.util.List;
 import java.util.Vector;
 
+import junit.framework.TestCase;
 import edu.jhu.ep.butlerdidit.domain.ClueCharacter;
+import edu.jhu.ep.butlerdidit.domain.CluePlayer;
 import edu.jhu.ep.butlerdidit.domain.GameBoard;
 import edu.jhu.ep.butlerdidit.domain.GameBoardSpace;
-import edu.jhu.ep.butlerdidit.domain.Player;
-import junit.framework.TestCase;
 
-public class GameBoard_Study_Button_Test extends TestCase 
+public class GameBoardStudyButtonTest extends TestCase 
 {
 	public void Study_Button_Test() 
 	{
 		// GIVEN
 		// a GameBoard with Professor Plum on his start spot
 		// and some other player is on the hallway he must move to
-		Player profPlum = new Player();
+		CluePlayer profPlum = new CluePlayer();
 		profPlum.setClueCharacter(ClueCharacter.ProfPlum);
 		profPlum.setLocation("Study-Library");
 		
-		List<Player> players = new Vector<Player>();
+		List<CluePlayer> players = new Vector<CluePlayer>();
 		players.add(profPlum);
 		
 		GameBoard gameBoard = new GameBoard(players);
