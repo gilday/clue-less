@@ -30,7 +30,7 @@ import edu.jhu.ep.butlerdidit.service.api.GSUpdateMatchModel;
 public class GSHttpClient {
 	
 	// 10.0.2.2 is a special address for the host development machine
-	private final String gameServerEndpoint = "http://10.0.2.2:3000";
+	public static String gameServerEndpoint = "http://10.0.2.2:3000";
 	
 	private boolean loggedIn = false;
 	

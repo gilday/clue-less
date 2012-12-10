@@ -2,8 +2,6 @@ package edu.jhu.ep.butlerdidit.activity;
 
 import java.util.regex.Pattern;
 
-import com.google.inject.Inject;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.animation.Animator;
@@ -21,9 +19,13 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.inject.Inject;
+
 import edu.jhu.ep.butlerdidit.R;
 import edu.jhu.ep.butlerdidit.service.AuthenticationBroadcastReceiver;
 import edu.jhu.ep.butlerdidit.service.AuthenticationChangedListener;
+import edu.jhu.ep.butlerdidit.service.GSHttpClient;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.GSMatchService;
 import edu.jhu.ep.butlerdidit.service.api.GSConstants;
@@ -47,10 +49,12 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 	// Values for email and password at the time of the login attempt.
 	private String mEmail;
 	private String mPassword;
+	private String mServerUri;
 
 	// UI references.
 	@InjectView(R.id.email)					private EditText mEmailView;
 	@InjectView(R.id.password)				private EditText mPasswordView;
+	@InjectView(R.id.server)				private EditText mServerUriView;
 	@InjectView(R.id.login_form)			private View mLoginFormView;
 	@InjectView(R.id.login_status) 			private View mLoginStatusView;
 	@InjectView(R.id.login_status_message)	private TextView mLoginStatusMessageView;
@@ -118,7 +122,7 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 		lbm.unregisterReceiver(authBroadcastReceiver);
 		authBroadcastReceiver = null;
 	}
-
+	
 	/**
 	 * Attempts to sign in or register the account specified by the login form.
 	 * If there are form errors (invalid email, missing fields, etc.), the
@@ -132,6 +136,8 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 		// Store values at the time of the login attempt.
 		mEmail = mEmailView.getText().toString();
 		mPassword = mPasswordView.getText().toString();
+		mServerUri = mServerUriView.getText().toString();
+		
 
 		boolean cancel = false;
 		View focusView = null;
@@ -157,6 +163,13 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 			focusView = mEmailView;
 			cancel = true;
 		}
+		
+		// Check for valid server uri
+		if (TextUtils.isEmpty(mServerUri)) {
+			mServerUriView.setError(getString(R.string.error_invalid_server));
+			focusView = mServerUriView;
+			cancel = true;
+		}
 
 		if (cancel) {
 			// There was an error; don't attempt login and focus the first
@@ -167,6 +180,7 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 			// perform the user login attempt.
 			mLoginStatusMessageView.setText(R.string.login_progress_signing_in);
 			showProgress(true);
+			GSHttpClient.gameServerEndpoint = mServerUri;
 			// Start login
 			Intent loginIntent = new Intent(this, GSMatchService.class);
 			loginIntent.setAction(GSConstants.ACTION_LOGIN);

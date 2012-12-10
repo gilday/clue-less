@@ -11,5 +11,8 @@
     <string name="error_invalid_password">This password is too short</string>
     <string name="error_incorrect_password">This password is incorrect</string>
     <string name="error_field_required">This field is required</string>
+    <string name="server_text">Server URI</string>
+    <string name="serveruri">http://10.0.2.2:3000</string>
+    <string name="error_invalid_server">This is not a valid URI for the server</string>
 
 </resources>
