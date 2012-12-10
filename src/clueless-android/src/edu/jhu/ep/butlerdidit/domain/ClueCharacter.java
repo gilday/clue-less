@@ -4,7 +4,7 @@ import android.graphics.Color;
 
 public class ClueCharacter {
 
-    public static final String MsScarletID = "Ms. Scarlet";
+    public static final String MsScarletID = "Ms. Scarlett";
     public static final String ColMustardID = "Col. Mustard";
     public static final String MrsWhiteID = "Mrs. White";
     public static final String MrGreenID = "Mr. Green";
