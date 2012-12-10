@@ -8,6 +8,7 @@
     <string name="title_activity_play_game">PlayGameActivity</string>
     
     <!-- ***** ROOMS ***** -->
+    <string name="roomlist">Room</string>
     <string name="Lounge"><b>LOUNGE</b></string>
     <string name="Dining_Room"><b>DINING ROOM</b></string>
     <string name="Kitchen"><b>KITCHEN</b></string>
@@ -31,10 +32,9 @@
     <string name="Cards">card</string>
     <string name="title_activity_watch_match_test">WatchMatchTestActivity</string>
     <string name="findmatch">Find Match</string>
-    <string name="suspectlist">Suspect</string>
-    <string name="weaponlist">Weapon</string>
-    
+   
     <!-- ***** WEAPONS ***** -->
+    <string name="weaponlist">Weapon</string>
     <string name="candlestick">Candlestick</string>
     <string name="knife">Knife</string>
     <string name="lead_pipe">Lead Pipe</string>
@@ -43,6 +43,7 @@
     <string name="wrench">Wrench</string>
     
     <!-- ***** SUSPECTS ***** -->
+    <string name="suspectlist">Suspect</string>
     <string name="green">Mr. Green</string>
     <string name="mustard">Col. Mustard</string>
     <string name="peacock">Mrs. Peacock</string>
