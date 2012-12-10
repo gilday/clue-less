@@ -3,20 +3,23 @@ package edu.jhu.ep.butlerdidit.activity;
 import java.util.List;
 import java.util.Vector;
 
-import com.google.inject.Inject;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageView;
+
+import com.google.inject.Inject;
+
 import edu.jhu.ep.butlerdidit.R;
 import edu.jhu.ep.butlerdidit.domain.ClueCharacter;
 import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinator;
 import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinatorFactory;
+import edu.jhu.ep.butlerdidit.domain.ClueMatchState;
 import edu.jhu.ep.butlerdidit.domain.CluePlayer;
 import edu.jhu.ep.butlerdidit.domain.GameBoard;
-import edu.jhu.ep.butlerdidit.domain.ClueMatchState;
-import edu.jhu.ep.butlerdidit.domain.Room;
+import edu.jhu.ep.butlerdidit.domain.GameBoardSpace;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchHelper;
@@ -37,6 +40,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	private int currentMatchId = 0;
 	private GameBoard game;
 	private ClueGameCoordinator coordinator;
+	CluePlayer fakePlayer;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
@@ -49,6 +53,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			// Then use the test data
 			scaffoldTestData();
 			return;
+			
 		}
 		
 		gsHelper.setGameServerMatchListener(this);
@@ -56,94 +61,49 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		gsHelper.startWatchingMatch();
 	}
 	
-	private void scaffoldTestData() {
-		CluePlayer fakePlayer = new CluePlayer();
+	public void scaffoldTestData() 
+	{
+		fakePlayer = new CluePlayer();
 		fakePlayer.setClueCharacter(ClueCharacter.MsScarlet);
-		fakePlayer.setLocation(Room.STUDY);
+		fakePlayer.setLocation("Library-Study"); //hacked up to gain access to the class
 		
 		List<CluePlayer> fakePlayers = new Vector<CluePlayer>();
 		fakePlayers.add(fakePlayer);
 		game = new GameBoard(fakePlayers);
 	}
 	
-	class ViewHelpers {
+	class ViewHelpers 
+	{
 		/**
 		 * Just deals with UI. Unhides and hides space for pawn
 		 * @param from ID of space to move from e.g. "Study"
 		 * @param to ID of space to move pawn to e.g. "Hall"
 		 */
-		void movePawn(CluePlayer player, String from, String to) {
-			String fromPawnId = translateToPawnId(player.getClueCharacter().getName(), from);
-			// get space pawn ImageView by ID
-			// TODO Finish this method
-		}
-		
-		// TODO Finish method
-		private String translateToPawnId(String characterName, String spaceId) {
-			String character = null;
-			String space = null;
-			
-			// translate character
-			if(characterName.equals(ClueCharacter.MsScarlet.getName()))
-				character = "scarlet";
-			
-			// translate room
-			if(spaceId.equals(Room.STUDY))
-				space = "study";
-			
-			return String.format("%s-%s", character, space);
+		void MakePawnVisible(CluePlayer player, String to, View view) 
+		{
+			String PawnIdString = PlayGameUtils.translateToPawnId(player.getClueCharacter().getName(), to);
+			int PawnID = getResources().getIdentifier(PawnIdString, "id", "edu.jhu.ep.butlerdidit");
+			ImageView PawnImage = (ImageView) findViewById(PawnID);
+			System.out.println("The Pawn ID is " + PawnIdString);
+			PawnImage.setVisibility(View.VISIBLE);
 		}
 	}
 
-	/*public void SetPlayerStartSpots(int NumberOfPlayers,Player player)
+	public void MoveToRoom (View view)
 	{
-		while(NumberOfPlayers > 0)
-		{
-			player(NumberOfPlayers)
-		}
-	}
-	public void UpdateNextMove()
-	{
-		// GIVEN
-		// a game board with Professor Plum at his start spot
-		Player profPlum = new Player();
-		profPlum.setClueCharacter(ClueCharacter.ProfPlum);
-		profPlum.setLocation(profPlum.getClueCharacter().getName());
+		ViewHelpers viewhelp = new ViewHelpers();
+		String Room = PlayGameUtils.roomIdToName(view.getId());
+		GameBoardSpace space = new GameBoardSpace(Room);
+		System.out.println(space.getSpaceId());
 		
-		List<Player> players = new Vector<Player>();
-		GameBoard gameBoard = new GameBoard(players);
-		
-		// WHEN
-		// system asks board where Plum can go
-		List<GameBoardSpace> possibleMoves = gameBoard.getPossibleMoves(profPlum);
-	}*/
-	
-	public void UpdatePlayerLocationOnBoard(CluePlayer player)
-	{
-		String MsScarletID = "Ms. Scarlet";
-		String ColMustardID = "Col. Mustard";
-		String MrsWhiteID = "Mrs. White";
-		String MrGreenID = "Mr. Green";
-		String MrsPeacockID = "Mrs. Peacock";
-		String ProfPlumID = "Prof. Plum"; 
-	   
-		if(MsScarletID.equals(player.getClueCharacter().getName()))
+		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space))
 		{
+			System.out.println("you can move to the room1");
+			viewhelp.MakePawnVisible(fakePlayer, Room, view);
 		}
-		else if(ColMustardID.equals(player.getClueCharacter().getName()))
+		else if(!game.isPlayerAbleToMoveToSpace(fakePlayer, space))
 		{
-		}
-		else if(MrsWhiteID.equals(player.getClueCharacter().getName()))
-		{
-		}
-		else if(MrGreenID.equals(player.getClueCharacter().getName()))
-		{
-		}
-		else if(MrsPeacockID.equals(player.getClueCharacter().getName()))
-		{
-		}
-		else if(ProfPlumID.equals(player.getClueCharacter().getName()))
-		{
+			System.out.println("Plese select another room");
 		}
 	}
 
