@@ -6,6 +6,7 @@ import java.util.Vector;
 
 import com.google.inject.Inject;
 
+import edu.jhu.ep.butlerdidit.domain.ClueMatchState.CluePlayerModel;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSParticipant;
@@ -44,9 +45,50 @@ public class ClueGameCoordinatorFactory {
 		// This is a new game so assign Characters to players
 		assignCharactersToPlayers(coordinator);
 		
+		// Initialize players' start spaces
+		for(CluePlayer player : coordinator.getPlayers()) {
+			player.setLocation(player.getClueCharacter().getName());
+		}
+		
 		// Make the game board with the players list
 		coordinator.setGameBoard(new GameBoard(coordinator.getPlayers()));
 		
+		return coordinator;
+	}
+	
+	public ClueGameCoordinator loadGameFromMatch(GSMatch gsMatch) {
+		
+		ClueGameCoordinator coordinator = new ClueGameCoordinator(localPlayerHolder);
+		coordinator.setPlayers(createPlayers(gsMatch.getParticipants()));
+		
+		// find current palyer
+		for(CluePlayer cluePlayer : coordinator.getPlayers()) {
+			if(cluePlayer.getGamePlayer().getEmail().equals(gsMatch.getCurrentPlayer()))
+			{
+				coordinator.setCurrentPlayer(cluePlayer);
+				break;
+			}
+		}
+		
+		// Load player locations and Characters
+		ClueMatchState matchState = new ClueMatchState(gsMatch.getRawMatchData());
+		for(CluePlayerModel model : matchState.playerModels) {
+			for(CluePlayer cluePlayer : coordinator.getPlayers()) {
+				if(cluePlayer.getGamePlayer().getEmail().equals(model.email)) {
+					cluePlayer.setLocation(model.location);
+					for(ClueCharacter character : ClueCharacter.All) {
+						if(character.getName().equals(model.character)) {
+							cluePlayer.setClueCharacter(character);
+							break;
+						}
+					}
+					break;
+				}
+			}
+		}
+		
+		// Create game board
+		coordinator.setGameBoard(new GameBoard(coordinator.getPlayers()));
 		return coordinator;
 	}
 	
