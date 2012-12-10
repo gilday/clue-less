@@ -2,8 +2,6 @@ package edu.jhu.ep.butlerdidit.activity;
 
 import java.util.regex.Pattern;
 
-import com.google.inject.Inject;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.InjectView;
 import android.animation.Animator;
@@ -21,6 +19,9 @@ import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.google.inject.Inject;
+
 import edu.jhu.ep.butlerdidit.R;
 import edu.jhu.ep.butlerdidit.service.AuthenticationBroadcastReceiver;
 import edu.jhu.ep.butlerdidit.service.AuthenticationChangedListener;
