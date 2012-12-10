@@ -4,9 +4,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
+import com.google.gson.Gson;
 import com.google.inject.Inject;
 
-import edu.jhu.ep.butlerdidit.domain.ClueMatchState.CluePlayerModel;
+import edu.jhu.ep.butlerdidit.domain.json.ClueMatchState;
+import edu.jhu.ep.butlerdidit.domain.json.CluePlayerModel;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSParticipant;
@@ -71,13 +73,14 @@ public class ClueGameCoordinatorFactory {
 		}
 		
 		// Load player locations and Characters
-		ClueMatchState matchState = new ClueMatchState(gsMatch.getRawMatchData());
-		for(CluePlayerModel model : matchState.playerModels) {
+		Gson gson = new Gson();
+		ClueMatchState matchState = gson.fromJson(gsMatch.getRawMatchData(), ClueMatchState.class);
+		for(CluePlayerModel model : matchState.getPlayerModels()) {
 			for(CluePlayer cluePlayer : coordinator.getPlayers()) {
-				if(cluePlayer.getGamePlayer().getEmail().equals(model.email)) {
-					cluePlayer.setLocation(model.location);
+				if(cluePlayer.getGamePlayer().getEmail().equals(model.getEmail())) {
+					cluePlayer.setLocation(model.getLocation());
 					for(ClueCharacter character : ClueCharacter.All) {
-						if(character.getName().equals(model.character)) {
+						if(character.getName().equals(model.getCharacter())) {
 							cluePlayer.setClueCharacter(character);
 							break;
 						}

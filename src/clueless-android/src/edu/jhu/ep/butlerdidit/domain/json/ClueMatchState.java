@@ -1,8 +1,10 @@
-package edu.jhu.ep.butlerdidit.domain;
+package edu.jhu.ep.butlerdidit.domain.json;
 
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
+
+import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinator;
 
 public class ClueMatchState {
 	
@@ -14,18 +16,12 @@ public class ClueMatchState {
 		
 	}
 	
-	public ClueMatchState(String json) {
-		
-	}
-	
 	// TODO
 	public String toJSON() {
 		return toString();
 	}
 	
-	class CluePlayerModel {
-		String email;
-		String location;
-		String character;
+	public List<CluePlayerModel> getPlayerModels() {
+		return playerModels;
 	}
 }
