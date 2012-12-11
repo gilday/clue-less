@@ -102,7 +102,8 @@
         android:layout_alignBaseline="@+id/dining"
         android:layout_alignBottom="@+id/dining"
         android:layout_toLeftOf="@+id/dining"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/KitchenToBallroom"
@@ -112,7 +113,8 @@
         android:layout_alignBaseline="@+id/kitchen"
         android:layout_alignBottom="@+id/kitchen"
         android:layout_toLeftOf="@+id/kitchen"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/HallToStudy"
@@ -122,7 +124,8 @@
         android:layout_alignBaseline="@+id/hall"
         android:layout_alignBottom="@+id/hall"
         android:layout_toRightOf="@+id/study"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/BilliardToLibrary"
@@ -132,7 +135,8 @@
         android:layout_alignBaseline="@+id/billiard"
         android:layout_alignBottom="@+id/billiard"
         android:layout_toLeftOf="@+id/billiard"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/BallroomToConservatory"
@@ -142,7 +146,8 @@
         android:layout_alignBaseline="@+id/ballroom"
         android:layout_alignBottom="@+id/ballroom"
         android:layout_toLeftOf="@+id/ballroom"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/StudyToLibrary"
@@ -152,7 +157,8 @@
         android:layout_above="@+id/library"
         android:layout_alignRight="@+id/library"
         android:layout_marginRight="46dp"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/BilliardToBallroom"
@@ -162,7 +168,8 @@
         android:layout_alignRight="@+id/billiard"
         android:layout_below="@+id/billiard"
         android:layout_marginRight="45dp"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/DiningToKitchen"
@@ -172,7 +179,8 @@
         android:layout_alignRight="@+id/dining"
         android:layout_below="@+id/dining"
         android:layout_marginRight="44dp"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/LoungeToDining"
@@ -181,7 +189,8 @@
         android:layout_height="30dp"
         android:layout_above="@+id/dining"
         android:layout_alignLeft="@+id/DiningToKitchen"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/HallToBilliard"
@@ -190,7 +199,8 @@
         android:layout_height="30dp"
         android:layout_alignLeft="@+id/BilliardToBallroom"
         android:layout_below="@+id/hall"
-        android:background="@color/hallway_color" />
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
 
     <Button
         android:id="@+id/LibraryToConservatory"
@@ -199,7 +209,8 @@
         android:layout_height="30dp"
         android:layout_alignLeft="@+id/StudyToLibrary"
         android:layout_below="@+id/library"
-        android:background="@color/hallway_color" />
+ 		android:background="@color/hallway_color" 
+        android:onClick="MoveToHall" />
 
     <Button
         android:id="@+id/LoungeToHall"
@@ -209,8 +220,9 @@
         android:layout_alignBaseline="@+id/hall"
         android:layout_alignBottom="@+id/hall"
         android:layout_toRightOf="@+id/hall"
-        android:background="@color/hallway_color" />
-
+        android:background="@color/hallway_color" 
+        android:onClick="MoveToHall"/>
+    
     <TextView
         android:id="@+id/clue_text"
         android:layout_width="wrap_content"
@@ -1371,16 +1383,6 @@
         android:contentDescription="@string/Cards"
         android:src="@drawable/square_space" 
         android:visibility="invisible"/>
-
-    <ImageView
-        android:id="@+id/Conservatory_To_Library"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Library_To_Study"
-        android:layout_alignTop="@+id/LibraryToConservatory"
-        android:contentDescription="@string/Cards"
-        android:src="@drawable/square_space"
-        android:visibility="invisible" />
 
     <ImageView
         android:id="@+id/Billiardroom_To_Hall"

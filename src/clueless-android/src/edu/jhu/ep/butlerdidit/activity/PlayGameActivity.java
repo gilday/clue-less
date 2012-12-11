@@ -65,7 +65,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	{
 		fakePlayer = new CluePlayer();
 		fakePlayer.setClueCharacter(ClueCharacter.MsScarlet);
-		fakePlayer.setLocation("Library-Study"); //hacked up to gain access to the class
+		fakePlayer.setLocation("Library"); //hacked up to gain access to the class
 		
 		List<CluePlayer> fakePlayers = new Vector<CluePlayer>();
 		fakePlayers.add(fakePlayer);
@@ -79,13 +79,47 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		 * @param from ID of space to move from e.g. "Study"
 		 * @param to ID of space to move pawn to e.g. "Hall"
 		 */
-		void MakePawnVisible(CluePlayer player, String to, View view) 
+		void MakePawnVisible(CluePlayer player, String to, String oldRoom, View view) 
 		{
 			String PawnIdString = PlayGameUtils.translateToPawnId(player.getClueCharacter().getName(), to);
 			int PawnID = getResources().getIdentifier(PawnIdString, "id", "edu.jhu.ep.butlerdidit");
 			ImageView PawnImage = (ImageView) findViewById(PawnID);
 			System.out.println("The Pawn ID is " + PawnIdString);
 			PawnImage.setVisibility(View.VISIBLE);
+		}
+		
+		void MakePawnVisibleHall(CluePlayer player, String to, String oldRoom, View view) 
+		{
+			String PawnIdString = PlayGameUtils.translateToPawnId(player.getClueCharacter().getName(), to);
+			int PawnID = getResources().getIdentifier(PawnIdString, "id", "edu.jhu.ep.butlerdidit");
+			ImageView PawnImage = (ImageView) findViewById(PawnID);
+			System.out.println("The Pawn ID is " + PawnIdString);
+			PawnImage.setVisibility(View.VISIBLE);
+			
+			ImageView HallPawn = (ImageView) findViewById(R.id.Study_To_Hall);
+
+			if("Ms. Scarlett".equals(ClueCharacter.MsScarlet.getName())){
+				HallPawn.setImageResource(R.drawable.scarlett_pawn);
+				HallPawn.setVisibility(View.VISIBLE);}			
+			if("Col. Mustard".equals(ClueCharacter.ColMustard.getName())){
+				HallPawn.setImageResource(R.drawable.mustard_pawn);
+				HallPawn.setVisibility(View.VISIBLE);
+			}
+			if("Mr. Green".equals(ClueCharacter.MrGreen.getName())){
+				HallPawn.setImageResource(R.drawable.mr_green_pawn);
+				HallPawn.setVisibility(View.VISIBLE);}
+			if("Mrs. Peacock".equals(ClueCharacter.MrsPeacock.getName())){
+				HallPawn.setImageResource(R.drawable.mrs_peacock_pawn);
+				HallPawn.setVisibility(View.VISIBLE);
+			}
+			if("Mrs. White".equals(ClueCharacter.MrsWhite.getName())){
+				HallPawn.setImageResource(R.drawable.mrs_white_pawn);
+				HallPawn.setVisibility(View.VISIBLE);
+			}
+			if("Prof. Plum".equals(ClueCharacter.ProfPlum.getName())){
+				HallPawn.setImageResource(R.drawable.plum_pawn);
+				HallPawn.setVisibility(View.VISIBLE);
+			}
 		}
 	}
 
@@ -96,17 +130,39 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		GameBoardSpace space = new GameBoardSpace(Room);
 		System.out.println(space.getSpaceId());
 		
+		//Make sure to keep track of the old room to turn it off.
+		String oldPlace = fakePlayer.getLocation();
+		
 		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space))
+		//Turn on pawn at new location and set new location for player
 		{
 			System.out.println("you can move to the room1");
-			viewhelp.MakePawnVisible(fakePlayer, Room, view);
+			viewhelp.MakePawnVisible(fakePlayer, Room, oldPlace, view);
+			fakePlayer.setLocation(Room);
 		}
-		else if(!game.isPlayerAbleToMoveToSpace(fakePlayer, space))
+		//if()
+	
+	}
+	public void MoveToHall(View view)
+	{
+		//Make sure to keep track of the old room to turn it off.
+		String oldPlace = fakePlayer.getLocation();
+		
+		ViewHelpers viewhelp = new ViewHelpers();
+		String Hall = PlayGameUtils.HallIdToName(view.getId());
+		GameBoardSpace space = new GameBoardSpace(Hall);
+		System.out.println(Hall);
+
+		
+		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space))
+		//Turn on pawn at new location and set new location for player
 		{
-			System.out.println("Plese select another room");
+			System.out.println("you can move to the new hall space");
+			viewhelp.MakePawnVisibleHall(fakePlayer, Hall, oldPlace, view);
+			fakePlayer.setLocation(Hall);
 		}
 	}
-
+	
 	// TODO Finish this stubbed out method and link to UI
 	private void endTurn() {
 		// Update game server with new state

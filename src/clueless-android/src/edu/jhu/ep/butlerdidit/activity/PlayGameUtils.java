@@ -47,6 +47,25 @@ public class PlayGameUtils {
 		return String.format("%s_%s", character, space);
 	}
 	
+	/*public static String translateToCharacterId(String characterName)
+	{
+		String character = null;
+		
+		// translate character
+		if(characterName.equals(ClueCharacter.MsScarlet.getName()))
+			character = "scarlett";
+		if(characterName.equals(ClueCharacter.ColMustard.getName()))
+			character = "mustard";
+		if(characterName.equals(ClueCharacter.MrGreen.getName()))
+			character = "green";
+		if(characterName.equals(ClueCharacter.MrsPeacock.getName()))
+			character = "peacock";	
+		if(characterName.equals(ClueCharacter.MrsWhite.getName()))
+			character = "white";
+		if(characterName.equals(ClueCharacter.ProfPlum.getName()))
+			character = "plum";		
+	}*/
+	
     public static String lowCaseRoomtoUpCaseRoom(String lowRoom)
     {
 		if(lowRoom.equals("study"))
@@ -125,6 +144,58 @@ public class PlayGameUtils {
 		else if(RoomID == 2131296265)
 		{
 			return "study";
+		}
+		return "nothing";
+	}	
+	public static String HallIdToName(int HallID)
+	{
+		if(HallID == 2131296275)
+		{
+			return "Study-Hall";
+		}
+		else if(HallID == 2131296284)
+		{
+			return "Hall-Lounge";
+		}
+		else if(HallID == 2131296281)
+		{
+			return "Lounge-Dining Room";
+		}
+		else if(HallID == 2131296280)
+		{
+			return "Dining Room-Kitchen";
+		}
+		else if(HallID == 2131296274)
+		{
+			return "Kitchen-Ball Room";
+		}
+		else if(HallID == 2131296283)
+		{
+			return "Conservatory-Library";
+		}
+		else if(HallID == 2131296278)
+		{
+			return "Library-Study";
+		}
+		else if(HallID == 2131296276)
+		{
+			return "Billiard Room-Library";
+		}
+		else if(HallID == 2131296282)
+		{
+			return "Billiard Room-Hall";
+		}
+		else if(HallID == 2131296273)
+		{
+			return "Billiard Room-Dining Room";
+		}
+		else if(HallID == 2131296279)
+		{
+			return "Billiard Room-Ball Room";
+		}
+		else if(HallID == 2131296277)
+		{
+			return "Ball Room-Conservatory";
 		}
 		return "nothing";
 	}
