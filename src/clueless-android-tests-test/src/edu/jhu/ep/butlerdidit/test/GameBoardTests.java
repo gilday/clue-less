@@ -63,7 +63,7 @@ public class GameBoardTests extends TestCase {
 		profPlum.setLocation(profPlum.getClueCharacter().getName());
 		
 		CluePlayer msScarlet = new CluePlayer();
-		msScarlet.setClueCharacter(ClueCharacter.MsScarlet);
+		msScarlet.setClueCharacter(ClueCharacter.MsScarlett);
 		msScarlet.setLocation("Library-Study");
 		
 		List<CluePlayer> players = new Vector<CluePlayer>();

@@ -64,7 +64,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	public void scaffoldTestData() 
 	{
 		fakePlayer = new CluePlayer();
-		fakePlayer.setClueCharacter(ClueCharacter.MsScarlet);
+		fakePlayer.setClueCharacter(ClueCharacter.MsScarlett);
 		fakePlayer.setLocation("Library"); //hacked up to gain access to the class
 		
 		List<CluePlayer> fakePlayers = new Vector<CluePlayer>();
@@ -79,18 +79,24 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		 * @param from ID of space to move from e.g. "Study"
 		 * @param to ID of space to move pawn to e.g. "Hall"
 		 */
-		void MakePawnVisible(CluePlayer player, String to, String oldRoom, View view) 
+		void makePawnVisible(ClueCharacter character, String to, String oldRoom, View view) 
 		{
-			String PawnIdString = PlayGameUtils.translateToPawnId(player.getClueCharacter().getName(), to);
-			int PawnID = getResources().getIdentifier(PawnIdString, "id", "edu.jhu.ep.butlerdidit");
-			ImageView PawnImage = (ImageView) findViewById(PawnID);
-			System.out.println("The Pawn ID is " + PawnIdString);
-			PawnImage.setVisibility(View.VISIBLE);
+			String pawnIdString = PlayGameUtils.translateToPawnId(character.getName(), to);
+			int pawnID = getResources().getIdentifier(pawnIdString, "id", "edu.jhu.ep.butlerdidit");
+			ImageView pawnImage = (ImageView) findViewById(pawnID);
+			pawnImage.setVisibility(View.VISIBLE);
 		}
 		
-		void MakePawnVisibleHall(CluePlayer player, String to, String oldRoom, View view) 
+		// TODO I don't know how this method is supposed to work because I'm not sure how 
+		// pawns on hallways are implemented
+		// I do know this needs to be fixed because these if statements will always be true
+		// maybe you mean
+		/*
+		 * if(character == ClueCharacter.MsScarlett)
+		 */
+		void makePawnVisibleHall(ClueCharacter character, String to, String oldRoom, View view) 
 		{
-			String PawnIdString = PlayGameUtils.translateToPawnId(player.getClueCharacter().getName(), to);
+			String PawnIdString = PlayGameUtils.translateToPawnId(character.getName(), to);
 			int PawnID = getResources().getIdentifier(PawnIdString, "id", "edu.jhu.ep.butlerdidit");
 			ImageView PawnImage = (ImageView) findViewById(PawnID);
 			System.out.println("The Pawn ID is " + PawnIdString);
@@ -98,7 +104,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			
 			ImageView HallPawn = (ImageView) findViewById(R.id.Study_To_Hall);
 
-			if("Ms. Scarlett".equals(ClueCharacter.MsScarlet.getName())){
+			if("Ms. Scarlett".equals(ClueCharacter.MsScarlett.getName())){
 				HallPawn.setImageResource(R.drawable.scarlett_pawn);
 				HallPawn.setVisibility(View.VISIBLE);}			
 			if("Col. Mustard".equals(ClueCharacter.ColMustard.getName())){
@@ -123,44 +129,27 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		}
 	}
 
-	public void MoveToRoom (View view)
+	public void moveToSpace (View view)
 	{
 		ViewHelpers viewhelp = new ViewHelpers();
-		String Room = PlayGameUtils.roomIdToName(view.getId());
-		GameBoardSpace space = new GameBoardSpace(Room);
-		System.out.println(space.getSpaceId());
+		// Storing the domain ID of the space in the tag
+		String spaceId = (String) view.getTag();
+		if(spaceId == null)
+			Log.e(TAG, "No space ID set in View's tag");
+		GameBoardSpace space = game.getSpaceById(spaceId);
 		
 		//Make sure to keep track of the old room to turn it off.
 		String oldPlace = fakePlayer.getLocation();
 		
-		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space))
+		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space)) {
 		//Turn on pawn at new location and set new location for player
-		{
-			System.out.println("you can move to the room1");
-			viewhelp.MakePawnVisible(fakePlayer, Room, oldPlace, view);
-			fakePlayer.setLocation(Room);
+			Log.d(TAG, String.format("You can move to the %s", spaceId));
+			viewhelp.makePawnVisible(fakePlayer.getClueCharacter(), spaceId, oldPlace, view);
+			fakePlayer.setLocation(spaceId);
+		} else {
+			Log.e(TAG, "Player cannot move to this spot! Should not be given the option to");
 		}
-		//if()
 	
-	}
-	public void MoveToHall(View view)
-	{
-		//Make sure to keep track of the old room to turn it off.
-		String oldPlace = fakePlayer.getLocation();
-		
-		ViewHelpers viewhelp = new ViewHelpers();
-		String Hall = PlayGameUtils.HallIdToName(view.getId());
-		GameBoardSpace space = new GameBoardSpace(Hall);
-		System.out.println(Hall);
-
-		
-		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space))
-		//Turn on pawn at new location and set new location for player
-		{
-			System.out.println("you can move to the new hall space");
-			viewhelp.MakePawnVisibleHall(fakePlayer, Hall, oldPlace, view);
-			fakePlayer.setLocation(Hall);
-		}
 	}
 	
 	// TODO Finish this stubbed out method and link to UI

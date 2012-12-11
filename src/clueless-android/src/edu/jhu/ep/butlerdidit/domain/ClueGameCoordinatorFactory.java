@@ -63,7 +63,7 @@ public class ClueGameCoordinatorFactory {
 	private void assignCharactersToPlayers(ClueGameCoordinator coordinator) {
 		// Ms Scarlet is special, assign her first to the current player
 		List<CluePlayer> players = coordinator.getPlayers();
-		players.get(0).setClueCharacter(ClueCharacter.MsScarlet);
+		players.get(0).setClueCharacter(ClueCharacter.MsScarlett);
 		
 		for(int i = 1; i < players.size(); i++) {
 			players.get(i).setClueCharacter(ClueCharacter.All.get(i));

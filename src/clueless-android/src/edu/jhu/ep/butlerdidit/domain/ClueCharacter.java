@@ -14,7 +14,7 @@ public class ClueCharacter {
     public static final String MrsPeacockID = "Mrs. Peacock";
     public static final String ProfPlumID = "Prof. Plum";
 
-    public static final ClueCharacter MsScarlet = new ClueCharacter(MsScarletID, Color.RED);
+    public static final ClueCharacter MsScarlett = new ClueCharacter(MsScarletID, Color.RED);
     public static final ClueCharacter ColMustard = new ClueCharacter(ColMustardID, Color.YELLOW);
     public static final ClueCharacter MrsWhite = new ClueCharacter(MrsWhiteID, Color.WHITE);
     public static final ClueCharacter MrGreen = new ClueCharacter(MrGreenID, Color.GREEN);
@@ -24,7 +24,7 @@ public class ClueCharacter {
     public static final List<ClueCharacter> All = new ArrayList<ClueCharacter>(6);
     
     static {
-    	All.add(MsScarlet);
+    	All.add(MsScarlett);
     	All.add(ColMustard);
     	All.add(MrsWhite);
     	All.add(MrGreen);
