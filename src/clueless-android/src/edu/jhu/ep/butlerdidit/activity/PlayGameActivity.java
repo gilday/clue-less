@@ -53,7 +53,6 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			// Then use the test data
 			scaffoldTestData();
 			return;
-			
 		}
 		
 		gsHelper.setGameServerMatchListener(this);
@@ -61,6 +60,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		gsHelper.startWatchingMatch();
 	}
 	
+	// TODO scaffold a coordinator
 	public void scaffoldTestData() 
 	{
 		fakePlayer = new CluePlayer();
@@ -90,7 +90,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	}
 
 	// TODO Should rename to MoveToSpace since this could be used for hallways
-	public void MoveToRoom (View view)
+	private void moveToRoom (View view)
 	{
 		ViewHelpers viewhelp = new ViewHelpers();
 		String roomId = PlayGameUtils.roomIdToName(view.getId());
@@ -109,10 +109,24 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			Log.d(TAG, "Plese select another room");
 		}
 	}
+	
+	// TODO
+	private void updatePawnsWithNewLocations() {
+		// foreach player
+		for(CluePlayer player : coordinator.getPlayers()) {
+			// update pawn
+		}
+	}
+	
+	// TODO Implement this for real by showing the user a message somehow
+	private void notifyUser(String message) {
+		Log.d(TAG, String.format("Notification: %s", message));
+	}
 
 	// TODO Finish this stubbed out method and link to UI
 	private void endTurn() {
 		// Update game server with new state
+		coordinator.endTurn();
 		ClueMatchState matchState = new ClueMatchState(coordinator);
 		GSUpdateMatchModel updateModel = new GSUpdateMatchModel();
 		updateModel.setId(currentMatchId);
@@ -139,8 +153,9 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	 */
 	@Override
 	public void layoutMatch(GSMatch match) {
-		// TODO Auto-generated method stub
-		
+		coordinator = coordinatorFactory.loadGameFromMatch(match);
+		notifyUser(match.getMessage());
+		updatePawnsWithNewLocations();
 	}
 
 	/**
