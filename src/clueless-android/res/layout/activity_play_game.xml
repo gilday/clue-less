@@ -217,9 +217,9 @@
         android:layout_height="30dp"
         android:layout_alignLeft="@+id/BilliardToBallroom"
         android:layout_below="@+id/hall"
-        android:background="@color/hallway_color" 
-        android:tag="Billard Room-Hall"
-        android:onClick="moveToSpace"/>
+        android:background="@color/hallway_color"
+        android:onClick="moveToSpace"
+        android:tag="Billiard Room-Hall" />
 
     <Button
         android:id="@+id/LibraryToConservatory"

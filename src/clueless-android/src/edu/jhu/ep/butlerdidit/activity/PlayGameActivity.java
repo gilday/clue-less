@@ -19,6 +19,7 @@ import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinatorFactory;
 import edu.jhu.ep.butlerdidit.domain.CluePlayer;
 import edu.jhu.ep.butlerdidit.domain.GameBoard;
 import edu.jhu.ep.butlerdidit.domain.GameBoardSpace;
+import edu.jhu.ep.butlerdidit.domain.Room;
 import edu.jhu.ep.butlerdidit.domain.json.ClueMatchState;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
@@ -79,9 +80,9 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		 * @param from ID of space to move from e.g. "Study"
 		 * @param to ID of space to move pawn to e.g. "Hall"
 		 */
-		void makePawnVisible(ClueCharacter character, String to, String oldRoom, View view) 
+		void makeRoomPawnVisible(ClueCharacter character, String to, String oldRoom, View view) 
 		{
-			String pawnIdString = PlayGameUtils.translateToPawnId(character.getName(), to);
+			String pawnIdString = PlayGameUtils.translateToRoomPawnId(character.getName(), to);
 			int pawnID = getResources().getIdentifier(pawnIdString, "id", "edu.jhu.ep.butlerdidit");
 			ImageView pawnImage = (ImageView) findViewById(pawnID);
 			pawnImage.setVisibility(View.VISIBLE);
@@ -94,9 +95,10 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		/*
 		 * if(character == ClueCharacter.MsScarlett)
 		 */
-		void makePawnVisibleHall(ClueCharacter character, String to, String oldRoom, View view) 
+		void makeHallPawnVisible(ClueCharacter character, String to, String oldRoom, View view) 
 		{
-			String PawnIdString = PlayGameUtils.translateToPawnId(character.getName(), to);
+			String PawnIdString = PlayGameUtils.translateToHallwayPawnId(to);
+			Log.d(TAG, "PawnId: " + PawnIdString);
 			int PawnID = getResources().getIdentifier(PawnIdString, "id", "edu.jhu.ep.butlerdidit");
 			ImageView PawnImage = (ImageView) findViewById(PawnID);
 			System.out.println("The Pawn ID is " + PawnIdString);
@@ -142,10 +144,14 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		String oldPlace = fakePlayer.getLocation();
 		
 		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space)) {
-		//Turn on pawn at new location and set new location for player
+			// Turn on pawn at new location and set new location for player
 			Log.d(TAG, String.format("You can move to the %s", spaceId));
-			viewhelp.makePawnVisible(fakePlayer.getClueCharacter(), spaceId, oldPlace, view);
 			fakePlayer.setLocation(spaceId);
+			// Although moving logic is the same, UI code is different for rooms and hallways
+			if(space instanceof Room)
+				viewhelp.makeRoomPawnVisible(fakePlayer.getClueCharacter(), spaceId, oldPlace, view);
+			else
+				viewhelp.makeHallPawnVisible(fakePlayer.getClueCharacter(), spaceId, oldPlace, view);
 		} else {
 			Log.e(TAG, "Player cannot move to this spot! Should not be given the option to");
 		}
