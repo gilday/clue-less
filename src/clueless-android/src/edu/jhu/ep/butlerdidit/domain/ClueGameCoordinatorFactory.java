@@ -4,8 +4,11 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
+import com.google.gson.Gson;
 import com.google.inject.Inject;
 
+import edu.jhu.ep.butlerdidit.domain.json.ClueMatchState;
+import edu.jhu.ep.butlerdidit.domain.json.CluePlayerModel;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSParticipant;
@@ -44,9 +47,51 @@ public class ClueGameCoordinatorFactory {
 		// This is a new game so assign Characters to players
 		assignCharactersToPlayers(coordinator);
 		
+		// Initialize players' start spaces
+		for(CluePlayer player : coordinator.getPlayers()) {
+			player.setLocation(player.getClueCharacter().getName());
+		}
+		
 		// Make the game board with the players list
 		coordinator.setGameBoard(new GameBoard(coordinator.getPlayers()));
 		
+		return coordinator;
+	}
+	
+	public ClueGameCoordinator loadGameFromMatch(GSMatch gsMatch) {
+		
+		ClueGameCoordinator coordinator = new ClueGameCoordinator(localPlayerHolder);
+		coordinator.setPlayers(createPlayers(gsMatch.getParticipants()));
+		
+		// find current palyer
+		for(CluePlayer cluePlayer : coordinator.getPlayers()) {
+			if(cluePlayer.getGamePlayer().getEmail().equals(gsMatch.getCurrentPlayer()))
+			{
+				coordinator.setCurrentPlayer(cluePlayer);
+				break;
+			}
+		}
+		
+		// Load player locations and Characters
+		Gson gson = new Gson();
+		ClueMatchState matchState = gson.fromJson(gsMatch.getRawMatchData(), ClueMatchState.class);
+		for(CluePlayerModel model : matchState.getPlayerModels()) {
+			for(CluePlayer cluePlayer : coordinator.getPlayers()) {
+				if(cluePlayer.getGamePlayer().getEmail().equals(model.getEmail())) {
+					cluePlayer.setLocation(model.getLocation());
+					for(ClueCharacter character : ClueCharacter.All) {
+						if(character.getName().equals(model.getCharacter())) {
+							cluePlayer.setClueCharacter(character);
+							break;
+						}
+					}
+					break;
+				}
+			}
+		}
+		
+		// Create game board
+		coordinator.setGameBoard(new GameBoard(coordinator.getPlayers()));
 		return coordinator;
 	}
 	

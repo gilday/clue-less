@@ -16,10 +16,10 @@ import edu.jhu.ep.butlerdidit.R;
 import edu.jhu.ep.butlerdidit.domain.ClueCharacter;
 import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinator;
 import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinatorFactory;
-import edu.jhu.ep.butlerdidit.domain.ClueMatchState;
 import edu.jhu.ep.butlerdidit.domain.CluePlayer;
 import edu.jhu.ep.butlerdidit.domain.GameBoard;
 import edu.jhu.ep.butlerdidit.domain.GameBoardSpace;
+import edu.jhu.ep.butlerdidit.domain.json.ClueMatchState;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchHelper;
@@ -53,7 +53,6 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			// Then use the test data
 			scaffoldTestData();
 			return;
-			
 		}
 		
 		gsHelper.setGameServerMatchListener(this);
@@ -61,6 +60,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		gsHelper.startWatchingMatch();
 	}
 	
+	// TODO scaffold a coordinator
 	public void scaffoldTestData() 
 	{
 		fakePlayer = new CluePlayer();
@@ -152,9 +152,23 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	
 	}
 	
+	// TODO
+	private void updatePawnsWithNewLocations() {
+		// foreach player
+		for(CluePlayer player : coordinator.getPlayers()) {
+			// update pawn
+		}
+	}
+	
+	// TODO Implement this for real by showing the user a message somehow
+	private void notifyUser(String message) {
+		Log.d(TAG, String.format("Notification: %s", message));
+	}
+
 	// TODO Finish this stubbed out method and link to UI
 	private void endTurn() {
 		// Update game server with new state
+		coordinator.endTurn();
 		ClueMatchState matchState = new ClueMatchState(coordinator);
 		GSUpdateMatchModel updateModel = new GSUpdateMatchModel();
 		updateModel.setId(currentMatchId);
@@ -181,8 +195,9 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	 */
 	@Override
 	public void layoutMatch(GSMatch match) {
-		// TODO Auto-generated method stub
-		
+		coordinator = coordinatorFactory.loadGameFromMatch(match);
+		notifyUser(match.getMessage());
+		updatePawnsWithNewLocations();
 	}
 
 	/**
