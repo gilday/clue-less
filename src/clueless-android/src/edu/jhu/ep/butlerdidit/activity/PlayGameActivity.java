@@ -66,7 +66,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	{
 		fakePlayer = new CluePlayer();
 		fakePlayer.setClueCharacter(ClueCharacter.MsScarlett);
-		fakePlayer.setLocation("Library"); //hacked up to gain access to the class
+		fakePlayer.setLocation("Lounge"); //hacked up to gain access to the class
 		
 		List<CluePlayer> fakePlayers = new Vector<CluePlayer>();
 		fakePlayers.add(fakePlayer);
@@ -85,7 +85,9 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			String pawnIdString = PlayGameUtils.translateToRoomPawnId(character.getName(), to);
 			int pawnID = getResources().getIdentifier(pawnIdString, "id", "edu.jhu.ep.butlerdidit");
 			ImageView pawnImage = (ImageView) findViewById(pawnID);
-			pawnImage.setVisibility(View.VISIBLE);
+			System.out.println("The pawnIdString:" + pawnIdString + "PawnID: " + pawnID);
+			pawnImage.setVisibility(0);
+
 		}
 		
 		// TODO I don't know how this method is supposed to work because I'm not sure how 
@@ -97,38 +99,18 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		 */
 		void makeHallPawnVisible(ClueCharacter character, String to, String oldRoom, View view) 
 		{
-			String PawnIdString = PlayGameUtils.translateToHallwayPawnId(to);
-			Log.d(TAG, "PawnId: " + PawnIdString);
-			int PawnID = getResources().getIdentifier(PawnIdString, "id", "edu.jhu.ep.butlerdidit");
-			ImageView PawnImage = (ImageView) findViewById(PawnID);
-			System.out.println("The Pawn ID is " + PawnIdString);
-			PawnImage.setVisibility(View.VISIBLE);
-			
-			ImageView HallPawn = (ImageView) findViewById(R.id.Study_To_Hall);
-
-			if("Ms. Scarlett".equals(ClueCharacter.MsScarlett.getName())){
-				HallPawn.setImageResource(R.drawable.scarlett_pawn);
-				HallPawn.setVisibility(View.VISIBLE);}			
-			if("Col. Mustard".equals(ClueCharacter.ColMustard.getName())){
-				HallPawn.setImageResource(R.drawable.mustard_pawn);
-				HallPawn.setVisibility(View.VISIBLE);
-			}
-			if("Mr. Green".equals(ClueCharacter.MrGreen.getName())){
-				HallPawn.setImageResource(R.drawable.mr_green_pawn);
-				HallPawn.setVisibility(View.VISIBLE);}
-			if("Mrs. Peacock".equals(ClueCharacter.MrsPeacock.getName())){
-				HallPawn.setImageResource(R.drawable.mrs_peacock_pawn);
-				HallPawn.setVisibility(View.VISIBLE);
-			}
-			if("Mrs. White".equals(ClueCharacter.MrsWhite.getName())){
-				HallPawn.setImageResource(R.drawable.mrs_white_pawn);
-				HallPawn.setVisibility(View.VISIBLE);
-			}
-			if("Prof. Plum".equals(ClueCharacter.ProfPlum.getName())){
-				HallPawn.setImageResource(R.drawable.plum_pawn);
-				HallPawn.setVisibility(View.VISIBLE);
-			}
-		}
+			String PawnIdString = PlayGameUtils.translateToHallwayPawnId(character.getName());
+			String HallwayString = PlayGameUtils.translateToHallwayId(to);
+			Log.d(TAG, "PawnId: " + PawnIdString + "HallwayString: " + HallwayString);
+			int PawnID = getResources().getIdentifier(PawnIdString, "drawable", "edu.jhu.ep.butlerdidit");
+			int HallwayID = getResources().getIdentifier(HallwayString,"id","edu.jhu.ep.butlerdidit");
+			Log.d(TAG, "PawnID: " + PawnID + " and the Hallway is " + to);
+			ImageView HallPawn = (ImageView) findViewById(HallwayID);
+			Log.d(TAG, "Hit");
+			HallPawn.setImageResource(PawnID);
+			Log.d(TAG, "Hit again!");
+			HallPawn.setVisibility(View.VISIBLE);
+		}			
 	}
 
 	public void moveToSpace (View view)
@@ -155,7 +137,6 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		} else {
 			Log.e(TAG, "Player cannot move to this spot! Should not be given the option to");
 		}
-	
 	}
 	
 	// TODO

@@ -1198,7 +1198,7 @@
         android:visibility="invisible"/>
 
     <ImageView
-        android:id="@+id/scarlett_ballroom"
+        android:id="@+id/scarlett_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/knife_conservatory"
@@ -1208,7 +1208,7 @@
         android:visibility="invisible"/>
 
     <ImageView
-        android:id="@+id/plum_ballroom"
+        android:id="@+id/plum_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/knife_conservatory"
@@ -1218,17 +1218,17 @@
         android:visibility="invisible"/>
 
     <ImageView
-        android:id="@+id/peacock_ballroom"
+        android:id="@+id/peacock_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/knife_conservatory"
-        android:layout_toRightOf="@+id/plum_ballroom"
+        android:layout_toRightOf="@+id/plum_ball"
         android:contentDescription="@string/Cards"
         android:src="@drawable/mrs_peacock_pawn" 
         android:visibility="invisible"/>
 
     <ImageView
-        android:id="@+id/green_ballroom"
+        android:id="@+id/green_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/Make_A_Suggestion"
@@ -1238,7 +1238,7 @@
         android:visibility="invisible"/>
 
     <ImageView
-        android:id="@+id/mustard_ballroom"
+        android:id="@+id/mustard_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/knife_conservatory"
@@ -1248,7 +1248,7 @@
         android:visibility="invisible"/>
 
     <ImageView
-        android:id="@+id/white_ballroom"
+        android:id="@+id/white_ball"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/white_billiard"
@@ -1261,7 +1261,7 @@
         android:id="@+id/rope_ballroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/scarlett_ballroom"
+        android:layout_above="@+id/scarlett_ball"
         android:layout_alignLeft="@+id/ballroom"
         android:src="@drawable/rope_space" 
         android:visibility="invisible"/>
@@ -1288,8 +1288,8 @@
         android:id="@+id/candlestick_ballroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/green_ballroom"
-        android:layout_alignRight="@+id/mustard_ballroom"
+        android:layout_above="@+id/green_ball"
+        android:layout_alignRight="@+id/mustard_ball"
         android:src="@drawable/candlestick_space" 
         android:visibility="invisible"/>
 
@@ -1297,8 +1297,8 @@
         android:id="@+id/knife_ballroom"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/mustard_ballroom"
-        android:layout_toRightOf="@+id/mustard_ballroom"
+        android:layout_above="@+id/mustard_ball"
+        android:layout_toRightOf="@+id/mustard_ball"
         android:src="@drawable/knife_space" 
         android:visibility="invisible"/>
 
@@ -1724,7 +1724,17 @@
         android:layout_alignLeft="@+id/HallToStudy"
         android:contentDescription="@string/Cards"
         android:src="@drawable/square_space"
-        android:tag="Study-Hall"
+        android:tag="Study-Hall2"
+        android:visibility="invisible" />
+
+    <ImageView
+        android:id="@+id/Conservatory_To_Library"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/Library_To_Study"
+        android:layout_alignTop="@+id/LibraryToConservatory"
+        android:contentDescription="@string/Cards"
+        android:src="@drawable/square_space"
         android:visibility="invisible" />
     
 </RelativeLayout>
