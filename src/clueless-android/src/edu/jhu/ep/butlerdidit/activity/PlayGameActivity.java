@@ -84,26 +84,29 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			String PawnIdString = PlayGameUtils.translateToPawnId(player.getClueCharacter().getName(), to);
 			int PawnID = getResources().getIdentifier(PawnIdString, "id", "edu.jhu.ep.butlerdidit");
 			ImageView PawnImage = (ImageView) findViewById(PawnID);
-			System.out.println("The Pawn ID is " + PawnIdString);
+			Log.d(TAG, "The Pawn ID is " + PawnIdString);
 			PawnImage.setVisibility(View.VISIBLE);
 		}
 	}
 
+	// TODO Should rename to MoveToSpace since this could be used for hallways
 	public void MoveToRoom (View view)
 	{
 		ViewHelpers viewhelp = new ViewHelpers();
-		String Room = PlayGameUtils.roomIdToName(view.getId());
-		GameBoardSpace space = new GameBoardSpace(Room);
-		System.out.println(space.getSpaceId());
+		String roomId = PlayGameUtils.roomIdToName(view.getId());
+		// translate from ui name to domain name
+		roomId = PlayGameUtils.lowCaseRoomtoUpCaseRoom(roomId);
+		GameBoardSpace space = game.getSpaceById(roomId);
+		Log.d(TAG, space.getSpaceId());
 		
 		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space))
 		{
-			System.out.println("you can move to the room1");
-			viewhelp.MakePawnVisible(fakePlayer, Room, view);
+			Log.d(TAG, "you can move to the room1");
+			viewhelp.MakePawnVisible(fakePlayer, roomId, view);
 		}
 		else if(!game.isPlayerAbleToMoveToSpace(fakePlayer, space))
 		{
-			System.out.println("Plese select another room");
+			Log.d(TAG, "Plese select another room");
 		}
 	}
 
