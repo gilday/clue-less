@@ -45,57 +45,16 @@ public class GameBoard {
     public boolean isPlayerAbleToMoveToSpace(CluePlayer player, GameBoardSpace space) {
         List<GameBoardSpace> possibleMoves = getPossibleMoves(player);
 
-        String RealString = lowCaseRoomtoUpCaseRoom(space.getSpaceId());
         for(GameBoardSpace target : possibleMoves) {
-			System.out.println("The target spaceId = " + target.getSpaceId() + " and the possible Space ID = " + space.getSpaceId());
-            if(target.getSpaceId() == RealString)	
-            {
-			return true;
-            }
+            if(target.getSpaceId() == space.getSpaceId())	
+            	return true;
         }
         return false;
     }
-
-    private String lowCaseRoomtoUpCaseRoom(String lowRoom)
-    {
-		if(lowRoom.equals("study"))
-		{
-			return "Study";
-		}
-		else if(lowRoom.equals("hall"))
-		{
-			return "Hall";
-		}
-		else if(lowRoom.equals("lounge"))
-		{
-			return "Lounge";
-		}
-		else if(lowRoom.equals("library"))
-		{
-			return "Library";
-		}
-		else if(lowRoom.equals("billiard"))
-		{
-			return "Billiard Room";
-		}
-		else if(lowRoom.equals("dining"))
-		{
-			return "Dining Room";
-		}
-		else if(lowRoom.equals("conservatory"))
-		{
-			return "Conservatory";
-		}
-		else if(lowRoom.equals("ballroom"))
-		{
-			return "Ball Room";
-		}
-		else if(lowRoom.equals("kitchen"))
-		{
-			return "Kitchen";
-		}
-		return "nothing";
-	}
+    
+    public GameBoardSpace getSpaceById(String id) {
+    	return spaces.get(id);
+    }
     
     private void createSpaces() {
         spaces = new Hashtable<String, GameBoardSpace>();

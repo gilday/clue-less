@@ -15,7 +15,7 @@ public class GameBoardSpace {
         return navigationTargets;
     }
 
-    public GameBoardSpace(String spaceId) {
+    GameBoardSpace(String spaceId) {
         navigationTargets = new Vector<GameBoardSpace>();
         this.spaceId = spaceId;
     }

@@ -5,6 +5,9 @@ import edu.jhu.ep.butlerdidit.domain.Room;
 
 public class PlayGameUtils {
 
+	// TODO Get rid of all the if's and do this by convention
+	// 1) Characters: Drop the first part of the string and make the result lowercase e.g. "Mrs. Scarlett" -> "scarlett"
+	// 2) Rooms: use toLowerCase and get rid of white space
 	public static String translateToPawnId(String characterName, String spaceId) 
 	{
 		String character = null;
@@ -47,6 +50,9 @@ public class PlayGameUtils {
 		return String.format("%s_%s", character, space);
 	}
 	
+	// TODO Get rid of if's and do by convention
+	// 1) make "ballroom" and "billiard" into "ball_room" and "billiard_room"
+	// 2) algo replaces all '_' with white space and captilizes each word
     public static String lowCaseRoomtoUpCaseRoom(String lowRoom)
     {
 		if(lowRoom.equals("study"))
@@ -88,6 +94,7 @@ public class PlayGameUtils {
 		return "nothing";
 	}
     
+    // TODO Use static reference instead of value
 	public static String roomIdToName(int RoomID)
 	{
 		if(RoomID == 2131296266)
