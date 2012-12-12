@@ -4,6 +4,8 @@ import java.util.Collection;
 import java.util.List;
 import java.util.Vector;
 
+import android.util.Log;
+
 import com.google.gson.Gson;
 import com.google.inject.Inject;
 
@@ -106,6 +108,7 @@ public class ClueGameCoordinatorFactory {
 		gsPlayer1.setId(1);
 		player1.setGamePlayer(gsPlayer1);
 		player1.setLocation(ClueCharacter.MsScarletID);
+		System.out.println(player1.getLocation());
 		player1.setClueCharacter(ClueCharacter.MsScarlett);
 		cluePlayers.add(player1);
 		
