@@ -12,7 +12,6 @@ import com.google.inject.Inject;
 
 import edu.jhu.ep.butlerdidit.service.api.GSConstants;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchHelper;
-import edu.jhu.ep.butlerdidit.service.api.GSUpdateMatchModel;
 
 public class GSMatchService extends RoboIntentService {
 	
@@ -74,12 +73,14 @@ public class GSMatchService extends RoboIntentService {
 	}
 	
 	private void doUpdateMatch(Intent intent) {
-		GSUpdateMatchModel model = intent.getParcelableExtra(GSConstants.PARM_UPDATEMATCH);
+		String json = intent.getStringExtra(GSConstants.PARM_UPDATEMATCH);
+		int matchId = intent.getIntExtra(GSConstants.PARM_ID, 0);
+		
 		int status = 0;
 		lbm = LocalBroadcastManager.getInstance(getApplicationContext());
 		
 		try {
-			RestResponse response = httpClient.updateMatch(model);
+			RestResponse response = httpClient.updateMatch(matchId, json);
 			status = response.getHttpStatusCode();
 		} catch(IOException ioe) {
 			Intent broadcast = new Intent(GSConstants.BROADCAST_MATCHUPDATE_SUCCESS);

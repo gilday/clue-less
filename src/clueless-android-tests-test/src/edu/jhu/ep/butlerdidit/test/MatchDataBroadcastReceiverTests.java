@@ -30,6 +30,7 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 			"{ " +
 				"\"id\":1," +
 				"\"updated_at\": \"2012-12-05T23:41:01Z\"," +
+				"\"current_player\": \"testPlayer@example.com\"," +
 				"\"min_players\":2," +
 				"\"max_players\":6," +
 				"\"status\":\"this is a status\"," +
@@ -69,6 +70,7 @@ public class MatchDataBroadcastReceiverTests extends TestCase {
 			assertNotNull(match.getParticipants());
 			GSParticipant participant = (GSParticipant) match.getParticipants().toArray()[0];
 			assertEquals("testPlayer@example.com", participant.getGamePlayer().getEmail());
+			assertEquals("testPlayer@example.com", match.getCurrentPlayer());
 		}
 	}
 }

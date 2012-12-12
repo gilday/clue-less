@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.google.gson.Gson;
 import com.google.inject.Inject;
 
 import edu.jhu.ep.butlerdidit.R;
@@ -158,14 +159,16 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 
 	// TODO Finish this stubbed out method and link to UI
 	public void endTurnButtonHandler(View view) {
+		Gson gson = new Gson();
 		// Update game server with new state
 		coordinator.endTurn();
 		ClueMatchState matchState = new ClueMatchState(coordinator);
 		GSUpdateMatchModel updateModel = new GSUpdateMatchModel();
 		updateModel.setId(currentMatchId);
+		updateModel.setCurrentPlayer(coordinator.getCurrentPlayer().getGamePlayer().getEmail());
 		updateModel.setStatus("playing");
 		updateModel.setMessage(String.format("%s has ended their turn", lpHolder.getLocalPlayerEmail()));
-		updateModel.setMatchData(matchState.toJSON());
+		updateModel.setMatchData(gson.toJsonTree(matchState));
 		gsHelper.updateMatch(updateModel);
 	}
 
