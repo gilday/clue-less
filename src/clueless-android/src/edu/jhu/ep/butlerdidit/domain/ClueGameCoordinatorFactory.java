@@ -12,6 +12,7 @@ import edu.jhu.ep.butlerdidit.domain.json.CluePlayerModel;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSParticipant;
+import edu.jhu.ep.butlerdidit.service.api.GSPlayer;
 
 public class ClueGameCoordinatorFactory {
 	
@@ -92,6 +93,36 @@ public class ClueGameCoordinatorFactory {
 		
 		// Create game board
 		coordinator.setGameBoard(new GameBoard(coordinator.getPlayers()));
+		return coordinator;
+	}
+	
+	public ClueGameCoordinator coordinatorForTesting() {
+		ClueGameCoordinator coordinator = new ClueGameCoordinator(localPlayerHolder);
+		
+		List<CluePlayer> cluePlayers = new Vector<CluePlayer>();
+		CluePlayer player1 = new CluePlayer();
+		GSPlayer gsPlayer1 = new GSPlayer();
+		gsPlayer1.setEmail("player1@test.com");
+		gsPlayer1.setId(1);
+		player1.setGamePlayer(gsPlayer1);
+		player1.setLocation(ClueCharacter.MsScarletID);
+		player1.setClueCharacter(ClueCharacter.MsScarlett);
+		cluePlayers.add(player1);
+		
+		CluePlayer player2 = new CluePlayer();
+		GSPlayer gsPlayer2 = new GSPlayer();
+		gsPlayer2.setEmail("player2@test.com");
+		gsPlayer2.setId(2);
+		player2.setGamePlayer(gsPlayer2);
+		player2.setLocation(ClueCharacter.ColMustardID);
+		player2.setClueCharacter(ClueCharacter.ColMustard);
+		cluePlayers.add(player2);
+		
+		coordinator.setPlayers(cluePlayers);
+		GameBoard board = new GameBoard(cluePlayers);
+		coordinator.setGameBoard(board);
+		coordinator.setCurrentPlayer(player1);
+		
 		return coordinator;
 	}
 	

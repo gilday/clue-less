@@ -12,7 +12,7 @@
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/study"
         android:background="@drawable/hall2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Hall" />
 
     <Button
@@ -23,7 +23,7 @@
         android:layout_alignBottom="@+id/kitchen"
         android:layout_alignLeft="@+id/hall"
         android:background="@drawable/ballroom2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Ball Room" />
 
     <Button
@@ -34,7 +34,7 @@
         android:layout_below="@+id/hall"
         android:layout_marginTop="30dp"
         android:background="@drawable/billiard_room2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Billiard Room" />
 
     <Button
@@ -45,7 +45,7 @@
         android:layout_marginLeft="30dp"
         android:layout_toRightOf="@+id/hall"
         android:background="@drawable/lounge2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Lounge" />
 
     <Button
@@ -56,7 +56,7 @@
         android:layout_below="@+id/dining"
         android:layout_marginTop="30dp"
         android:background="@drawable/kitchen2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Kitchen" />
 
     <Button
@@ -68,7 +68,7 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="520dp"
         android:background="@drawable/conservatory2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Conservatory" />
 
     <Button
@@ -79,7 +79,7 @@
         android:layout_alignBottom="@+id/billiard"
         android:layout_alignLeft="@+id/conservatory"
         android:background="@drawable/library2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Library" />
 
     <Button
@@ -89,7 +89,7 @@
         android:layout_alignLeft="@+id/library"
         android:layout_alignParentTop="true"
         android:background="@drawable/study2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Study" />
 
     <Button
@@ -100,7 +100,7 @@
         android:layout_alignBottom="@+id/billiard"
         android:layout_alignLeft="@+id/lounge"
         android:background="@drawable/dining_room2"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Dining Room" />
 
     <Button
@@ -112,7 +112,7 @@
         android:layout_alignBottom="@+id/dining"
         android:layout_toLeftOf="@+id/dining"
         android:background="@color/hallway_color"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Billiard Room-Dining Room" />
 
     <Button
@@ -124,7 +124,7 @@
         android:layout_alignBottom="@+id/kitchen"
         android:layout_toLeftOf="@+id/kitchen"
         android:background="@color/hallway_color"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Kitchen-Ball Room" />
 
     <Button
@@ -137,7 +137,7 @@
         android:layout_toRightOf="@+id/study"
         android:background="@color/hallway_color" 
         android:tag="Study-Hall"
-        android:onClick="moveToSpace"/>
+        android:onClick="moveToSpaceButtonHandler"/>
 
     <Button
         android:id="@+id/BilliardToLibrary"
@@ -148,7 +148,7 @@
         android:layout_alignBottom="@+id/billiard"
         android:layout_toLeftOf="@+id/billiard"
         android:background="@color/hallway_color"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Billiard Room-Library" />
 
     <Button
@@ -161,7 +161,7 @@
         android:layout_toLeftOf="@+id/ballroom"
         android:background="@color/hallway_color" 
         android:tag="Ball Room-Conservatory"
-        android:onClick="moveToSpace"/>
+        android:onClick="moveToSpaceButtonHandler"/>
 
     <Button
         android:id="@+id/StudyToLibrary"
@@ -173,7 +173,7 @@
         android:layout_marginRight="46dp"
         android:background="@color/hallway_color" 
         android:tag="Library-Study"
-        android:onClick="moveToSpace"/>
+        android:onClick="moveToSpaceButtonHandler"/>
 
     <Button
         android:id="@+id/BilliardToBallroom"
@@ -185,7 +185,7 @@
         android:layout_marginRight="45dp"
         android:background="@color/hallway_color" 
         android:tag="Billiard Room-Ball Room"
-        android:onClick="moveToSpace"/>
+        android:onClick="moveToSpaceButtonHandler"/>
 
     <Button
         android:id="@+id/DiningToKitchen"
@@ -197,7 +197,7 @@
         android:layout_marginRight="44dp"
         android:background="@color/hallway_color" 
         android:tag="Dining Room-Kitchen"
-        android:onClick="moveToSpace"/>
+        android:onClick="moveToSpaceButtonHandler"/>
 
     <Button
         android:id="@+id/LoungeToDining"
@@ -208,7 +208,7 @@
         android:layout_alignLeft="@+id/DiningToKitchen"
         android:background="@color/hallway_color" 
         android:tag="Lounge-Dining Room"
-        android:onClick="moveToSpace"/>
+        android:onClick="moveToSpaceButtonHandler"/>
 
     <Button
         android:id="@+id/HallToBilliard"
@@ -218,7 +218,7 @@
         android:layout_alignLeft="@+id/BilliardToBallroom"
         android:layout_below="@+id/hall"
         android:background="@color/hallway_color"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Billiard Room-Hall" />
 
     <Button
@@ -229,7 +229,7 @@
         android:layout_alignLeft="@+id/StudyToLibrary"
         android:layout_below="@+id/library"
         android:background="@color/hallway_color"
-        android:onClick="moveToSpace"
+        android:onClick="moveToSpaceButtonHandler"
         android:tag="Conservatory-Library" />
 
     <Button
@@ -242,7 +242,7 @@
         android:layout_toRightOf="@+id/hall"
         android:background="@color/hallway_color" 
         android:tag="Hall-Lounge"
-        android:onClick="moveToSpace"/>
+        android:onClick="moveToSpaceButtonHandler"/>
     
     <TextView
         android:id="@+id/clue_text"
@@ -515,6 +515,7 @@
         android:layout_height="40dp"
         android:layout_marginLeft="843dp"
         android:layout_alignParentBottom="true"
+        android:onClick="endTurnButtonHandler"
         android:text="@string/End_Turn" />
 
     <Button

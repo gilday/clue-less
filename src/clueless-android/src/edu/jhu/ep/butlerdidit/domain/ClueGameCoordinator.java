@@ -18,6 +18,14 @@ public class ClueGameCoordinator {
 	private GameBoard gameBoard;
 	private GSLocalPlayerHolder localPlayerHolder;
 	
+	public CluePlayer getLocalPlayer() {
+		for(CluePlayer player : players) {
+			if(player.getGamePlayer().getEmail().equals(localPlayerHolder.getLocalPlayerEmail()))
+				return player;
+		}
+		return null;
+	}
+	
 	public boolean isLocalPlayersTurn() {
 		return (localPlayerHolder.getLocalPlayerEmail().equals(getCurrentPlayer().getGamePlayer().getEmail()));
 	}

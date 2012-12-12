@@ -1,8 +1,5 @@
 package edu.jhu.ep.butlerdidit.activity;
 
-import java.util.List;
-import java.util.Vector;
-
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import android.os.Bundle;
@@ -19,6 +16,7 @@ import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinatorFactory;
 import edu.jhu.ep.butlerdidit.domain.CluePlayer;
 import edu.jhu.ep.butlerdidit.domain.GameBoard;
 import edu.jhu.ep.butlerdidit.domain.GameBoardSpace;
+import edu.jhu.ep.butlerdidit.domain.HallwaySpace;
 import edu.jhu.ep.butlerdidit.domain.Room;
 import edu.jhu.ep.butlerdidit.domain.json.ClueMatchState;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
@@ -39,20 +37,23 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	@Inject private GSLocalPlayerHolder lpHolder;
 	
 	private int currentMatchId = 0;
-	private GameBoard game;
 	private ClueGameCoordinator coordinator;
-	CluePlayer fakePlayer;
+	
+	private ViewHelpers viewHelper;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) 
 	{
 		super.onCreate(savedInstanceState);
 		
+		viewHelper = new ViewHelpers();
+		
 		currentMatchId = getIntent().getIntExtra(PARM_MATCHID, 0);
 		// If the intent that starts this activity has not sent a match ID to use,
 		if(currentMatchId <= 0) {
 			// Then use the test data
-			scaffoldTestData();
+			coordinator = coordinatorFactory.coordinatorForTesting();
+			lpHolder.setLocalPlayerEmail(coordinator.getCurrentPlayer().getGamePlayer().getEmail());
 			return;
 		}
 		
@@ -61,32 +62,43 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		gsHelper.startWatchingMatch();
 	}
 	
-	// TODO scaffold a coordinator
-	public void scaffoldTestData() 
-	{
-		fakePlayer = new CluePlayer();
-		fakePlayer.setClueCharacter(ClueCharacter.MsScarlett);
-		fakePlayer.setLocation("Lounge"); //hacked up to gain access to the class
-		
-		List<CluePlayer> fakePlayers = new Vector<CluePlayer>();
-		fakePlayers.add(fakePlayer);
-		game = new GameBoard(fakePlayers);
-	}
-	
 	class ViewHelpers 
 	{
+		void changePawnVisibility(ClueCharacter character, GameBoardSpace space, boolean visible) {
+			if(space instanceof Room)
+				changeRoomPawnVisibility(character, (Room)space, visible);
+			else if(space instanceof HallwaySpace)
+				changeHallPawnVisibility(character, (HallwaySpace)space, visible);
+		}
+		
+		// TODO
+		/**
+		 * This method will loop through the players' locations and show or hide their pawns 
+		 * This is called when we get a new match state from the server with new locations. 
+		 * Will hide all the old locations then show all the new
+		 */
+		void changeAllPawnVisibility(boolean visible) {
+			// foreach player
+			for(CluePlayer player : coordinator.getPlayers()) {
+				// update pawn
+				GameBoardSpace space = coordinator.getGameBoard().getSpaceById(player.getLocation());
+				viewHelper.changePawnVisibility(player.getClueCharacter(), space, visible);
+			}
+		}
+		
 		/**
 		 * Just deals with UI. Unhides and hides space for pawn
 		 * @param from ID of space to move from e.g. "Study"
-		 * @param to ID of space to move pawn to e.g. "Hall"
+		 * @param roomId ID of space to move pawn to e.g. "Hall"
 		 */
-		void makeRoomPawnVisible(ClueCharacter character, String to, String oldRoom, View view) 
+		private void changeRoomPawnVisibility(ClueCharacter character, Room room, boolean visible) 
 		{
-			String pawnIdString = PlayGameUtils.translateToRoomPawnId(character.getName(), to);
+			String pawnIdString = PlayGameUtils.translateToRoomPawnId(character.getName(), room.getSpaceId());
 			int pawnID = getResources().getIdentifier(pawnIdString, "id", "edu.jhu.ep.butlerdidit");
 			ImageView pawnImage = (ImageView) findViewById(pawnID);
-			System.out.println("The pawnIdString:" + pawnIdString + "PawnID: " + pawnID);
-			pawnImage.setVisibility(0);
+			Log.d(TAG, "The pawnIdString:" + pawnIdString + "PawnID: " + pawnID);
+			int visibility = visible ? View.VISIBLE : View.INVISIBLE;
+			pawnImage.setVisibility(visibility);
 
 		}
 		
@@ -97,55 +109,47 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		/*
 		 * if(character == ClueCharacter.MsScarlett)
 		 */
-		void makeHallPawnVisible(ClueCharacter character, String to, String oldRoom, View view) 
+		private void changeHallPawnVisibility(ClueCharacter character, HallwaySpace hallway, boolean visible) 
 		{
-			String PawnIdString = PlayGameUtils.translateToHallwayPawnId(character.getName());
-			String HallwayString = PlayGameUtils.translateToHallwayId(to);
-			Log.d(TAG, "PawnId: " + PawnIdString + "HallwayString: " + HallwayString);
-			int PawnID = getResources().getIdentifier(PawnIdString, "drawable", "edu.jhu.ep.butlerdidit");
-			int HallwayID = getResources().getIdentifier(HallwayString,"id","edu.jhu.ep.butlerdidit");
-			Log.d(TAG, "PawnID: " + PawnID + " and the Hallway is " + to);
-			ImageView HallPawn = (ImageView) findViewById(HallwayID);
-			Log.d(TAG, "Hit");
-			HallPawn.setImageResource(PawnID);
-			Log.d(TAG, "Hit again!");
-			HallPawn.setVisibility(View.VISIBLE);
+			String pawnIdString = PlayGameUtils.translateToHallwayPawnId(character.getName());
+			String hallwayString = PlayGameUtils.translateToHallwayId(hallway.getSpaceId());
+			Log.d(TAG, "PawnId: " + pawnIdString + "HallwayString: " + hallwayString);
+			int pawnID = getResources().getIdentifier(pawnIdString, "drawable", "edu.jhu.ep.butlerdidit");
+			int hallwayID = getResources().getIdentifier(hallwayString,"id","edu.jhu.ep.butlerdidit");
+			Log.d(TAG, "PawnID: " + pawnID + " and the Hallway is " + hallway.getSpaceId());
+			ImageView hallPawn = (ImageView) findViewById(hallwayID);
+			hallPawn.setImageResource(pawnID);
+			int visibility = visible ? View.VISIBLE : View.INVISIBLE;
+			hallPawn.setVisibility(visibility);
 		}			
 	}
 
-	public void moveToSpace (View view)
+	public void moveToSpaceButtonHandler (View view)
 	{
-		ViewHelpers viewhelp = new ViewHelpers();
+		GameBoard game = coordinator.getGameBoard();
+		CluePlayer localPlayer = coordinator.getLocalPlayer();
 		// Storing the domain ID of the space in the tag
 		String spaceId = (String) view.getTag();
 		if(spaceId == null)
 			Log.e(TAG, "No space ID set in View's tag");
 		GameBoardSpace space = game.getSpaceById(spaceId);
 		
-		//Make sure to keep track of the old room to turn it off.
-		String oldPlace = fakePlayer.getLocation();
-		
-		if(game.isPlayerAbleToMoveToSpace(fakePlayer, space)) {
+		if(game.isPlayerAbleToMoveToSpace(localPlayer, space)) {
 			// Turn on pawn at new location and set new location for player
 			Log.d(TAG, String.format("You can move to the %s", spaceId));
-			fakePlayer.setLocation(spaceId);
 			// Although moving logic is the same, UI code is different for rooms and hallways
-			if(space instanceof Room)
-				viewhelp.makeRoomPawnVisible(fakePlayer.getClueCharacter(), spaceId, oldPlace, view);
-			else
-				viewhelp.makeHallPawnVisible(fakePlayer.getClueCharacter(), spaceId, oldPlace, view);
+			GameBoardSpace oldSpace = game.getSpaceById(localPlayer.getLocation());
+			viewHelper.changePawnVisibility(localPlayer.getClueCharacter(), oldSpace, false);
+			
+			localPlayer.setLocation(spaceId);
+			
+			viewHelper.changePawnVisibility(localPlayer.getClueCharacter(), space, true);
 		} else {
 			Log.e(TAG, "Player cannot move to this spot! Should not be given the option to");
 		}
 	}
 	
-	// TODO
-	private void updatePawnsWithNewLocations() {
-		// foreach player
-		for(CluePlayer player : coordinator.getPlayers()) {
-			// update pawn
-		}
-	}
+
 	
 	// TODO Implement this for real by showing the user a message somehow
 	private void notifyUser(String message) {
@@ -153,7 +157,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	}
 
 	// TODO Finish this stubbed out method and link to UI
-	private void endTurn() {
+	public void endTurnButtonHandler(View view) {
 		// Update game server with new state
 		coordinator.endTurn();
 		ClueMatchState matchState = new ClueMatchState(coordinator);
@@ -182,9 +186,12 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	 */
 	@Override
 	public void layoutMatch(GSMatch match) {
+		// Hide all pawns
+		viewHelper.changeAllPawnVisibility(false);
 		coordinator = coordinatorFactory.loadGameFromMatch(match);
+		viewHelper.changeAllPawnVisibility(true);
+		
 		notifyUser(match.getMessage());
-		updatePawnsWithNewLocations();
 	}
 
 	/**
@@ -194,7 +201,11 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	@Override
 	public void takeTurn(GSMatch match) {
 		// TODO Auto-generated method stub
+		viewHelper.changeAllPawnVisibility(false);
+		coordinator = coordinatorFactory.loadGameFromMatch(match);
+		viewHelper.changeAllPawnVisibility(true);
 		
+		notifyUser(match.getMessage());
 	}
 
 	/**
