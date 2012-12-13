@@ -45,13 +45,16 @@ public class PlayGameActivity extends RoboActivity
 		fakePlayers.add(fakePlayer);
 		game = new GameBoard(fakePlayers);
 	}
-	
-	class ViewHelpers {
+		class ViewHelpers {
+
 		/**
 		 * Just deals with UI. Unhides and hides space for pawn
 		 * @param from ID of space to move from e.g. "Study"
 		 * @param to ID of space to move pawn to e.g. "Hall"
 		 */
+			//==============================
+			//*****START HERE TOMORROW *****
+			//==============================
 		void movePawn(CluePlayer player, String from, String to) {
 			String fromPawnId = translateToPawnId(player.getClueCharacter().getName(), from);
 			// get space pawn ImageView by ID
