@@ -63,6 +63,15 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		gsHelper.startWatchingMatch();
 	}
 	
+	@Override
+	protected void onDestroy() {
+		super.onDestroy();
+		
+		if(gsHelper != null) {
+			gsHelper.stopWatchingMatch();
+		}
+	}
+	
 	class ViewHelpers 
 	{
 		void changePawnVisibility(ClueCharacter character, GameBoardSpace space, boolean visible) {
