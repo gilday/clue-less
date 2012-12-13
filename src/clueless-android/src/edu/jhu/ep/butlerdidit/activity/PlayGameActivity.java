@@ -72,7 +72,6 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 				changeHallPawnVisibility(character, (HallwaySpace)space, visible);
 		}
 		
-		// TODO
 		/**
 		 * This method will loop through the players' locations and show or hide their pawns 
 		 * This is called when we get a new match state from the server with new locations. 
@@ -103,13 +102,6 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 
 		}
 		
-		// TODO I don't know how this method is supposed to work because I'm not sure how 
-		// pawns on hallways are implemented
-		// I do know this needs to be fixed because these if statements will always be true
-		// maybe you mean
-		/*
-		 * if(character == ClueCharacter.MsScarlett)
-		 */
 		private void changeHallPawnVisibility(ClueCharacter character, HallwaySpace hallway, boolean visible) 
 		{
 			String pawnIdString = PlayGameUtils.translateToHallwayPawnId(character.getName());
@@ -150,36 +142,37 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		}
 	}
 	
-
-	
-	// TODO Implement this for real by showing the user a message somehow
 	private void notifyUser(String message) {
 		Log.d(TAG, String.format("Notification: %s", message));
+		// There's not much more room for an additional widget on the screen so I'm just 
+		// going to update the activity title. We could make PlayGameActivity a fullscreen 
+		// activity to free up some more room but this messes up the pawn and game board 
+		// space placement
+		setTitle(message);
 	}
 
-	// TODO Finish this stubbed out method and link to UI
 	public void endTurnButtonHandler(View view) {
 		Gson gson = new Gson();
 		// Update game server with new state
+		String lastCharacter = coordinator.getCurrentPlayer().getClueCharacter().getName();
 		coordinator.endTurn();
 		ClueMatchState matchState = new ClueMatchState(coordinator);
 		GSUpdateMatchModel updateModel = new GSUpdateMatchModel();
 		updateModel.setId(currentMatchId);
 		updateModel.setCurrentPlayer(coordinator.getCurrentPlayer().getGamePlayer().getEmail());
 		updateModel.setStatus("playing");
-		updateModel.setMessage(String.format("%s has ended their turn", lpHolder.getLocalPlayerEmail()));
+		updateModel.setMessage(String.format("%s is done. %s's turn", lastCharacter, coordinator.getCurrentPlayer().getClueCharacter().getName()));
 		updateModel.setMatchData(gson.toJsonTree(matchState));
 		gsHelper.updateMatch(updateModel);
 	}
 
-	// TODO Finish method by reporting back to the user what should happen now
 	@Override
 	public void enterNewGame(GSMatch match) {
 		coordinator = coordinatorFactory.newGameFromMatch(match);
 		if(coordinator.isLocalPlayersTurn()) {
-			Log.v(TAG, "New game - it is our turn so do something");
+			notifyUser(String.format("Welcome, %s! It's your turn", coordinator.getCurrentPlayer().getClueCharacter().getName()));
 		} else {
-			Log.v(TAG, "New game - not our turn so sit tight");
+			notifyUser(String.format("Welcome, %s! It's %s's turn", coordinator.getLocalPlayer().getClueCharacter().getName(), coordinator.getCurrentPlayer().getClueCharacter().getName()));
 		}
 	}
 
@@ -203,7 +196,6 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	 */
 	@Override
 	public void takeTurn(GSMatch match) {
-		// TODO Auto-generated method stub
 		viewHelper.changeAllPawnVisibility(false);
 		coordinator = coordinatorFactory.loadGameFromMatch(match);
 		viewHelper.changeAllPawnVisibility(true);
