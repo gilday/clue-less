@@ -8,6 +8,7 @@ public class ClueGameCoordinator {
 	
 	public static final int MIN_PLAYERS = 2;
 	public static final int MAX_PLAYERS = 6;
+	public int NoOfPlayers = 0;
 	
 	ClueGameCoordinator(GSLocalPlayerHolder localPlayerHolder) { 
 		this.localPlayerHolder = localPlayerHolder;

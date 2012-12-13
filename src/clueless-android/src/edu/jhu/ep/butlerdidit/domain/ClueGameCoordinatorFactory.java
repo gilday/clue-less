@@ -1,6 +1,7 @@
 package edu.jhu.ep.butlerdidit.domain;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Vector;
 
@@ -100,7 +101,8 @@ public class ClueGameCoordinatorFactory {
 	
 	public ClueGameCoordinator coordinatorForTesting() {
 		ClueGameCoordinator coordinator = new ClueGameCoordinator(localPlayerHolder);
-		
+		List<Deck> TestDeck = Deck.AllDeck;
+				
 		List<CluePlayer> cluePlayers = new Vector<CluePlayer>();
 		CluePlayer player1 = new CluePlayer();
 		GSPlayer gsPlayer1 = new GSPlayer();
@@ -108,7 +110,6 @@ public class ClueGameCoordinatorFactory {
 		gsPlayer1.setId(1);
 		player1.setGamePlayer(gsPlayer1);
 		player1.setLocation(ClueCharacter.MsScarletID);
-		System.out.println(player1.getLocation());
 		player1.setClueCharacter(ClueCharacter.MsScarlett);
 		cluePlayers.add(player1);
 		
@@ -121,6 +122,8 @@ public class ClueGameCoordinatorFactory {
 		player2.setClueCharacter(ClueCharacter.ColMustard);
 		cluePlayers.add(player2);
 		
+		assignHandToPlayers(TestDeck, coordinator);
+	
 		coordinator.setPlayers(cluePlayers);
 		GameBoard board = new GameBoard(cluePlayers);
 		coordinator.setGameBoard(board);
@@ -147,5 +150,30 @@ public class ClueGameCoordinatorFactory {
 		for(int i = 1; i < players.size(); i++) {
 			players.get(i).setClueCharacter(ClueCharacter.All.get(i));
 		}
+	}
+	
+	private void assignHandToPlayers(List<Deck> deck, ClueGameCoordinator coordinator)
+	//Dish out the cards to each player and have it assigned to a player. 
+	{		
+		//We need to know the number of players that are playing. 
+		List<CluePlayer> players = coordinator.getPlayers();
+		System.out.println("No more freaking out about player size which is " + players.size());
+
+		//The following list of players are test players.
+		players.get(0).setClueCharacter(ClueCharacter.MsScarlett);
+		for(int i = 1; i < players.size(); i++) {
+			players.get(i).setClueCharacter(ClueCharacter.All.get(i));
+		}
+		//Everything between this and the other comments above are test parameters that will be taken out later.
+		int NoOfPlayers = players.size();
+
+		for(int j = 1; j < players.size(); j++) 
+		{
+			players.get(j).setHand(deck);
+		}
+		
+		//The following is test code to make sure the cards coming out are correct. 
+		for(Deck Cards : players.get(1).getHand())
+		System.out.println("players 1 card is " + Cards.getCard());
 	}
 }

@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import java.util.Collections;
+import java.util.List;
 
 import com.google.inject.Inject;
 
@@ -24,6 +26,7 @@ import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchHelper;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchListener;
 import edu.jhu.ep.butlerdidit.service.api.GSUpdateMatchModel;
+import edu.jhu.ep.butlerdidit.domain.Deck;
 
 @ContentView(R.layout.activity_play_game)
 public class PlayGameActivity extends RoboActivity implements GSMatchListener 
@@ -54,12 +57,15 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			// Then use the test data
 			coordinator = coordinatorFactory.coordinatorForTesting();
 			lpHolder.setLocalPlayerEmail(coordinator.getCurrentPlayer().getGamePlayer().getEmail());
+			
 			return;
 		}
 		
 		gsHelper.setGameServerMatchListener(this);
 		gsHelper.setCurrentMatchById(currentMatchId);
 		gsHelper.startWatchingMatch();
+		
+
 	}
 	
 	class ViewHelpers 
