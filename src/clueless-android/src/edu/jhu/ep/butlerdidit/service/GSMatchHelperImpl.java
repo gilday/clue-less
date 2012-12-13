@@ -9,6 +9,8 @@ import android.content.IntentFilter;
 import android.support.v4.content.LocalBroadcastManager;
 import android.util.Log;
 
+import com.google.gson.Gson;
+import com.google.gson.JsonNull;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
@@ -82,10 +84,12 @@ public class GSMatchHelperImpl implements GSMatchHelper, GSMatchDataListener {
 
 	@Override
 	public void updateMatch(GSUpdateMatchModel model) {
-		
+		Gson gson = new Gson();
+		String json = gson.toJson(model);
 		Intent updateIntent = new Intent(context, GSMatchService.class);
 		updateIntent.setAction(GSConstants.ACTION_MATCH_UPDATE);
-		updateIntent.putExtra(GSConstants.PARM_UPDATEMATCH, model);
+		updateIntent.putExtra(GSConstants.PARM_ID, model.getId());
+		updateIntent.putExtra(GSConstants.PARM_UPDATEMATCH, json);
 		context.startService(updateIntent);
 	}
 	
@@ -137,7 +141,7 @@ public class GSMatchHelperImpl implements GSMatchHelper, GSMatchDataListener {
 		}
 		
 		// Is New Game?
-		if(currentMatch.getRawMatchData() == null) {
+		if(currentMatch.getRawMatchData() == null || currentMatch.getRawMatchData() == JsonNull.INSTANCE) {
 			listener.enterNewGame(currentMatch);
 			return;
 		}

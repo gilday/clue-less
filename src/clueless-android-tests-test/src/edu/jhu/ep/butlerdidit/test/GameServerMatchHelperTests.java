@@ -2,6 +2,8 @@ package edu.jhu.ep.butlerdidit.test;
 
 import java.util.Calendar;
 
+import com.google.gson.Gson;
+
 import junit.framework.TestCase;
 import android.test.mock.MockContext;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
@@ -14,6 +16,7 @@ public class GameServerMatchHelperTests extends TestCase {
 	private GSMatchHelperImpl gsHelper;
 	private GameServerAssertions assertions;
 	private GSMatch match;
+	private Gson gson;
 	
 	protected void setUp() throws Exception {
 		super.setUp();
@@ -28,6 +31,8 @@ public class GameServerMatchHelperTests extends TestCase {
         
         match = new GSMatch();
         match.setId(1);
+        
+        gson = new Gson();
 	}
 	
 	private void resetAssertions() {
@@ -41,12 +46,12 @@ public class GameServerMatchHelperTests extends TestCase {
 		Calendar cal = Calendar.getInstance();
 		
 		match.setCurrentPlayer("player@test.com");
-        match.setRawMatchData("DATA-DATA-DATA");
+        match.setRawMatchData(gson.toJsonTree("DATA-DATA-DATA"));
         match.setUpdatedAt(cal.getTime());
         
 		GSMatch newMatch = new GSMatch();
 		newMatch.setId(1);
-		newMatch.setRawMatchData("DATA-DATA-DATA");
+		newMatch.setRawMatchData(gson.toJsonTree("DATA-DATA-DATA"));
 		newMatch.setCurrentPlayer("player2@test.com");
         cal.add(Calendar.SECOND, 60);
         newMatch.setUpdatedAt(cal.getTime());
@@ -87,14 +92,14 @@ public class GameServerMatchHelperTests extends TestCase {
 		Calendar cal = Calendar.getInstance();
 		
 		match.setCurrentPlayer("player2@test.com");
-		match.setRawMatchData("DATA-DATA-DATA");
+		match.setRawMatchData(gson.toJsonTree("DATA-DATA-DATA"));
 		match.setUpdatedAt(cal.getTime());
 		
 		gsHelper.matchReceived(match);
 		
 		GSMatch newMatch = new GSMatch();
 		newMatch.setId(1);
-		newMatch.setRawMatchData("DATA-DATA-DATA");
+		newMatch.setRawMatchData(gson.toJsonTree("DATA-DATA-DATA"));
 		newMatch.setCurrentPlayer("player@test.com");
 		cal.add(Calendar.SECOND, 60);
 		match.setUpdatedAt(cal.getTime());
@@ -115,7 +120,7 @@ public class GameServerMatchHelperTests extends TestCase {
 		Calendar cal = Calendar.getInstance();
 		
 		match.setCurrentPlayer("player2@test.com");
-		match.setRawMatchData("DATA-DATA-DATA");
+		match.setRawMatchData(gson.toJsonTree("DATA-DATA-DATA"));
 		match.setUpdatedAt(cal.getTime());
 		
 		gsHelper.matchReceived(match);
@@ -123,7 +128,7 @@ public class GameServerMatchHelperTests extends TestCase {
 		GSMatch newMatch = new GSMatch();
 		newMatch.setId(1);
 		newMatch.setCurrentPlayer("player2@test.com");
-		newMatch.setRawMatchData("DATA-DATA-DATA");
+		newMatch.setRawMatchData(gson.toJsonTree("DATA-DATA-DATA"));
 		newMatch.setStatus("finished");
 		cal.add(Calendar.SECOND, 60);
 		newMatch.setUpdatedAt(cal.getTime());
