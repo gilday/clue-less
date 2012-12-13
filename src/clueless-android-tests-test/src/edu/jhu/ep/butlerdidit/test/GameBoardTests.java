@@ -54,6 +54,24 @@ public class GameBoardTests extends TestCase {
 		assertEquals("Library-Study", possibleMoves.get(0).getSpaceId());
 	}
 	
+	public void testPlayerMayNotMoveFromHallwayToStartSpace() {
+		// GIVEN
+		// a game board with Professor Plum at the hallway adjacent to his start spot
+		CluePlayer profPlum = new CluePlayer();
+		profPlum.setClueCharacter(ClueCharacter.ProfPlum);
+		profPlum.setLocation(profPlum.getClueCharacter().getName());
+		
+		List<CluePlayer> players = new Vector<CluePlayer>();
+		GameBoard board = new GameBoard(players);
+		
+		// WHEN
+		// system asks is plum may go to start space
+		boolean canTravelToStartSpace = board.isPlayerAbleToMoveToSpace(profPlum, board.getSpaceById(ClueCharacter.ProfPlumID));
+		
+		// THEN
+		assertFalse(canTravelToStartSpace);
+	}
+	
 	public void testPlayerMayNotMoveToOccupiedHallway() {
 		// GIVEN
 		// a GameBoard with Professor Plum on his start spot
