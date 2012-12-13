@@ -26,7 +26,7 @@ import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchHelper;
 import edu.jhu.ep.butlerdidit.service.api.GSMatchListener;
 import edu.jhu.ep.butlerdidit.service.api.GSUpdateMatchModel;
-import edu.jhu.ep.butlerdidit.domain.Deck;
+import edu.jhu.ep.butlerdidit.domain.ClueCard;
 
 @ContentView(R.layout.activity_play_game)
 public class PlayGameActivity extends RoboActivity implements GSMatchListener 

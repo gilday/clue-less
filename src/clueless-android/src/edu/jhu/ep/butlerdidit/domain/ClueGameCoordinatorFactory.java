@@ -1,7 +1,9 @@
 package edu.jhu.ep.butlerdidit.domain;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
@@ -101,7 +103,7 @@ public class ClueGameCoordinatorFactory {
 	
 	public ClueGameCoordinator coordinatorForTesting() {
 		ClueGameCoordinator coordinator = new ClueGameCoordinator(localPlayerHolder);
-		List<Deck> TestDeck = Deck.AllDeck;
+		List<ClueCard> testDeck = Deck.AllDeck;
 				
 		List<CluePlayer> cluePlayers = new Vector<CluePlayer>();
 		CluePlayer player1 = new CluePlayer();
@@ -121,13 +123,13 @@ public class ClueGameCoordinatorFactory {
 		player2.setLocation(ClueCharacter.ColMustardID);
 		player2.setClueCharacter(ClueCharacter.ColMustard);
 		cluePlayers.add(player2);
-		
-		assignHandToPlayers(TestDeck, coordinator);
 	
 		coordinator.setPlayers(cluePlayers);
 		GameBoard board = new GameBoard(cluePlayers);
 		coordinator.setGameBoard(board);
 		coordinator.setCurrentPlayer(player1);
+		
+		assignHandToPlayers(testDeck, coordinator);
 		
 		return coordinator;
 	}
@@ -152,28 +154,32 @@ public class ClueGameCoordinatorFactory {
 		}
 	}
 	
-	private void assignHandToPlayers(List<Deck> deck, ClueGameCoordinator coordinator)
-	//Dish out the cards to each player and have it assigned to a player. 
+	private void assignHandToPlayers(List<ClueCard> deck, ClueGameCoordinator coordinator)
 	{		
-		//We need to know the number of players that are playing. 
 		List<CluePlayer> players = coordinator.getPlayers();
-		System.out.println("No more freaking out about player size which is " + players.size());
-
-		//The following list of players are test players.
-		players.get(0).setClueCharacter(ClueCharacter.MsScarlett);
-		for(int i = 1; i < players.size(); i++) {
-			players.get(i).setClueCharacter(ClueCharacter.All.get(i));
-		}
-		//Everything between this and the other comments above are test parameters that will be taken out later.
-		int NoOfPlayers = players.size();
-
-		for(int j = 1; j < players.size(); j++) 
-		{
-			players.get(j).setHand(deck);
+		// Initialize empty hand for all players
+		for(CluePlayer player : players) {
+			player.setHand(new ArrayList<ClueCard>());
 		}
 		
+		// LinkedList is a List and a Queue
+		LinkedList<ClueCard> shuffledDeck = new LinkedList<ClueCard>(deck);
+		// Use Java's awesome built in shuffling method
+		Collections.shuffle((List<ClueCard>)shuffledDeck);
+		
+		while(shuffledDeck.peek() != null) {
+			for(CluePlayer player : players) {
+				ClueCard card = shuffledDeck.poll();
+				if(card == null) { 
+					// Spent all the cards in the queue
+					// we're done now handing cards out now
+					return;
+				}
+				player.getHand().add(card);
+			}
+		}
 		//The following is test code to make sure the cards coming out are correct. 
-		for(Deck Cards : players.get(1).getHand())
-		System.out.println("players 1 card is " + Cards.getCard());
+		for(ClueCard cards : players.get(1).getHand())
+			Log.d(ClueGameCoordinatorFactory.class.getName(), "players 1 card is " + cards.getCard());
 	}
 }

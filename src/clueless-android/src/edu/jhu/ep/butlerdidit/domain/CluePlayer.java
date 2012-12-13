@@ -3,7 +3,7 @@ package edu.jhu.ep.butlerdidit.domain;
 import java.util.List;
 
 import edu.jhu.ep.butlerdidit.service.api.GSPlayer;
-import edu.jhu.ep.butlerdidit.domain.Deck;
+import edu.jhu.ep.butlerdidit.domain.ClueCard;
 
 /**
  * A CluePlayer is used in the scope of a Clueless match. 
@@ -13,7 +13,7 @@ import edu.jhu.ep.butlerdidit.domain.Deck;
 public class CluePlayer {
 	
 	private GSPlayer gamePlayer;
-	private List<Deck> Hand;
+	private List<ClueCard> hand;
 	
     public GSPlayer getGamePlayer() {
 		return gamePlayer;
@@ -40,14 +40,14 @@ public class CluePlayer {
         this.clueCharacter = clueCharacter;
     }
     
-    public void setHand(List<Deck> Hand)
+    public void setHand(List<ClueCard> Hand)
     //The cards that are set for the player.
     {
-    	this.Hand = Hand;
+    	this.hand = Hand;
     }
     
-    public List<Deck> getHand()
+    public List<ClueCard> getHand()
     {
-    	return Hand;
+    	return hand;
     }
 }
