@@ -59,6 +59,24 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			coordinator = coordinatorFactory.coordinatorForTesting();
 			lpHolder.setLocalPlayerEmail(coordinator.getCurrentPlayer().getGamePlayer().getEmail());
 			
+			//Code to display the card.
+			int PlayerNo = 0;
+			for(CluePlayer Players : coordinator.getPlayers())
+			{
+				int i = 1;
+				for(ClueCard cards : coordinator.getPlayers().get(PlayerNo).getHand())
+				{
+					String CardPlaceHolder = "card"+i;
+					int cardID = getResources().getIdentifier(cards.getCard(), "drawable", "edu.jhu.ep.butlerdidit");
+					//Need to fetch the ID of the card location that we are replacing with the real cards.
+					int CardPlaceHolderID = getResources().getIdentifier(CardPlaceHolder, "id", "edu.jhu.ep.butlerdidit");
+					ImageView CardLocation = (ImageView) findViewById(CardPlaceHolderID);
+					CardLocation.setImageResource(cardID);
+					System.out.println("This card is " + cards.getCard());
+					i=i+1;
+				}
+				PlayerNo = PlayerNo+1;
+			}
 			return;
 		}
 		

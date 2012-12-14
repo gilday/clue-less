@@ -492,8 +492,8 @@
 
     <ImageView
         android:id="@+id/card1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/LibraryToConservatory"
         android:layout_marginLeft="18dp"
@@ -502,8 +502,8 @@
 
     <ImageView
         android:id="@+id/card2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
         android:layout_alignTop="@+id/card1"
         android:layout_toRightOf="@+id/card1"
         android:contentDescription="@string/Cards"
@@ -511,8 +511,8 @@
 
     <ImageView
         android:id="@+id/card3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
         android:layout_below="@+id/LibraryToConservatory"
         android:layout_toRightOf="@+id/card2"
         android:contentDescription="@string/Cards"
@@ -520,8 +520,8 @@
 
     <ImageView
         android:id="@+id/card4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
         android:layout_below="@+id/LibraryToConservatory"
         android:layout_toRightOf="@+id/card3"
         android:contentDescription="@string/Cards"
@@ -529,8 +529,8 @@
 
     <ImageView
         android:id="@+id/card5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
         android:layout_below="@+id/LibraryToConservatory"
         android:layout_toRightOf="@+id/card4"
         android:contentDescription="@string/Cards"
@@ -538,8 +538,8 @@
 
     <ImageView
         android:id="@+id/card6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
         android:layout_below="@+id/LibraryToConservatory"
         android:layout_toRightOf="@+id/card5"
         android:contentDescription="@string/Cards"
@@ -547,8 +547,8 @@
 
     <ImageView
         android:id="@+id/card7"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="70dp"
+        android:layout_height="102dp"
         android:layout_below="@+id/LibraryToConservatory"
         android:layout_toRightOf="@+id/card6"
         android:contentDescription="@string/Cards"

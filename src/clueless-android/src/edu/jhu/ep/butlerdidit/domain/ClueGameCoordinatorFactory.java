@@ -123,12 +123,21 @@ public class ClueGameCoordinatorFactory {
 		player2.setLocation(ClueCharacter.ColMustardID);
 		player2.setClueCharacter(ClueCharacter.ColMustard);
 		cluePlayers.add(player2);
+		
+		CluePlayer player3 = new CluePlayer();
+		GSPlayer gsPlayer3 = new GSPlayer();
+		gsPlayer3.setEmail("player3@test.com");
+		gsPlayer3.setId(3);
+		player3.setGamePlayer(gsPlayer3);
+		player3.setLocation(ClueCharacter.MrGreenID);
+		player3.setClueCharacter(ClueCharacter.MrGreen);
+		cluePlayers.add(player3);
 	
 		coordinator.setPlayers(cluePlayers);
 		GameBoard board = new GameBoard(cluePlayers);
 		coordinator.setGameBoard(board);
 		coordinator.setCurrentPlayer(player1);
-		
+				
 		assignHandToPlayers(testDeck, coordinator);
 		
 		return coordinator;
@@ -167,10 +176,13 @@ public class ClueGameCoordinatorFactory {
 		// Use Java's awesome built in shuffling method
 		Collections.shuffle((List<ClueCard>)shuffledDeck);
 		
-		while(shuffledDeck.peek() != null) {
-			for(CluePlayer player : players) {
+		while(shuffledDeck.peek() != null) 
+		{
+			for(CluePlayer player : players) 
+			{
 				ClueCard card = shuffledDeck.poll();
-				if(card == null) { 
+				if(card == null) 
+				{ 
 					// Spent all the cards in the queue
 					// we're done now handing cards out now
 					return;
@@ -178,6 +190,7 @@ public class ClueGameCoordinatorFactory {
 				player.getHand().add(card);
 			}
 		}
+		
 		//The following is test code to make sure the cards coming out are correct. 
 		for(ClueCard cards : players.get(1).getHand())
 			Log.d(ClueGameCoordinatorFactory.class.getName(), "players 1 card is " + cards.getCard());
