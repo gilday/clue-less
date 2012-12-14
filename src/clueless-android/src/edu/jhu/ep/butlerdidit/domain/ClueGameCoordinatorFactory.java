@@ -157,7 +157,7 @@ public class ClueGameCoordinatorFactory {
 	{		
 		//We need to know the number of players that are playing. 
 		List<CluePlayer> players = coordinator.getPlayers();
-		System.out.println("No more freaking out about player size which is " + players.size());
+		//System.out.println("No more freaking out about player size which is " + players.size());
 
 		//The following list of players are test players.
 		players.get(0).setClueCharacter(ClueCharacter.MsScarlett);
