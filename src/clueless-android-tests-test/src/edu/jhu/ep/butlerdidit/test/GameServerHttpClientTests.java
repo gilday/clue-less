@@ -70,7 +70,7 @@ public class GameServerHttpClientTests extends TestCase {
 	private void doLogin() {
 		// GIVEN
 		// the server's test data has a player with the following credentials 
-		String email = "testPlayer@example.com";
+		String email = "player1@test.com";
 		String password = "password";
 		
 		// WHEN

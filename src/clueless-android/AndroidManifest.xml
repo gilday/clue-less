@@ -34,10 +34,6 @@
 
         <service android:name="edu.jhu.ep.butlerdidit.service.GSMatchService" >
         </service>
-
-        <activity
-            android:name="edu.jhu.ep.butlerdidit.activity.WatchMatchTestActivity">
-        </activity>
     </application>
 
 </manifest>

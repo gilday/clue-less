@@ -6,9 +6,9 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-player1 = Player.new(email: "testPlayer@example.com", password: "password", password_confirmation: "password")
+player1 = Player.new(email: "player1@test.com", password: "password", password_confirmation: "password")
 player1.save
-player2 = Player.new(email: "testPlayer2@example.com", password: "password", password_confirmation: "password")
+player2 = Player.new(email: "player2@test.com", password: "password", password_confirmation: "password")
 player2.save
 match = Match.new(status: "Matchmaking", message: "Wait for others", min_players: 2, max_players: 6)
 #match.save

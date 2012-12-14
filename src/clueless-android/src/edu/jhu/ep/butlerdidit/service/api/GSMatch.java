@@ -3,6 +3,7 @@ package edu.jhu.ep.butlerdidit.service.api;
 import java.util.Collection;
 import java.util.Date;
 
+import com.google.gson.JsonElement;
 import com.google.gson.annotations.SerializedName;
 
 
@@ -22,14 +23,14 @@ public class GSMatch {
 	private String message;
 	
 	@SerializedName("match_data")
-	private String rawMatchData;
+	private JsonElement rawMatchData;
 	
 	@SerializedName("updated_at")
 	private Date updatedAt;
 	
 	private Collection<GSParticipant> participants;
 	
-	@SerializedName("player_id")
+	@SerializedName("current_player")
 	private String currentPlayer;
 
 	public int getMinPlayers() {
@@ -48,7 +49,7 @@ public class GSMatch {
 		return message;
 	}
 
-	public String getRawMatchData() {
+	public JsonElement getRawMatchData() {
 		return rawMatchData;
 	}
 
@@ -80,7 +81,7 @@ public class GSMatch {
 		this.message = message;
 	}
 
-	public void setRawMatchData(String rawMatchData) {
+	public void setRawMatchData(JsonElement rawMatchData) {
 		this.rawMatchData = rawMatchData;
 	}
 

@@ -124,24 +124,22 @@ public class GameBoard {
         addSpaceToBoard(colMustard);
 
         GameBoardSpace mrsWhite = new GameBoardSpace(ClueCharacter.MrsWhiteID);
-        // TODO Make the other start spaces create the hallway ID with the static properties 
-        // like this one
-        mrsWhite.connectSpace(spaces.get(Room.KITCHEN + "-" + Room.BALLROOM));
+        mrsWhite.getNavigationTargets().add(spaces.get(HallwaySpace.hallwayIdFromRooms(kitchen, ballroom)));
         addSpaceToBoard(mrsWhite);
 
         GameBoardSpace mrGreen = new GameBoardSpace(ClueCharacter.MrGreenID);
-        mrGreen.connectSpace(spaces.get("Ball Room-Conservatory"));
+        mrGreen.getNavigationTargets().add(spaces.get(HallwaySpace.hallwayIdFromRooms(ballroom, conservatory)));
         addSpaceToBoard(mrGreen);
 
         GameBoardSpace mrsPeacock = new GameBoardSpace(ClueCharacter.MrsPeacockID);
-        mrsPeacock.connectSpace(spaces.get("Conservatory-Library"));
+        mrsPeacock.getNavigationTargets().add(spaces.get(HallwaySpace.hallwayIdFromRooms(conservatory, library)));
         addSpaceToBoard(mrsPeacock);
 
         GameBoardSpace profPlum = new GameBoardSpace(ClueCharacter.ProfPlumID);
-        profPlum.connectSpace(spaces.get("Library-Study"));
+        profPlum.getNavigationTargets().add(spaces.get(HallwaySpace.hallwayIdFromRooms(library, study)));
         addSpaceToBoard(profPlum);
     }
-
+    
     private void addSpaceToBoard(GameBoardSpace space) {
         spaces.put(space.getSpaceId(), space);
     }

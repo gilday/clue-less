@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import junit.framework.TestCase;
+
+import com.google.gson.Gson;
+
 import edu.jhu.ep.butlerdidit.domain.ClueCharacter;
 import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinator;
 import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinatorFactory;
 import edu.jhu.ep.butlerdidit.domain.CluePlayer;
 import edu.jhu.ep.butlerdidit.domain.Room;
+import edu.jhu.ep.butlerdidit.domain.json.ClueMatchState;
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 import edu.jhu.ep.butlerdidit.service.api.GSMatch;
 import edu.jhu.ep.butlerdidit.service.api.GSParticipant;
@@ -45,12 +49,14 @@ public class ClueGameCoordinatorFactoryTests extends TestCase {
 		
 		// whose raw match data is
 		// a chunk of JSON of 2 players with locations and characters
-		String matchData = 
+		Gson gson = new Gson();
+		String matchJson = 
 				"{\"players\": [" +
 				"{\"email\":\"player1@test.com\", \"character\":\"" + ClueCharacter.MsScarletID + "\", \"location\":\"" + Room.STUDY + "\"}," +
 				"{\"email\":\"player2@test.com\", \"character\":\"" + ClueCharacter.ProfPlumID + "\", \"location\":\"" + Room.KITCHEN + "\"} " +
 				"]}";
-		match.setRawMatchData(matchData);
+		ClueMatchState matchState = gson.fromJson(matchJson, ClueMatchState.class);
+		match.setRawMatchData(gson.toJsonTree(matchState));
 		
 		
 		// WHEN
