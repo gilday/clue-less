@@ -2,6 +2,8 @@ package edu.jhu.ep.butlerdidit.domain;
 
 import java.util.List;
 
+import android.util.Log;
+
 import edu.jhu.ep.butlerdidit.service.GSLocalPlayerHolder;
 
 public class ClueGameCoordinator {
@@ -35,6 +37,7 @@ public class ClueGameCoordinator {
 		// advance to next player
 		int currentPlayerIndex = players.indexOf(currentPlayer);
 		int nextPlayerIndex = (currentPlayerIndex + 1) % players.size();
+		Log.d(ClueGameCoordinator.class.getName(), String.format("Player %s ended their turn. now %s's turn", currentPlayer.getGamePlayer().getEmail(), players.get(nextPlayerIndex).getGamePlayer().getEmail()));
 		currentPlayer = players.get(nextPlayerIndex);
 	}
 

@@ -3,42 +3,36 @@ package edu.jhu.ep.butlerdidit.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.graphics.Color;
-
-public class Deck 
-{
+public class Deck {
+    public static final ClueCard RopeCard = new ClueCard("rope_card");
+    public static final ClueCard RevolverCard = new ClueCard("revolver_card");
+    public static final ClueCard WrenchCard = new ClueCard("wrench_card");
+    public static final ClueCard CandlestickCard = new ClueCard("candlestick_card");
+    public static final ClueCard KnifeCard = new ClueCard("knife_card");
+    public static final ClueCard LeadpipeCard = new ClueCard("leadpipe_card");
     
-    public static final Deck RopeCard = new Deck("rope_card");
-    public static final Deck RevolverCard = new Deck("revolver_card");
-    public static final Deck WrenchCard = new Deck("wrench_card");
-    public static final Deck CandlestickCard = new Deck("candlestick_card");
-    public static final Deck KnifeCard = new Deck("knife_card");
-    public static final Deck LeadpipeCard = new Deck("leadpipe_card");
+    public static final ClueCard ScarlettCard = new ClueCard("scarlett_card");
+    public static final ClueCard PlumCard = new ClueCard("plum_card");
+    public static final ClueCard PeacockCard = new ClueCard("peacock_card");
+    public static final ClueCard GreenCard = new ClueCard("green_card");
+    public static final ClueCard MustardCard = new ClueCard("mustard_card");
+    public static final ClueCard WhiteCard = new ClueCard("white_card");
     
-    public static final Deck ScarlettCard = new Deck("scarlett_card");
-    public static final Deck PlumCard = new Deck("plum_card");
-    public static final Deck PeacockCard = new Deck("peacock_card");
-    public static final Deck GreenCard = new Deck("green_card");
-    public static final Deck MustardCard = new Deck("mustard_card");
-    public static final Deck WhiteCard = new Deck("white_card");
-    
-    public static final Deck BallCard = new Deck("ball_card");
-    public static final Deck HallCard = new Deck("hall_card");
-    public static final Deck StudyCard = new Deck("study_card");
-    public static final Deck LoungeCard = new Deck("lounge_card");
-    public static final Deck KitchenCard = new Deck("kitchen_card");
-    public static final Deck ConservatoryCard = new Deck("conservatory_card"); 
-    public static final Deck BilliardCard = new Deck("billiard_card");
-    public static final Deck LibraryCard = new Deck("library_card");
-    public static final Deck DiningCard = new Deck("dining_card"); 
+    public static final ClueCard BallCard = new ClueCard("ball_card");
+    public static final ClueCard HallCard = new ClueCard("hall_card");
+    public static final ClueCard StudyCard = new ClueCard("study_card");
+    public static final ClueCard LoungeCard = new ClueCard("lounge_card");
+    public static final ClueCard KitchenCard = new ClueCard("kitchen_card");
+    public static final ClueCard ConservatoryCard = new ClueCard("conservatory_card"); 
+    public static final ClueCard BilliardCard = new ClueCard("billiard_card");
+    public static final ClueCard LibraryCard = new ClueCard("library_card");
+    public static final ClueCard DiningCard = new ClueCard("dining_card"); 
 	
-	private String Card;
-	
-	public static final List<Deck> WeaponsDeck = new ArrayList<Deck>(6);
-	public static final List<Deck> CharacterDeck = new ArrayList<Deck>(6);
-	public static final List<Deck> RoomDeck = new ArrayList<Deck>(9);
+	public static final List<ClueCard> WeaponsDeck = new ArrayList<ClueCard>(6);
+	public static final List<ClueCard> CharacterDeck = new ArrayList<ClueCard>(6);
+	public static final List<ClueCard> RoomDeck = new ArrayList<ClueCard>(9);
     
-	public static final List<Deck> AllDeck = new ArrayList<Deck>(21);
+	public static final List<ClueCard> AllDeck = new ArrayList<ClueCard>(21);
 
     static {
     	WeaponsDeck.add(RopeCard);
@@ -69,12 +63,4 @@ public class Deck
     	AllDeck.addAll(CharacterDeck);
     	AllDeck.addAll(RoomDeck);
     }
-	private Deck(String Card)
-	{
-		this.Card = Card;
-	}
-    public String getCard() 
-    {
-        return Card;
-    } 
 }

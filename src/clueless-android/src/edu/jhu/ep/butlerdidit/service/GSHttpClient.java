@@ -15,10 +15,7 @@ import org.json.JSONObject;
 
 import android.util.Log;
 
-import com.google.gson.Gson;
 import com.google.inject.Singleton;
-
-import edu.jhu.ep.butlerdidit.service.api.GSUpdateMatchModel;
 
 /**
  * Group all the HTTP Calls in here so they're easier to unit test
@@ -96,11 +93,8 @@ public class GSHttpClient {
 		return getJson(getPlayerUrl);
 	}
 	
-	public RestResponse updateMatch(GSUpdateMatchModel match) throws IOException {
-		URL putMatchUrl = new URL(String.format("%s/matches/%d.json", gameServerEndpoint, match.getId()));
-		
-		Gson gson = new Gson();
-		String json = gson.toJson(match);
+	public RestResponse updateMatch(int matchId, String gsMatchJson) throws IOException {
+		URL putMatchUrl = new URL(String.format("%s/matches/%d.json", gameServerEndpoint, matchId));
 		
 		HttpURLConnection connection = (HttpURLConnection) putMatchUrl.openConnection();
 		connection.setDoOutput(true);
@@ -109,7 +103,7 @@ public class GSHttpClient {
 		
 		OutputStream out = new BufferedOutputStream(connection.getOutputStream());
 		PrintWriter writer = new PrintWriter(out);
-		writer.write(json);
+		writer.write(gsMatchJson);
 		writer.close();
 		
 		int status = connection.getResponseCode();

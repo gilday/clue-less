@@ -1,6 +1,8 @@
 class Match < ActiveRecord::Base
   attr_accessible :match_data, :max_players, :message, :min_players, :status, :current_player
   
+  serialize :match_data, JSON
+  
   has_many :participants
   has_many :players, through: :participants
   

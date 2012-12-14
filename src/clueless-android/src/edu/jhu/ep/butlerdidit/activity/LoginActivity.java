@@ -9,8 +9,11 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.TargetApi;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 import android.util.Log;
@@ -35,6 +38,9 @@ import edu.jhu.ep.butlerdidit.service.api.GSConstants;
  * well.
  */
 public class LoginActivity extends RoboActivity implements AuthenticationChangedListener {
+	
+	private static final String PREF_SERVER = "pref_server";
+	private static final String PREF_USER = "pref_user";
 
 	private final Pattern EMAIL_ADDRESS_PATTERN = Pattern.compile(
 	          "[a-zA-Z0-9\\+\\.\\_\\%\\-\\+]{1,256}" +
@@ -59,8 +65,7 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 	@InjectView(R.id.login_status) 			private View mLoginStatusView;
 	@InjectView(R.id.login_status_message)	private TextView mLoginStatusMessageView;
 	
-	@Inject
-	private GSLocalPlayerHolder localPlayerHolder;
+	@Inject	private GSLocalPlayerHolder localPlayerHolder;
 	
 	private AuthenticationBroadcastReceiver authBroadcastReceiver;
 
@@ -100,6 +105,12 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 						LoginActivity.this.startActivity(playGameIntent);
 					}
 				});
+		
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		String user = prefs.getString(PREF_USER, "");
+		String serverUri = prefs.getString(PREF_SERVER, "http://10.0.2.2:3000");
+		mEmailView.setText(user);
+		mServerUriView.setText(serverUri);
 	}
 	
 	@Override
@@ -121,6 +132,17 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 		LocalBroadcastManager lbm = LocalBroadcastManager.getInstance(getApplicationContext());
 		lbm.unregisterReceiver(authBroadcastReceiver);
 		authBroadcastReceiver = null;
+	}
+	
+	@Override
+	public void onDestroy() {
+		super.onDestroy();
+		
+		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+		Editor editor = prefs.edit();
+		editor.putString(PREF_USER, mEmail);
+		editor.putString(PREF_SERVER, mServerUri);
+		editor.apply();
 	}
 	
 	/**
