@@ -129,36 +129,45 @@ public class GSMatchHelperImpl implements GSMatchHelper, GSMatchDataListener {
 		GSMatch oldMatch = currentMatch;
 		currentMatch = newMatch;
 		// The logic for determining if any events should be raised like "it's your turn"
-
-		// Has the match been updated at all since our last check?
-		if(oldMatch != null && oldMatch.getUpdatedAt().equals(currentMatch.getUpdatedAt()))
-			return;
 		
 		// Is over?
-		if(currentMatch.getStatus() == "finished") {
+		if("finished".equals(currentMatch.getStatus())) {
 			listener.receiveEndGame(currentMatch);
 			return;
 		}
 		
-		// Is New Game?
-		if(currentMatch.getRawMatchData() == null || currentMatch.getRawMatchData() == JsonNull.INSTANCE) {
-			listener.enterNewGame(currentMatch);
-			return;
-		}
+		String localPlayerEmail = lpHolder.getLocalPlayerEmail();
 		
-		if(oldMatch == null)
-			return;
-	
-		// Player has changed?
-		if(!oldMatch.getCurrentPlayer().equals(currentMatch.getCurrentPlayer())) {
-			// Is our turn?
-			String localPlayerEmail = lpHolder.getLocalPlayerEmail();
-			if(localPlayerEmail == currentMatch.getCurrentPlayer()) {
+		if(oldMatch != null) {
+			// Has the match been updated at all since our last check?
+			if(oldMatch.getUpdatedAt().equals(currentMatch.getUpdatedAt()))
+				return;
+			
+			// Player has changed?
+			if(!oldMatch.getCurrentPlayer().equals(currentMatch.getCurrentPlayer())) {
+				// Is our turn?
+				if(localPlayerEmail.equals(currentMatch.getCurrentPlayer())) {
+					listener.takeTurn(currentMatch);
+				} else {
+					// Is not our turn, but hands have changed
+					listener.layoutMatch(currentMatch);
+				}
+			}
+			
+		} else {
+			// Is New Game?
+			if(currentMatch.getRawMatchData() == null || currentMatch.getRawMatchData() == JsonNull.INSTANCE) {
+				listener.enterNewGame(currentMatch);
+				return;
+			}
+			
+			// this is the first time we receive a match from the poll
+			if(localPlayerEmail.equals(currentMatch.getCurrentPlayer())) {
 				listener.takeTurn(currentMatch);
 			} else {
-				// Is not our turn, but hands have changed
 				listener.layoutMatch(currentMatch);
 			}
+			
 		}
 	}	
 }

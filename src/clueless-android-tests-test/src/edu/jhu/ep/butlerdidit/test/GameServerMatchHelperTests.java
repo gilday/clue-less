@@ -17,11 +17,12 @@ public class GameServerMatchHelperTests extends TestCase {
 	private GameServerAssertions assertions;
 	private GSMatch match;
 	private Gson gson;
+	private GSLocalPlayerHolder lpHolder;
 	
 	protected void setUp() throws Exception {
 		super.setUp();
 		
-        GSLocalPlayerHolder lpHolder = new GSLocalPlayerHolder();
+        lpHolder = new GSLocalPlayerHolder();
         lpHolder.setLocalPlayerEmail("player@test.com");
         
         gsHelper = new GSMatchHelperImpl(new MockContext());
@@ -150,6 +151,7 @@ public class GameServerMatchHelperTests extends TestCase {
 		
 		match.setCurrentPlayer("player@test.com");
 		match.setUpdatedAt(cal.getTime());
+		match.setRawMatchData(gson.toJsonTree("DATA-DATA-DATA"));
 		
 		gsHelper.matchReceived(match);
 
@@ -164,6 +166,24 @@ public class GameServerMatchHelperTests extends TestCase {
 		assertFalse(assertions.layoutMatchCalled);
 		assertFalse(assertions.receiveEndGameCalled);
 		assertFalse(assertions.takeTurnCalled);
+	}
+	
+	public void testTurnoverTurn() {
+		// GIVEN
+		// player@test.com is is playing and takes his/her turn
+		Calendar cal = Calendar.getInstance();
+		
+		match.setCurrentPlayer("player@test.com");
+		match.setUpdatedAt(cal.getTime());
+		match.setRawMatchData(gson.toJsonTree("DATA-DATA-DATA"));
+		
+		// WHEN
+		// player receives an existing match
+		resetAssertions();
+		gsHelper.matchReceived(match);
+		
+		// THEN
+		assertTrue(assertions.takeTurnCalled);
 	}
 	
 	/**
