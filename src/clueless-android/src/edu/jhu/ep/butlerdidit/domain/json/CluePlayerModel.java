@@ -6,6 +6,7 @@ public class CluePlayerModel {
 	String email;
 	String location;
 	String character;
+	String[] hand;
 	
 	public CluePlayerModel() { }
 	
@@ -13,6 +14,10 @@ public class CluePlayerModel {
 		email = entity.getGamePlayer().getEmail();
 		location = entity.getLocation();
 		character = entity.getClueCharacter().getName();
+		hand = new String[entity.getHand().size()];
+		for(int i = 0; i < hand.length; i++) {
+			hand[i] = entity.getHand().get(i).getCard();
+		}
 	}
 	
 	public String getEmail() {
@@ -23,5 +28,8 @@ public class CluePlayerModel {
 	}
 	public String getCharacter() {
 		return character;
+	}
+	public String[] getHand() {
+		return hand;
 	}
 }

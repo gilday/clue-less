@@ -14,6 +14,15 @@ public class ClueMatchState {
 	@SerializedName("players")
 	List<CluePlayerModel> playerModels;
 	
+	@SerializedName("winning_weapon")
+	String winningWeapon;
+	
+	@SerializedName("winning_room")
+	String winningRoom;
+	
+	@SerializedName("winning_character")
+	String winningCharacter;
+	
 	public ClueMatchState(ClueGameCoordinator coordinator) {
 		List<CluePlayerModel> playerModels = new ArrayList<CluePlayerModel>(coordinator.getPlayers().size());
 		
@@ -22,6 +31,10 @@ public class ClueMatchState {
 			playerModels.add(model);
 		}
 		this.playerModels = playerModels;
+		
+		winningRoom = coordinator.getWinningRoom().getCard();
+		winningCharacter = coordinator.getWinningCharacter().getCard();
+		winningWeapon = coordinator.getWinningWeapon().getCard();
 	}
 	
 	public String toJSON() {
@@ -31,5 +44,17 @@ public class ClueMatchState {
 	
 	public List<CluePlayerModel> getPlayerModels() {
 		return playerModels;
+	}
+
+	public String getWinningWeapon() {
+		return winningWeapon;
+	}
+
+	public String getWinningRoom() {
+		return winningRoom;
+	}
+
+	public String getWinningCharacter() {
+		return winningCharacter;
 	}
 }

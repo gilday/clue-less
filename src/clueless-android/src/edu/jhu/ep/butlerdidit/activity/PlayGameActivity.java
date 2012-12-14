@@ -64,9 +64,12 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	protected void onStart() {
 		super.onStart();
 		
-		gsHelper.setGameServerMatchListener(this);
-		gsHelper.setCurrentMatchById(currentMatchId);
-		gsHelper.startWatchingMatch();
+		// if not test mode
+		if(currentMatchId > 0) {
+			gsHelper.setGameServerMatchListener(this);
+			gsHelper.setCurrentMatchById(currentMatchId);
+			gsHelper.startWatchingMatch();
+		}
 	}
 	
 	@Override

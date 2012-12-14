@@ -63,4 +63,12 @@ public class Deck {
     	AllDeck.addAll(CharacterDeck);
     	AllDeck.addAll(RoomDeck);
     }
+    
+    public static ClueCard findCardByName(String name) {
+    	for(ClueCard card : AllDeck) {
+    		if(card.getCard().equals(name))
+    			return card;
+    	}
+    	return null;
+    }
 }

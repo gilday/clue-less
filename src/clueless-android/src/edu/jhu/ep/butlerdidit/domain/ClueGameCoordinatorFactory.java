@@ -7,8 +7,6 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
 
-import android.util.Log;
-
 import com.google.gson.Gson;
 import com.google.inject.Inject;
 
@@ -58,6 +56,8 @@ public class ClueGameCoordinatorFactory {
 			player.setLocation(player.getClueCharacter().getName());
 		}
 		
+		assignHandToPlayers(coordinator);
+		
 		// Make the game board with the players list
 		coordinator.setGameBoard(new GameBoard(coordinator.getPlayers()));
 		
@@ -96,6 +96,11 @@ public class ClueGameCoordinatorFactory {
 			}
 		}
 		
+		// Load winning clues
+		coordinator.setWinningCharacter(Deck.findCardByName(matchState.getWinningCharacter()));
+		coordinator.setWinningWeapon(Deck.findCardByName(matchState.getWinningWeapon()));
+		coordinator.setWinningRoom(Deck.findCardByName(matchState.getWinningRoom()));
+		
 		// Create game board
 		coordinator.setGameBoard(new GameBoard(coordinator.getPlayers()));
 		return coordinator;
@@ -103,7 +108,6 @@ public class ClueGameCoordinatorFactory {
 	
 	public ClueGameCoordinator coordinatorForTesting() {
 		ClueGameCoordinator coordinator = new ClueGameCoordinator(localPlayerHolder);
-		List<ClueCard> testDeck = Deck.AllDeck;
 				
 		List<CluePlayer> cluePlayers = new Vector<CluePlayer>();
 		CluePlayer player1 = new CluePlayer();
@@ -129,7 +133,7 @@ public class ClueGameCoordinatorFactory {
 		coordinator.setGameBoard(board);
 		coordinator.setCurrentPlayer(player1);
 		
-		assignHandToPlayers(testDeck, coordinator);
+		assignHandToPlayers(coordinator);
 		
 		return coordinator;
 	}
@@ -154,21 +158,34 @@ public class ClueGameCoordinatorFactory {
 		}
 	}
 	
-	private void assignHandToPlayers(List<ClueCard> deck, ClueGameCoordinator coordinator)
-	{		
-		List<CluePlayer> players = coordinator.getPlayers();
+	private void assignHandToPlayers(ClueGameCoordinator coordinator)
+	{
+		// First pick winning clue
+		LinkedList<ClueCard> weapons = new LinkedList<ClueCard>(Deck.WeaponsDeck);
+		Collections.shuffle(weapons);
+		coordinator.setWinningWeapon(weapons.poll());
+		LinkedList<ClueCard> characters = new LinkedList<ClueCard>(Deck.CharacterDeck);
+		Collections.shuffle(characters);
+		coordinator.setWinningCharacter(characters.poll());
+		LinkedList<ClueCard> rooms = new LinkedList<ClueCard>(Deck.RoomDeck);
+		Collections.shuffle(rooms);
+		coordinator.setWinningRoom(rooms.poll());
+		
 		// Initialize empty hand for all players
-		for(CluePlayer player : players) {
+		for(CluePlayer player : coordinator.getPlayers()) {
 			player.setHand(new ArrayList<ClueCard>());
 		}
 		
 		// LinkedList is a List and a Queue
-		LinkedList<ClueCard> shuffledDeck = new LinkedList<ClueCard>(deck);
+		LinkedList<ClueCard> shuffledDeck = new LinkedList<ClueCard>();
+		shuffledDeck.addAll(weapons);
+		shuffledDeck.addAll(characters);
+		shuffledDeck.addAll(rooms);
 		// Use Java's awesome built in shuffling method
 		Collections.shuffle((List<ClueCard>)shuffledDeck);
 		
 		while(shuffledDeck.peek() != null) {
-			for(CluePlayer player : players) {
+			for(CluePlayer player : coordinator.getPlayers()) {
 				ClueCard card = shuffledDeck.poll();
 				if(card == null) { 
 					// Spent all the cards in the queue
@@ -178,8 +195,5 @@ public class ClueGameCoordinatorFactory {
 				player.getHand().add(card);
 			}
 		}
-		//The following is test code to make sure the cards coming out are correct. 
-		for(ClueCard cards : players.get(1).getHand())
-			Log.d(ClueGameCoordinatorFactory.class.getName(), "players 1 card is " + cards.getCard());
 	}
 }
