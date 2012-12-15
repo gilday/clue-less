@@ -1,0 +1,57 @@
+<div class="container">
+	<h1>Board Game Service Test Page</h1>
+	<div>
+		<p>Board Game Service is a RESTful API which produces and consumes JSON. 
+			The following endpoints are supported. Use rake routes to see which 
+			routes are supported
+		</p>
+		<p>This test page assists in development and testing by providing an HTML 
+			interface to login and update a match's match_data
+		</p>
+	</div>
+	<div>
+		<form id="loginForm" action="/session" method="post">
+			<label for="email">Email</label>
+			<input type="text" id="email" name="email" />
+			<label for="password">Password</label>
+			<input type="password" id="password" name="password" />
+			<input id="loginButton" type="submit" value="Login" />
+		</form>
+		<a href="#" id="logoutLink">Log out</a>
+	</div>
+	<div>
+		<form>
+			<label for="match_data">Match Data</label>
+			<textarea id="match_data" name="match_data"></textarea>
+			<input id="submit" type="submit" value="submit" />
+		</form>
+	</div>
+</div>
+<script>
+	$(document).ready(function () {
+		$('#submit').click(function () {
+			var match_data = $('#match_data').val();
+			var data = {match_data: match_data};
+			$.ajax('/matches/1', {
+				type: 'put',
+				dataType: 'json',
+				contentType: 'application/json',
+				data: JSON.stringify(data)
+			});
+			return false;
+		});
+		$('#loginButton').click(function() {
+			$.ajax('/session', {
+				type: 'post',
+				data: $('#loginForm').serialize()
+			});
+			return false;
+		})
+		$('#logoutLink').click(function() { 
+			$.ajax('/session', {
+				type: 'delete'
+			});
+			return false;
+		})
+	});
+</script>
