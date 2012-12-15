@@ -6,6 +6,8 @@ import java.util.Vector;
 import roboguice.activity.RoboActivity;
 import roboguice.inject.ContentView;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.RadioButton;
 import edu.jhu.ep.butlerdidit.R;
 import edu.jhu.ep.butlerdidit.domain.ClueCharacter;
 import edu.jhu.ep.butlerdidit.domain.CluePlayer;
@@ -128,5 +130,117 @@ public class PlayGameActivity extends RoboActivity
 		else if(ProfPlumID.equals(player.getClueCharacter().getName()))
 		{
 		}
+	}
+
+	public void rbGroupSuspect(View view) {
+	    // Is the button now checked?
+	    boolean checked = ((RadioButton) view).isChecked();
+	    // Check which radio button was clicked
+	    switch(view.getId()) {
+	        case R.id.miss_scarlett:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.prof_plum:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.mrs_peacock:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.mr_green:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.col_mustard:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.mrs_white:
+	            if (checked)
+	            	//Do Something
+	            break;
+	    }
+	}
+	
+	public void rbGroupWeapon(View view){
+	    // Is the button now checked?
+	    boolean checked = ((RadioButton) view).isChecked();
+	    // Check which radio button was clicked
+	    switch(view.getId()) {
+	        case R.id.rope:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.revolover:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.wrench:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.candlestick:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.knife:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.lead_pipe:
+	            if (checked)
+	            	//Do Something
+	            break;
+	    }
+	} 
+
+	public void rbGroupRoom(View view){
+		 // Is the button now checked?
+	    boolean checked = ((RadioButton) view).isChecked();
+	    // Check which radio button was clicked
+	    switch(view.getId()) {
+	        case R.id.study_small:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.hall_small:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.lounge_small:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.library_small:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.billiard_room_small:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.dining_room_small:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.conservatory_small:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.ballroom_small:
+	            if (checked)
+	            	//Do Something
+	            break;
+	        case R.id.kitchen_small:
+	        	if (checked)
+	        		//Do Something
+	        	break;
+	    }
+	}
+
+	public void accuse(View view){
+	
 	}
 }

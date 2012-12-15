@@ -228,37 +228,43 @@
             android:id="@+id/miss_scarlett"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/miss_scarlett" />
+            android:background="@drawable/miss_scarlett" 
+            android:onClick="rbGroupSuspect" />
 
         <RadioButton
             android:id="@+id/prof_plum"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/prof_plum" />
+            android:background="@drawable/prof_plum" 
+            android:onClick="rbGroupSuspect" />
 
         <RadioButton
             android:id="@+id/mrs_peacock"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/mrs_peacock" />
+            android:background="@drawable/mrs_peacock" 
+            android:onClick="rbGroupSuspect" />
 
         <RadioButton
             android:id="@+id/mr_green"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/mr_green" />
+            android:background="@drawable/mr_green"
+            android:onClick="rbGroupSuspect" />
 
         <RadioButton
             android:id="@+id/col_mustard"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/col_mustard" />
+            android:background="@drawable/col_mustard" 
+            android:onClick="rbGroupSuspect" />
 
         <RadioButton
             android:id="@+id/mrs_white"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/mrs_white" />
+            android:background="@drawable/mrs_white" 
+            android:onClick="rbGroupSuspect" />
     </RadioGroup>
 
     <TextView
@@ -287,37 +293,43 @@
             android:id="@+id/rope"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/rope" />
+            android:background="@drawable/rope"
+            android:onClick="rbGroupWeapon" />
 
         <RadioButton
             android:id="@+id/revolover"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/revolver" />
+            android:background="@drawable/revolver"
+            android:onClick="rbGroupWeapon" />
 
         <RadioButton
             android:id="@+id/wrench"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/wrench" />
+            android:background="@drawable/wrench"
+            android:onClick="rbGroupWeapon" />
 
         <RadioButton
             android:id="@+id/candlestick"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/candlestick" />
+            android:background="@drawable/candlestick"
+            android:onClick="rbGroupWeapon" />
 
         <RadioButton
             android:id="@+id/knife"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/knife" />
+            android:background="@drawable/knife"
+            android:onClick="rbGroupWeapon" />
 
         <RadioButton
             android:id="@+id/lead_pipe"
             android:layout_width="80dp"
             android:layout_height="80dp"
-            android:background="@drawable/lead_pipe" />
+            android:background="@drawable/lead_pipe"
+            android:onClick="rbGroupWeapon" />
     </RadioGroup>
 
     <TextView
@@ -346,13 +358,15 @@
             android:id="@+id/study_small"
             android:layout_width="54dp"
             android:layout_height="30dp"
-            android:background="@drawable/study_small" />
+            android:background="@drawable/study_small"
+            android:onClick="rbGroupRoom" />
 
         <RadioButton
             android:id="@+id/hall_small"
             android:layout_width="54dp"
             android:layout_height="30dp"
-            android:background="@drawable/hall_small" />
+            android:background="@drawable/hall_small"
+            android:onClick="rbGroupRoom" />
 
         <TextView
             android:id="@+id/TextView01"
@@ -370,43 +384,50 @@
             android:id="@+id/lounge_small"
             android:layout_width="54dp"
             android:layout_height="30dp"
-            android:background="@drawable/lounge_small" />
+            android:background="@drawable/lounge_small"
+            android:onClick="rbGroupRoom" />
 
         <RadioButton
             android:id="@+id/library_small"
             android:layout_width="54dp"
             android:layout_height="30dp"
-            android:background="@drawable/library_small" />
+            android:background="@drawable/library_small"
+            android:onClick="rbGroupRoom" />
 
         <RadioButton
             android:id="@+id/billiard_room_small"
             android:layout_width="54dp"
             android:layout_height="30dp"
-            android:background="@drawable/billiard_room_small" />
+            android:background="@drawable/billiard_room_small"
+            android:onClick="rbGroupRoom" />
 
         <RadioButton
             android:id="@+id/dining_room_small"
             android:layout_width="54dp"
             android:layout_height="30dp"
-            android:background="@drawable/dining_room_small" />
+            android:background="@drawable/dining_room_small"
+            android:onClick="rbGroupRoom" />
 
         <RadioButton
             android:id="@+id/conservatory_small"
             android:layout_width="54dp"
             android:layout_height="30dp"
-            android:background="@drawable/conservatory_small" />
+            android:background="@drawable/conservatory_small"
+            android:onClick="rbGroupRoom" />
 
         <RadioButton
             android:id="@+id/ballroom_small"
             android:layout_width="54dp"
             android:layout_height="30dp"
-            android:background="@drawable/ballroom_small" />
+            android:background="@drawable/ballroom_small"
+            android:onClick="rbGroupRoom" />
 
         <RadioButton
             android:id="@+id/kitchen_small"
             android:layout_width="56dp"
             android:layout_height="30dp"
-            android:background="@drawable/kitchen_small" />
+            android:background="@drawable/kitchen_small"
+            android:onClick="rbGroupRoom" />
     </RadioGroup>
 
     <Button
