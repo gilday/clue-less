@@ -38,6 +38,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 	@Inject private GSLocalPlayerHolder lpHolder;
 	
 	private int currentMatchId = 0;
+	private boolean isPlayersHandDisplayed = false;
 	private ClueGameCoordinator coordinator;
 	
 	private ViewHelpers viewHelper;
@@ -55,6 +56,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 			// Then use the test data
 			coordinator = coordinatorFactory.coordinatorForTesting();
 			lpHolder.setLocalPlayerEmail(coordinator.getCurrentPlayer().getGamePlayer().getEmail());
+			displayLocalPlayersHand();
 			
 			return;
 		}
@@ -168,6 +170,25 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		// space placement
 		setTitle(message);
 	}
+	
+	private void displayLocalPlayersHand() {
+		
+		if(!isPlayersHandDisplayed) {
+			// will need a counter in addition to the foreach to find car placeholder images in the layout
+			int i = 1;
+			for(ClueCard card : coordinator.getLocalPlayer().getHand()) {
+				String cardPlaceHolder = "card" + i;
+				// Fetch the ID of the image resource associated with this card
+				int cardID = getResources().getIdentifier(card.getCard(), "drawable", "edu.jhu.ep.butlerdidit");
+				// Fetch the ID of the card ImageView that we are replacing with the real cards.
+				int cardPlaceHolderID = getResources().getIdentifier(cardPlaceHolder, "id", "edu.jhu.ep.butlerdidit");
+				ImageView cardLocation = (ImageView) findViewById(cardPlaceHolderID);
+				cardLocation.setImageResource(cardID);
+				i++;
+			}
+			isPlayersHandDisplayed = true;
+		}
+	}
 
 	public void endTurnButtonHandler(View view) {
 		Gson gson = new Gson();
@@ -192,6 +213,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		} else {
 			notifyUser(String.format("Welcome, %s! It's %s's turn", coordinator.getLocalPlayer().getClueCharacter().getName(), coordinator.getCurrentPlayer().getClueCharacter().getName()));
 		}
+		displayLocalPlayersHand();
 	}
 
 	/**
@@ -207,6 +229,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		viewHelper.changeAllPawnVisibility(true);
 		
 		notifyUser(match.getMessage());
+		displayLocalPlayersHand();
 	}
 
 	/**
@@ -222,6 +245,7 @@ public class PlayGameActivity extends RoboActivity implements GSMatchListener
 		viewHelper.changeAllPawnVisibility(true);
 		
 		notifyUser(match.getMessage());
+		displayLocalPlayersHand();
 	}
 
 	/**

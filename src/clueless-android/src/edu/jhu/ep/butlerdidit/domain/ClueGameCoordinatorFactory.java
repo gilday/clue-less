@@ -127,12 +127,21 @@ public class ClueGameCoordinatorFactory {
 		player2.setLocation(ClueCharacter.ColMustardID);
 		player2.setClueCharacter(ClueCharacter.ColMustard);
 		cluePlayers.add(player2);
+		
+		CluePlayer player3 = new CluePlayer();
+		GSPlayer gsPlayer3 = new GSPlayer();
+		gsPlayer3.setEmail("player3@test.com");
+		gsPlayer3.setId(3);
+		player3.setGamePlayer(gsPlayer3);
+		player3.setLocation(ClueCharacter.MrGreenID);
+		player3.setClueCharacter(ClueCharacter.MrGreen);
+		cluePlayers.add(player3);
 	
 		coordinator.setPlayers(cluePlayers);
 		GameBoard board = new GameBoard(cluePlayers);
 		coordinator.setGameBoard(board);
 		coordinator.setCurrentPlayer(player1);
-		
+				
 		assignHandToPlayers(coordinator);
 		
 		return coordinator;
@@ -184,7 +193,7 @@ public class ClueGameCoordinatorFactory {
 		// Use Java's awesome built in shuffling method
 		Collections.shuffle((List<ClueCard>)shuffledDeck);
 		
-		while(shuffledDeck.peek() != null) {
+		while(shuffledDeck.peek() != null)  { 
 			for(CluePlayer player : coordinator.getPlayers()) {
 				ClueCard card = shuffledDeck.poll();
 				if(card == null) { 
@@ -195,5 +204,6 @@ public class ClueGameCoordinatorFactory {
 				player.getHand().add(card);
 			}
 		}
+		
 	}
 }
