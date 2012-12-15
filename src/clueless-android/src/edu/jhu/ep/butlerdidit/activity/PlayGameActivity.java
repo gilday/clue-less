@@ -11,6 +11,7 @@ import com.google.gson.Gson;
 import com.google.inject.Inject;
 
 import edu.jhu.ep.butlerdidit.R;
+import edu.jhu.ep.butlerdidit.domain.ClueCard;
 import edu.jhu.ep.butlerdidit.domain.ClueCharacter;
 import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinator;
 import edu.jhu.ep.butlerdidit.domain.ClueGameCoordinatorFactory;
