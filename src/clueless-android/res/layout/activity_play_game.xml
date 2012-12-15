@@ -496,7 +496,6 @@
         android:layout_height="102dp"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/LibraryToConservatory"
-        android:layout_marginLeft="18dp"
         android:contentDescription="@string/Cards"
         android:src="@drawable/empty" />
 

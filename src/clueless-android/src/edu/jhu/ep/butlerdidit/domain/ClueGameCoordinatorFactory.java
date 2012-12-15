@@ -176,13 +176,10 @@ public class ClueGameCoordinatorFactory {
 		// Use Java's awesome built in shuffling method
 		Collections.shuffle((List<ClueCard>)shuffledDeck);
 		
-		while(shuffledDeck.peek() != null) 
-		{
-			for(CluePlayer player : players) 
-			{
+		while(shuffledDeck.peek() != null)  { 
+			for(CluePlayer player : players)  {
 				ClueCard card = shuffledDeck.poll();
-				if(card == null) 
-				{ 
+				if(card == null) { 
 					// Spent all the cards in the queue
 					// we're done now handing cards out now
 					return;
