@@ -1,11 +1,12 @@
 package edu.jhu.ep.butlerdidit.domain;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Vector;
+
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.inject.Inject;
@@ -85,11 +86,17 @@ public class ClueGameCoordinatorFactory {
 			for(CluePlayer cluePlayer : coordinator.getPlayers()) {
 				if(cluePlayer.getGamePlayer().getEmail().equals(model.getEmail())) {
 					cluePlayer.setLocation(model.getLocation());
+					// Load player character
 					for(ClueCharacter character : ClueCharacter.All) {
 						if(character.getName().equals(model.getCharacter())) {
 							cluePlayer.setClueCharacter(character);
 							break;
 						}
+					}
+					// Load player hand
+					for(String card : model.getHand()) {
+						cluePlayer.getHand().add(Deck.findCardByName(card));
+						Log.d(ClueGameCoordinatorFactory.class.getName(), String.format("%s has card %s", cluePlayer.getGamePlayer().getEmail(), card));
 					}
 					break;
 				}
@@ -179,11 +186,6 @@ public class ClueGameCoordinatorFactory {
 		LinkedList<ClueCard> rooms = new LinkedList<ClueCard>(Deck.RoomDeck);
 		Collections.shuffle(rooms);
 		coordinator.setWinningRoom(rooms.poll());
-		
-		// Initialize empty hand for all players
-		for(CluePlayer player : coordinator.getPlayers()) {
-			player.setHand(new ArrayList<ClueCard>());
-		}
 		
 		// LinkedList is a List and a Queue
 		LinkedList<ClueCard> shuffledDeck = new LinkedList<ClueCard>();

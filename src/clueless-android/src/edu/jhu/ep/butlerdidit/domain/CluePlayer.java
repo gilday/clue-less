@@ -1,5 +1,6 @@
 package edu.jhu.ep.butlerdidit.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import edu.jhu.ep.butlerdidit.service.api.GSPlayer;
@@ -14,6 +15,10 @@ public class CluePlayer {
 	
 	private GSPlayer gamePlayer;
 	private List<ClueCard> hand;
+	
+	CluePlayer() { 
+		hand = new ArrayList<ClueCard>(6);
+	}
 	
     public GSPlayer getGamePlayer() {
 		return gamePlayer;

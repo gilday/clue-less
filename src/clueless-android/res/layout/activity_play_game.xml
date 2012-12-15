@@ -544,14 +544,6 @@
         android:contentDescription="@string/Cards"
         android:src="@drawable/empty" />
 
-    <ImageView
-        android:id="@+id/card7"
-        android:layout_width="70dp"
-        android:layout_height="102dp"
-        android:layout_below="@+id/LibraryToConservatory"
-        android:layout_toRightOf="@+id/card6"
-        android:contentDescription="@string/Cards"
-        android:src="@drawable/empty" />
 
     <ImageView
         android:id="@+id/scarlett_study"

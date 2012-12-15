@@ -10,10 +10,11 @@ player1 = Player.new(email: "player1@test.com", password: "password", password_c
 player1.save
 player2 = Player.new(email: "player2@test.com", password: "password", password_confirmation: "password")
 player2.save
-match = Match.new(status: "Matchmaking", message: "Wait for others", min_players: 2, max_players: 6)
+player3 = Player.new(email: "player3@test.com", password: "password", password_confirmation: "password")
+player3.save
+match = Match.new(status: "Matchmaking", message: "Wait for others", min_players: 3, max_players: 6)
 #match.save
 #participant = match.participants.create(status: "playing", player_id: player1.id)
-match.players << player1 
-match.players << player2
+match.players << [player1, player2, player3]
 match.current_player = player1.email
 match.save

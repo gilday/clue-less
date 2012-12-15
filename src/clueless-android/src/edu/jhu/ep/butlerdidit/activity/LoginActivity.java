@@ -95,17 +95,6 @@ public class LoginActivity extends RoboActivity implements AuthenticationChanged
 					}
 				});
 		
-		findViewById(R.id.skip_login_button).setOnClickListener(
-				new View.OnClickListener() {
-					
-					@Override
-					public void onClick(View v) {
-						// Don't log in, just go to PlayGameActivity
-						Intent playGameIntent = new Intent(LoginActivity.this.getApplicationContext(), PlayGameActivity.class);
-						LoginActivity.this.startActivity(playGameIntent);
-					}
-				});
-		
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
 		String user = prefs.getString(PREF_USER, "");
 		String serverUri = prefs.getString(PREF_SERVER, "http://10.0.2.2:3000");
